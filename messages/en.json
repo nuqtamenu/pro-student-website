@@ -1,5 +1,179 @@
 {
-  "homePage": {
-    "heroTitle": "We are Pro Student"
+  "header": {
+    "phone": "058-0666-525",
+    "officeLocation": "Office location",
+    "menu": "Menu",
+    "language": "Language",
+    "tagline": "Competitive prices. Genuine service. Real results."
+  },
+  "nav": {
+    "destinations": "Destinations",
+    "institutes": "Institutes",
+    "courses": "Courses",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Start your journey today and learn at the world's best institutes.",
+    "description": "We are proud to have Saudi consultants who are graduates of American universities, to help you confidently choose your educational path. Start your journey today and explore the best study abroad opportunities.",
+    "selectDestination": "Select Destination",
+    "selectSchool": "Select School",
+    "selectCourse": "Select Course / Degree",
+    "courseStartDate": "Course Start Date",
+    "courseDuration": "Course Duration (Weeks)",
+    "accommodation": "Do You Need Accommodation?",
+    "airportPickup": "Do You Need Airport Pickup?",
+    "yes": "Yes",
+    "no": "No",
+    "search": "Search",
+    "reviewsTitle": "Read what our learners think about us",
+    "reviewsCount": "100+",
+    "rating": "4.9"
+  },
+  "destinations": {
+    "label": "DESTINATION",
+    "title": "Explore Destinations",
+    "schools": "Schools"
+  },
+  "institutes": {
+    "label": "INSTITUTES",
+    "title": "Explore Institutes",
+    "explore": "Explore"
+  },
+  "courses": {
+    "label": "COURSES",
+    "title": "Explore All Courses & Programmes",
+    "explore": "Explore"
+  },
+  "proven": {
+    "label": "PROVEN",
+    "title": "Trusted by 20K+ People",
+    "description": "Since 2015, Pro Student has helped thousands of Saudi students study at top global institutions.",
+    "stat1Value": "16K+",
+    "stat1Label": "Proven results since 2015",
+    "stat2Value": "500+",
+    "stat2Label": "16,326 students placed. 500 universities partnered. Ministry licensed."
+  },
+  "complete": {
+    "label": "COMPLETE SOLUTION",
+    "title": "Everything you need to study abroad.",
+    "subtitle": "From the first consultation to your arrival, we guide every step of your study abroad journey.",
+    "card1Title": "University selection and planning",
+    "card1Desc": "We help you find the right institution that fits your goals, budget, and academic profile.",
+    "card2Title": "Application and visa support",
+    "card2Desc": "We prepare the paperwork so your applications are strong, and your visa process runs smoothly.",
+    "card3Title": "Housing and airport assistance",
+    "card3Desc": "We secure your accommodation and arrange your pickup so your arrival is seamless.",
+    "card4Title": "Guidance tailored to your goals and timeline",
+    "card4Desc": "Our advisors handle university matching, applications, visas, housing, and airport arrival. Real 24/7 support."
+  },
+  "cta": {
+    "title": "Ready to begin your journey?",
+    "description": "Book a consultation with our team and let's shape your future.",
+    "button": "Contact us"
+  },
+  "faq": {
+    "label": "FAQ",
+    "title": "FAQ",
+    "description": "Find answers to common questions about our services and support.",
+    "contactButton": "Contact Us",
+    "items": [
+      {
+        "q": "How long does the application process take to receive a decision?",
+        "a": "The application process usually takes between 2 to 6 weeks, depending on the university and program. Some universities respond faster, while others may take longer during busy admission periods."
+      },
+      {
+        "q": "How much is the application fee?",
+        "a": "Application fees vary by institution and program. Our advisors will share the exact amounts before you apply, and many partner schools waive the fee entirely."
+      },
+      {
+        "q": "Do you provide visa support?",
+        "a": "Yes. We guide you through every step of the student visa process, from document preparation to interview coaching."
+      },
+      {
+        "q": "What countries do you work with?",
+        "a": "We work with leading institutions across the United States, United Kingdom, Canada, and Australia, with more destinations added regularly."
+      },
+      {
+        "q": "What is the duration of the course?",
+        "a": "Course durations range from a couple of weeks to a full academic year, depending on the programme and your goals."
+      }
+    ]
+  },
+  "contact": {
+    "label": "GET IN TOUCH",
+    "title": "Start the conversation",
+    "description": "Fill out the form and our consultant will contact you.",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Your Name",
+    "email": "Email",
+    "emailPlaceholder": "you@email.com",
+    "phone": "Phone",
+    "phonePlaceholder": "+966",
+    "schedule": "SCHEDULE A CONSULTATION",
+    "submit": "Submit"
+  },
+  "reviews": {
+    "title": "Student Reviews",
+    "rateButton": "Rate us on Google",
+    "items": [
+      {
+        "name": "Aziz Tr",
+        "time": "A week ago",
+        "text": "Excellent service and quick response, even if you have any questions or anything, they reply quickly."
+      },
+      {
+        "name": "Saleh",
+        "time": "3 months ago",
+        "text": "I took a language course for a month in Liverpool. They offered the cheapest price I've ever found, and they were available to me throughout the course. May God reward them."
+      },
+      {
+        "name": "Sami Al-Maliki",
+        "time": "2 weeks ago",
+        "text": "A truly excellent office, I highly recommend it. They were incredibly helpful and professional. Thank you to Mr. Shahd, who was exceptionally cooperative and always available to assist. May God bless her and the entire team."
+      },
+      {
+        "name": "Noura A.",
+        "time": "1 month ago",
+        "text": "From the first consultation to my arrival, everything was organized. The team handled my visa and housing without any stress."
+      }
+    ]
+  },
+  "footer": {
+    "about": "Begin your academic journey now with academic advisors who are graduates of American universities. Through our partnerships with international institutions and universities, we strive to provide the best educational opportunities and help you achieve your goals with confidence.",
+    "studyAbroad": "Study Abroad",
+    "services": "Services",
+    "company": "Company",
+    "sources": "Sources",
+    "getInTouch": "Get in touch",
+    "rights": "© 2026 Pro Student. All rights reserved.",
+    "links": {
+      "institutes": "Institutes",
+      "visaApplication": "Visa application",
+      "offers": "Offers",
+      "aboutCompany": "About the company",
+      "terms": "Terms and Conditions",
+      "getQuote": "Get a quote",
+      "articles": "Articles"
+    },
+    "studyingEnglish": "Studying English in Britain",
+    "recommendedSchools": "Recommended language schools",
+    "studyingEnglish2": "Studying English in Britain",
+    "columnLinks": [
+      "Language institutes in Britain",
+      "Cheapest language institutes in Britain",
+      "Language institutes in London",
+      "Cheapest language institutes in London",
+      "Language institutes in Burnham",
+      "Language institutes in Brighton",
+      "Language institutes in Liverpool",
+      "Language institutes in Manchester",
+      "Language institutes in Cambridge"
+    ]
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "Sorry, we couldn't find the page you're looking for.",
+    "backHome": "Back to home"
   }
 }

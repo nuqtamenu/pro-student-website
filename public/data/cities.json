@@ -1,0 +1,44 @@
+[
+  {
+    "id": "new-york",
+    "countryId": "usa",
+    "name": { "en": "United States", "ar": "الولايات المتحدة" },
+    "image": "/images/destinations/usa.png",
+    "schoolsCount": 12
+  },
+  {
+    "id": "london",
+    "countryId": "uk",
+    "name": { "en": "United Kingdom", "ar": "المملكة المتحدة" },
+    "image": "/images/destinations/uk.png",
+    "schoolsCount": 13
+  },
+  {
+    "id": "sydney",
+    "countryId": "australia",
+    "name": { "en": "Australia", "ar": "أستراليا" },
+    "image": "/images/destinations/australia.png",
+    "schoolsCount": 13
+  },
+  {
+    "id": "toronto",
+    "countryId": "canada",
+    "name": { "en": "Canada", "ar": "كندا" },
+    "image": "/images/destinations/canada.png",
+    "schoolsCount": 13
+  },
+  {
+    "id": "boston",
+    "countryId": "usa",
+    "name": { "en": "Boston", "ar": "بوسطن" },
+    "image": "/images/destinations/boston.png",
+    "schoolsCount": 9
+  },
+  {
+    "id": "manchester",
+    "countryId": "uk",
+    "name": { "en": "Manchester", "ar": "مانشستر" },
+    "image": "/images/destinations/manchester.png",
+    "schoolsCount": 7
+  }
+]

@@ -1,0 +1,93 @@
+[
+  {
+    "id": "general-english",
+    "name": {
+      "en": "General English Course",
+      "ar": "دورة الإنجليزية العامة"
+    },
+    "provider": {
+      "en": "EC Language Centres",
+      "ar": "مراكز EC للغات"
+    },
+    "description": {
+      "en": "Build everyday English skills across speaking, listening, reading and writing.",
+      "ar": "طوّر مهارات اللغة الإنجليزية اليومية في التحدث والاستماع والقراءة والكتابة."
+    },
+    "image": "/images/courses/general-english.png",
+    "discount": "20%",
+    "schoolIds": [
+      "kaplan",
+      "els",
+      "ec-english",
+      "ef-english",
+      "sydney-college"
+    ]
+  },
+  {
+    "id": "intensive-english",
+    "name": {
+      "en": "Intensive English Course",
+      "ar": "دورة الإنجليزية المكثفة"
+    },
+    "provider": {
+      "en": "Kings Education",
+      "ar": "كينغز للتعليم"
+    },
+    "description": {
+      "en": "Accelerate your progress with a higher number of weekly lessons.",
+      "ar": "سرّع تقدمك مع عدد أكبر من الدروس الأسبوعية."
+    },
+    "image": "/images/courses/intensive-english.png",
+    "discount": "20%",
+    "schoolIds": [
+      "kaplan",
+      "ec-english",
+      "sydney-college"
+    ]
+  },
+  {
+    "id": "ielts-prep",
+    "name": {
+      "en": "IELTS Preparation Course",
+      "ar": "دورة التحضير للآيلتس"
+    },
+    "provider": {
+      "en": "Kaplan International",
+      "ar": "كابلان إنترناشونال"
+    },
+    "description": {
+      "en": "Targeted preparation to achieve your required IELTS band score.",
+      "ar": "تحضير مُوجّه لتحقيق درجة الآيلتس المطلوبة."
+    },
+    "image": "/images/courses/ielts-prep.png",
+    "discount": "20%",
+    "schoolIds": [
+      "kaplan",
+      "ec-english",
+      "ef-english",
+      "toronto-academy"
+    ]
+  },
+  {
+    "id": "semi-intensive-english",
+    "name": {
+      "en": "Semi-Intensive English Course",
+      "ar": "دورة الإنجليزية شبه المكثفة"
+    },
+    "provider": {
+      "en": "US School",
+      "ar": "مدرسة أمريكية"
+    },
+    "description": {
+      "en": "A balanced study schedule that leaves time to explore your destination.",
+      "ar": "جدول دراسي متوازن يترك لك وقتًا لاستكشاف وجهتك."
+    },
+    "image": "/images/courses/semi-intensive-english.png",
+    "discount": "20%",
+    "schoolIds": [
+      "els",
+      "ef-english",
+      "toronto-academy"
+    ]
+  }
+]

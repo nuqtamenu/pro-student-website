@@ -1,0 +1,14 @@
+[
+  {
+    "id": "north-america",
+    "name": { "en": "North America", "ar": "أمريكا الشمالية" }
+  },
+  {
+    "id": "europe",
+    "name": { "en": "Europe", "ar": "أوروبا" }
+  },
+  {
+    "id": "oceania",
+    "name": { "en": "Oceania", "ar": "أوقيانوسيا" }
+  }
+]

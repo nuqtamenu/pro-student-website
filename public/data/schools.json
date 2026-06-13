@@ -1,0 +1,107 @@
+[
+  {
+    "id": "kaplan",
+    "cityId": "new-york",
+    "name": {
+      "en": "Kaplan International",
+      "ar": "كابلان إنترناشونال"
+    },
+    "description": {
+      "en": "One of the largest & most famous language schools in the world. It was founded in 1938 and has more than 40 centers in 8 countries.",
+      "ar": "واحدة من أكبر وأشهر مدارس اللغة في العالم. تأسست عام 1938 ولديها أكثر من 40 مركزًا في 8 دول."
+    },
+    "image": "/images/schools/kaplan.png",
+    "courseIds": [
+      "general-english",
+      "intensive-english",
+      "ielts-prep"
+    ]
+  },
+  {
+    "id": "els",
+    "cityId": "boston",
+    "name": {
+      "en": "ELS Language Centers",
+      "ar": "مراكز ELS للغات"
+    },
+    "description": {
+      "en": "One of the oldest English language schools in America, founded in 1961 and has served more than one million students worldwide.",
+      "ar": "واحدة من أقدم مدارس اللغة الإنجليزية في أمريكا، تأسست عام 1961 وخدمت أكثر من مليون طالب حول العالم."
+    },
+    "image": "/images/schools/els.png",
+    "courseIds": [
+      "general-english",
+      "semi-intensive-english"
+    ]
+  },
+  {
+    "id": "ec-english",
+    "cityId": "london",
+    "name": {
+      "en": "EC English",
+      "ar": "EC إنجليش"
+    },
+    "description": {
+      "en": "Founded in 1991 with more than 25 centers in America, Europe and Australia.",
+      "ar": "تأسست عام 1991 ولديها أكثر من 25 مركزًا في أمريكا وأوروبا وأستراليا."
+    },
+    "image": "/images/schools/ec-english.png",
+    "courseIds": [
+      "general-english",
+      "ielts-prep",
+      "intensive-english"
+    ]
+  },
+  {
+    "id": "ef-english",
+    "cityId": "london",
+    "name": {
+      "en": "EF English Live",
+      "ar": "EF إنجليش لايف"
+    },
+    "description": {
+      "en": "One of the world's largest private education organizations. It was founded in 1965 and operates in more than 50 countries.",
+      "ar": "واحدة من أكبر منظمات التعليم الخاصة في العالم. تأسست عام 1965 وتعمل في أكثر من 50 دولة."
+    },
+    "image": "/images/schools/ef-english.png",
+    "courseIds": [
+      "general-english",
+      "semi-intensive-english",
+      "ielts-prep"
+    ]
+  },
+  {
+    "id": "sydney-college",
+    "cityId": "sydney",
+    "name": {
+      "en": "Sydney English College",
+      "ar": "كلية سيدني للغة الإنجليزية"
+    },
+    "description": {
+      "en": "A modern campus in the heart of Sydney offering accredited English programmes for international students.",
+      "ar": "حرم جامعي حديث في قلب سيدني يقدم برامج إنجليزية معتمدة للطلاب الدوليين."
+    },
+    "image": "/images/schools/sydney-college.png",
+    "courseIds": [
+      "general-english",
+      "intensive-english"
+    ]
+  },
+  {
+    "id": "toronto-academy",
+    "cityId": "toronto",
+    "name": {
+      "en": "Toronto Language Academy",
+      "ar": "أكاديمية تورنتو للغات"
+    },
+    "description": {
+      "en": "A welcoming academy in downtown Toronto with a focus on academic English and exam preparation.",
+      "ar": "أكاديمية مرحبة في وسط مدينة تورنتو تركز على اللغة الإنجليزية الأكاديمية والتحضير للاختبارات."
+    },
+    "image": "/images/schools/toronto-academy.png",
+    "courseIds": [
+      "ielts-prep",
+      "semi-intensive-english"
+    ]
+  }
+]

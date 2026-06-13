@@ -1,0 +1,22 @@
+[
+  {
+    "id": "usa",
+    "regionId": "north-america",
+    "name": { "en": "United States", "ar": "الولايات المتحدة" }
+  },
+  {
+    "id": "canada",
+    "regionId": "north-america",
+    "name": { "en": "Canada", "ar": "كندا" }
+  },
+  {
+    "id": "uk",
+    "regionId": "europe",
+    "name": { "en": "United Kingdom", "ar": "المملكة المتحدة" }
+  },
+  {
+    "id": "australia",
+    "regionId": "oceania",
+    "name": { "en": "Australia", "ar": "أستراليا" }
+  }
+]
