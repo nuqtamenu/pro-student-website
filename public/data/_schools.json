@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "name": { "en": "Kaplan International", "ar": "كابلان الدولية" },
+    "description": {
+      "en": "One of the largest & most famous language schools in the world, it was founded in 1938 and has more than 40 centers in 8 countries.",
+      "ar": "واحدة من أكبر وأشهر مدارس اللغات في العالم، تأسست عام 1938 ولديها أكثر من 40 مركزاً في 8 دول."
+    },
+    "slug": "kaplan-international",
+    "image": "kaplan.png",
+    "logo": "kaplan-international-logo.png",
+    "cityId": 1
+  },
+  {
+    "id": 2,
+    "name": { "en": "ELS Language Centers", "ar": "مراكز إي إل إس للغات" },
+    "description": {
+      "en": "One of the oldest English language schools, it was founded in 1961 and has served more than one million students worldwide.",
+      "ar": "من أقدم مدارس اللغة الإنجليزية، تأسست عام 1961 وخدمت أكثر من مليون طالب حول العالم."
+    },
+    "slug": "els-language-centers",
+    "image": "els.png",
+    "logo": "els-language-centers-logo.png",
+    "cityId": 3
+  },
+  {
+    "id": 3,
+    "name": { "en": "EC English", "ar": "إي سي للغة الإنجليزية" },
+    "description": {
+      "en": "A global language school founded in 1991, with more than 25 centers in America, Europe and Australia.",
+      "ar": "مدرسة لغات عالمية تأسست عام 1991، وتضم أكثر من 25 مركزاً في أمريكا وأوروبا وأستراليا."
+    },
+    "slug": "ec-english",
+    "image": "ec-english.png",
+    "logo": "ec-english-logo.png",
+    "cityId": 22
+  },
+  {
+    "id": 4,
+    "name": { "en": "EF English Live", "ar": "إي أف إنجليش لايف" },
+    "description": {
+      "en": "One of the world's largest private education organizations, it was founded in 1965 and operates in more than 50 countries.",
+      "ar": "واحدة من أكبر منظمات التعليم الخاص في العالم، تأسست عام 1965 وتعمل في أكثر من 50 دولة."
+    },
+    "slug": "ef-english-live",
+    "image": "ef-english.png",
+    "logo": "ef-english-live-logo.png",
+    "cityId": 9
+  },
+  {
+    "id": 5,
+    "name": {
+      "en": "Bayswater English School",
+      "ar": "مدرسة بيزووتر الإنجليزية"
+    },
+    "description": {
+      "en": "Offering a variety of programs in London. A prestigious British school accredited by the British Council.",
+      "ar": "تقدم مجموعة متنوعة من البرامج في لندن. مدرسة بريطانية مرموقة معتمدة من المجلس الثقافي البريطاني."
+    },
+    "slug": "bayswater-english-school",
+    "image": "bayswater-english-school.png",
+    "logo": "bayswater-english-school-logo.png",
+    "cityId": 9
+  },
+  {
+    "id": 6,
+    "name": { "en": "(IH) International House", "ar": "إنترناشيونال هاوس" },
+    "description": {
+      "en": "A global school network founded in 1953 in London, comprising more than 150 schools in 40 countries worldwide.",
+      "ar": "شبكة مدارس عالمية تأسست عام 1953 في لندن، وتضم أكثر من 150 مدرسة في 40 دولة حول العالم."
+    },
+    "slug": "international-house",
+    "image": "international-house.png",
+    "logo": "international-house-logo.png",
+    "cityId": 9
+  },
+  {
+    "id": 7,
+    "name": { "en": "English Path", "ar": "إنجليش باث" },
+    "description": {
+      "en": "A modern, accredited language school with centers in London and Manchester, offering a state-of-the-art learning environment.",
+      "ar": "مدرسة لغات حديثة ومعتمدة لها مراكز في لندن ومانشستر، وتوفر بيئة تعليمية متطورة."
+    },
+    "slug": "english-path",
+    "image": "english-path.png",
+    "logo": "english-path-logo.png",
+    "cityId": 9
+  },
+  {
+    "id": 8,
+    "name": { "en": "(LSI) Language School", "ar": "معهد إل إس آي للغات" },
+    "description": {
+      "en": "Founded in 1965, it has more than 12 centers in the UK, USA, Canada and Switzerland.",
+      "ar": "تأسس عام 1965، وله أكثر من 12 مركزاً في المملكة المتحدة والولايات المتحدة الأمريكية وكندا وسويسرا."
+    },
+    "slug": "lsi-language-school",
+    "image": "lsi-language-school.png",
+    "logo": "lsi-language-school-logo.png",
+    "cityId": 5
+  },
+  {
+    "id": 9,
+    "name": { "en": "Oxford International", "ar": "أكسفورد الدولية" },
+    "description": {
+      "en": "It is an accredited British school with centers in the heart of major British cities, offering intensive specialized programs.",
+      "ar": "وهي مدرسة بريطانية معتمدة لها مراكز في قلب المدن البريطانية الكبرى، وتقدم برامج متخصصة مكثفة."
+    },
+    "slug": "oxford-international",
+    "image": "oxford-international.png",
+    "logo": "oxford-international-logo.png",
+    "cityId": 11
+  },
+  {
+    "id": 10,
+    "name": { "en": "(NCG) New College Group", "ar": "نيو كوليدج جروب" },
+    "description": {
+      "en": "A British academic group comprising several prestigious colleges in London & Manchester, accredited by the British Council.",
+      "ar": "مجموعة أكاديمية بريطانية تضم العديد من الكليات المرموقة في لندن ومانشستر، معتمدة من المجلس الثقافي البريطاني."
+    },
+    "slug": "new-college-group",
+    "image": "new-college-group.png",
+    "logo": "new-college-group-logo.png",
+    "cityId": 9
+  },
+  {
+    "id": 11,
+    "name": {
+      "en": "Britannia English Academy",
+      "ar": "أكاديمية بريتانيا الإنجليزية"
+    },
+    "description": {
+      "en": "An accredited British academy offering specialized programs in a professional learning environment.",
+      "ar": "أكاديمية بريطانية معتمدة تقدم برامج متخصصة في بيئة تعليمية احترافية."
+    },
+    "slug": "britannia-english-academy",
+    "image": "britannia-english-academy.png",
+    "logo": "britannia-english-academy-logo.png",
+    "cityId": 9
+  },
+  {
+    "id": 12,
+    "name": { "en": "(ELC) Learning Centre", "ar": "مركز إي إل سي للتعليم" },
+    "description": {
+      "en": "A specialized English language learning center offering internationally accredited curricula and innovative teaching methods.",
+      "ar": "مركز متخصص لتعلم اللغة الإنجليزية يقدم مناهج معتمدة دولياً وطرق تدريس مبتكرة."
+    },
+    "slug": "elc-learning-centre",
+    "image": "elc-learning-centre.png",
+    "logo": "elc-learning-centre-logo.png",
+    "cityId": 12
+  }
+]

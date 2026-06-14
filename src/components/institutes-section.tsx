@@ -19,7 +19,7 @@ export async function InstitutesSection() {
             >
               <div className="relative h-60">
                 <Image
-                  src={school.image || "/placeholder.svg"}
+                  src={`/images/schools/${school.image}` || "/placeholder.svg"}
                   alt={tx(school.name, locale)}
                   fill
                   sizes="(max-width: 768px) 80vw, 25vw"

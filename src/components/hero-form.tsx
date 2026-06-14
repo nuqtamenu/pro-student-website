@@ -42,7 +42,9 @@ export function HeroForm() {
   const destination = watch("destination");
   const school = watch("school");
 
-  const availableSchools = destination ? schoolsByCity(destination) : [];
+  const availableSchools = destination
+    ? schoolsByCity(Number(destination))
+    : [];
   const availableCourses = school ? coursesBySchool(school) : [];
 
   function onSubmit(data: FormValues) {

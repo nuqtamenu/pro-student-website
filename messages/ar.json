@@ -38,7 +38,13 @@
   "destinations": {
     "label": "الوجهات",
     "title": "استكشف الوجهات",
-    "schools": "مدارس"
+    "schools": "مدارس",
+    "cities": "مدن",
+    "filterCountry": "تصفية الدولة",
+    "searchByName": "ابحث بالاسم",
+    "allCountries": "كل الدول",
+    "noResults": "لم يتم العثور على نتائج",
+    "noResultsDescription": "حاول دولة أخرى أو اسم وجهة لعرض المدن المتطابقة."
   },
   "institutes": {
     "label": "المعاهد",

@@ -102,6 +102,13 @@ export function Header() {
             <Icon icon={"lucide:school"} className="size-8" />
             {navT("institutes")}
           </Link>
+          <Link
+            href={`/${locale}/destinations`}
+            className="flex flex-col gap-2 items-center justify-center"
+          >
+            <Icon icon={"iconoir:globe"} className="size-8" />
+            {navT("destinations")}
+          </Link>
         </div>
       )}
     </header>

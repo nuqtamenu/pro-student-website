@@ -1,7 +1,10 @@
 import regionsData from "../../public/data/regions.json";
-import countriesData from "../../public/data/countries.json";
-import citiesData from "../../public/data/cities.json";
-import schoolsData from "../../public/data/schools.json";
+// import countriesData from "../../public/data/countries.json";
+// import citiesData from "../../public/data/cities.json";
+// import schoolsData from "../../public/data/schools.json";
+import countriesData from "../../public/data/_countries.json";
+import citiesData from "../../public/data/_cities.json";
+import schoolsData from "../../public/data/_schools.json";
 import coursesData from "../../public/data/courses.json";
 
 export type Locale = "en" | "ar";
@@ -14,26 +17,30 @@ export type Region = {
 };
 
 export type Country = {
-  id: string;
-  regionId: string;
+  id: number;
   name: Localized;
+  description: Localized;
+  slug: string;
+  image: string;
 };
 
 export type City = {
-  id: string;
-  countryId: string;
+  id: number;
   name: Localized;
+  description: Localized;
+  slug: string;
   image: string;
-  schoolsCount: number;
+  countryId: number;
 };
 
 export type School = {
-  id: string;
-  cityId: string;
+  id: number;
+  cityId: number;
   name: Localized;
   description: Localized;
+  slug: string;
+  logo?: string;
   image: string;
-  courseIds: string[];
 };
 
 export type Course = {
@@ -58,7 +65,7 @@ export function tx(value: Localized, locale: Locale): string {
 }
 
 /** Schools located in a given city (destination). */
-export function schoolsByCity(cityId: string): School[] {
+export function schoolsByCity(cityId: number): School[] {
   return schools.filter((s) => s.cityId === cityId);
 }
 

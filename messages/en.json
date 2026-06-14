@@ -38,7 +38,13 @@
   "destinations": {
     "label": "DESTINATION",
     "title": "Explore Destinations",
-    "schools": "Schools"
+    "schools": "Schools",
+    "cities": "Cities",
+    "filterCountry": "Filter country",
+    "searchByName": "Search by name",
+    "allCountries": "All countries",
+    "noResults": "No results found",
+    "noResultsDescription": "Try another country or destination name to see matching cities."
   },
   "institutes": {
     "label": "INSTITUTES",

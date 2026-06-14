@@ -1,0 +1,244 @@
+[
+  {
+    "id": 1,
+    "name": { "en": "New York", "ar": "نيويورك" },
+    "description": {
+      "en": "The city that never sleeps.",
+      "ar": "المدينة التي لا تنام."
+    },
+    "slug": "new-york",
+    "image": "new-york.jpg",
+    "countryId": 1
+  },
+  {
+    "id": 2,
+    "name": { "en": "Los Angeles", "ar": "لوس أنجلوس" },
+    "description": {
+      "en": "Home of global entertainment.",
+      "ar": "عاصمة الترفيه العالمية."
+    },
+    "slug": "los-angeles",
+    "image": "los-angeles.jpg",
+    "countryId": 1
+  },
+  {
+    "id": 3,
+    "name": { "en": "Boston", "ar": "بوسطن" },
+    "description": {
+      "en": "America's historic academic hub.",
+      "ar": "المركز الأكاديمي التاريخي لأمريكا."
+    },
+    "slug": "boston",
+    "image": "boston.jpg",
+    "countryId": 1
+  },
+  {
+    "id": 4,
+    "name": { "en": "Miami", "ar": "ميامي" },
+    "description": {
+      "en": "Sun, golden beaches, and vibrant culture.",
+      "ar": "الشمس والشواطئ الذهبية والثقافة النابضة بالحياة."
+    },
+    "slug": "miami",
+    "image": "miami.jpg",
+    "countryId": 1
+  },
+  {
+    "id": 5,
+    "name": { "en": "Toronto", "ar": "تورونتو" },
+    "description": {
+      "en": "A dynamic and multicultural metropolis.",
+      "ar": "مدينة ديناميكية ومتعددة الثقافات."
+    },
+    "slug": "toronto",
+    "image": "toronto.jpg",
+    "countryId": 2
+  },
+  {
+    "id": 6,
+    "name": { "en": "Vancouver", "ar": "فانكوفر" },
+    "description": {
+      "en": "Stunning nature meets urban life.",
+      "ar": "طبيعة خلابة تلتقي بالحياة المدنية."
+    },
+    "slug": "vancouver",
+    "image": "vancouver.jpg",
+    "countryId": 2
+  },
+  {
+    "id": 7,
+    "name": { "en": "Montreal", "ar": "مونتريال" },
+    "description": {
+      "en": "A unique blend of European charm and history.",
+      "ar": "مزيج فريد من السحر الأوروبي والتاريخ."
+    },
+    "slug": "montreal",
+    "image": "montreal.jpg",
+    "countryId": 2
+  },
+  {
+    "id": 8,
+    "name": { "en": "Calgary", "ar": "كالغاري" },
+    "description": {
+      "en": "The majestic gateway to the Rocky Mountains.",
+      "ar": "البوابة المهيبة لجبال روكي."
+    },
+    "slug": "calgary",
+    "image": "calgary.jpg",
+    "countryId": 2
+  },
+  {
+    "id": 9,
+    "name": { "en": "London", "ar": "لندن" },
+    "description": {
+      "en": "A global hub of history, art, and culture.",
+      "ar": "مركز عالمي للتاريخ والفنون والثقافة."
+    },
+    "slug": "london",
+    "image": "london.png",
+    "countryId": 3
+  },
+  {
+    "id": 10,
+    "name": { "en": "Cambridge", "ar": "كامبريدج" },
+    "description": {
+      "en": "World-renowned academic excellence.",
+      "ar": "التميز الأكاديمي المشهور عالميًا."
+    },
+    "slug": "cambridge",
+    "image": "cambridge.png",
+    "countryId": 3
+  },
+  {
+    "id": 11,
+    "name": { "en": "Oxford", "ar": "أكسفورد" },
+    "description": {
+      "en": "The iconic city of dreaming spires.",
+      "ar": "مدينة الأبراج الحالمة الشهيرة."
+    },
+    "slug": "oxford",
+    "image": "oxford.png",
+    "countryId": 3
+  },
+  {
+    "id": 12,
+    "name": { "en": "Brighton", "ar": "برايتون" },
+    "description": {
+      "en": "Vibrant seaside city with a creative soul.",
+      "ar": "مدينة ساحلية حيوية ذات روح إبداعية."
+    },
+    "slug": "brighton",
+    "image": "brighton.png",
+    "countryId": 3
+  },
+  {
+    "id": 13,
+    "name": { "en": "Sydney", "ar": "سيدني" },
+    "description": {
+      "en": "Iconic harbor views and urban beaches.",
+      "ar": "إطلالات الميناء الشهيرة والشواطئ الحضرية."
+    },
+    "slug": "sydney",
+    "image": "sydney.png",
+    "countryId": 4
+  },
+  {
+    "id": 14,
+    "name": { "en": "Melbourne", "ar": "ملبورن" },
+    "description": {
+      "en": "The cultural and coffee capital of Australia.",
+      "ar": "عاصمة الثقافة والقهوة في أستراليا."
+    },
+    "slug": "melbourne",
+    "image": "melbourne.png",
+    "countryId": 4
+  },
+  {
+    "id": 15,
+    "name": { "en": "Brisbane", "ar": "بريزبان" },
+    "description": {
+      "en": "A sunny, modern city along a winding river.",
+      "ar": "مدينة مشمسة وحديثة تقع على ضفاف نهر متعرج."
+    },
+    "slug": "brisbane",
+    "image": "brisbane.png",
+    "countryId": 4
+  },
+  {
+    "id": 16,
+    "name": { "en": "Perth", "ar": "بيرث" },
+    "description": {
+      "en": "Where effortless urban life meets raw nature.",
+      "ar": "حيث تلتقي الحياة الحضرية البسيطة بالطبيعة البكر."
+    },
+    "slug": "perth",
+    "image": "perth.png",
+    "countryId": 4
+  },
+  {
+    "id": 17,
+    "name": { "en": "Dublin", "ar": "دبلن" },
+    "description": {
+      "en": "A friendly city rich in literary history.",
+      "ar": "مدينة ودودة غنية بالتاريخ الأدبي."
+    },
+    "slug": "dublin",
+    "image": "dublin.png",
+    "countryId": 5
+  },
+  {
+    "id": 18,
+    "name": { "en": "Cork", "ar": "كورك" },
+    "description": {
+      "en": "A vibrant maritime city with culinary heritage.",
+      "ar": "مدينة بحرية نابضة بالحياة وتتميز بتراثها العريق في الطهي."
+    },
+    "slug": "cork",
+    "image": "cork.png",
+    "countryId": 5
+  },
+  {
+    "id": 19,
+    "name": { "en": "Galway", "ar": "غالواي" },
+    "description": {
+      "en": "The bohemian cultural heart of Ireland.",
+      "ar": "القلب الثقافي البوهيمي لأيرلندا."
+    },
+    "slug": "galway",
+    "image": "galway.png",
+    "countryId": 5
+  },
+  {
+    "id": 20,
+    "name": { "en": "Drogheda", "ar": "دروهيدا" },
+    "description": {
+      "en": "An ancient gateway city full of history.",
+      "ar": "مدينة أثرية عريقة تعد بوابة تاريخية غنية."
+    },
+    "slug": "drogheda",
+    "image": "drogheda.png",
+    "countryId": 5
+  },
+  {
+    "id": 21,
+    "name": { "en": "Cape Town", "ar": "كيب تاون" },
+    "description": {
+      "en": "Breathtaking landscapes and rich heritage.",
+      "ar": "مناظر طبيعية خلابة وتراث غني."
+    },
+    "slug": "cape-town",
+    "image": "cape-town.png",
+    "countryId": 6
+  },
+  {
+    "id": 22,
+    "name": { "en": "St. Julian's", "ar": "سانت جوليان" },
+    "description": {
+      "en": "A lively coastal hub perfect for language students.",
+      "ar": "مركز ساحلي حيوي مثالي لطلاب اللغة."
+    },
+    "slug": "st-julians",
+    "image": "st-julians.png",
+    "countryId": 7
+  }
+]
