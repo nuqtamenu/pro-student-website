@@ -1,22 +1,65 @@
 [
   {
-    "id": "usa",
-    "regionId": "north-america",
-    "name": { "en": "United States", "ar": "الولايات المتحدة" }
+    "id": 1,
+    "name": {
+      "en": "United States of America",
+      "ar": "الولايات المتحدة الأمريكية"
+    },
+    "description": {
+      "en": "Country with major language schools in multiple cities.",
+      "ar": "دولة تضم مدارس لغات رئيسية في عدة مدن."
+    },
+    "slug": "usa",
+    "image": "usa.png"
   },
   {
-    "id": "canada",
-    "regionId": "north-america",
-    "name": { "en": "Canada", "ar": "كندا" }
+    "id": 2,
+    "name": { "en": "Canada", "ar": "كندا" },
+    "description": {
+      "en": "Country with diverse language schools across provinces.",
+      "ar": "دولة تضم مدارس لغات متنوعة عبر المقاطعات."
+    },
+    "slug": "canada",
+    "image": "canada.png"
   },
   {
-    "id": "uk",
-    "regionId": "europe",
-    "name": { "en": "United Kingdom", "ar": "المملكة المتحدة" }
+    "id": 3,
+    "name": { "en": "United Kingdom", "ar": "المملكة المتحدة" },
+    "description": {
+      "en": "Home to prestigious English language schools.",
+      "ar": "موطن لأرقى مدارس اللغة الإنجليزية."
+    },
+    "slug": "uk",
+    "image": "uk.png"
   },
   {
-    "id": "australia",
-    "regionId": "oceania",
-    "name": { "en": "Australia", "ar": "أستراليا" }
+    "id": 4,
+    "name": { "en": "Australia", "ar": "أستراليا" },
+    "description": {
+      "en": "Country with leading schools in major cities.",
+      "ar": "دولة تضم مدارس رائدة في مدن رئيسية."
+    },
+    "slug": "australia",
+    "image": "australia.png"
+  },
+  {
+    "id": 5,
+    "name": { "en": "Ireland", "ar": "أيرلندا" },
+    "description": {
+      "en": "Country with accredited language schools.",
+      "ar": "دولة تضم مدارس لغات معتمدة."
+    },
+    "slug": "ireland",
+    "image": "ireland.png"
+  },
+  {
+    "id": 6,
+    "name": { "en": "South Africa", "ar": "جنوب أفريقيا" },
+    "description": {
+      "en": "Country with language schools in Cape Town.",
+      "ar": "دولة تضم مدارس لغات في كيب تاون."
+    },
+    "slug": "south-africa",
+    "image": "south-africa.png"
   }
 ]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": { "en": "Language", "ar": "اللغة" },
+    "description": {
+      "en": "English language courses for general communication, academic fluency, and everyday confidence.",
+      "ar": "دورات اللغة الإنجليزية للتواصل العام والطلاقة الأكاديمية والثقة اليومية."
+    }
+  },
+  {
+    "id": 2,
+    "name": { "en": "IELTS Prep", "ar": "تحضير الآيلتس" },
+    "description": {
+      "en": "Preparation courses for IELTS Academic and General Training exams.",
+      "ar": "دورات التحضير لامتحانات الآيلتس الأكاديمي والتدريب العام."
+    }
+  },
+  {
+    "id": 3,
+    "name": { "en": "Diploma", "ar": "دبلوم" },
+    "description": {
+      "en": "Specialized diploma programs with academic and professional pathways.",
+      "ar": "برامج دبلوم متخصصة مع مسارات أكاديمية ومهنية."
+    }
+  },
+  {
+    "id": 4,
+    "name": { "en": "Certificate", "ar": "شهادة" },
+    "description": {
+      "en": "Short-term certificate courses to build skills for study, work, and career growth.",
+      "ar": "دورات شهادة قصيرة المدى لبناء المهارات للدراسة والعمل والنمو المهني."
+    }
+  },
+  {
+    "id": 5,
+    "name": { "en": "Bachelor Program", "ar": "برنامج البكالوريوس" },
+    "description": {
+      "en": "Undergraduate pathways and bachelor degree preparation in English-speaking institutions.",
+      "ar": "مسارات البكالوريوس والتحضير للدرجة الجامعية في مؤسسات ناطقة باللغة الإنجليزية."
+    }
+  }
+]

@@ -3,8 +3,10 @@ import { Inter, Tajawal, Poppins } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import "../globals.css";
+import { CountryLinks } from "@/components/country-links";
 
 type Props = {
   children: React.ReactNode;
@@ -54,9 +56,15 @@ export default async function RootLayout({ children, params }: Props) {
       lang={locale}
       dir={dir}
       className={`${inter.variable} ${popppins.variable} ${tajawal.variable} h-full bg-background antialiased`}
+      data-scroll-behavior="smooth"
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <Header />
+          {children}
+          <CountryLinks />
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

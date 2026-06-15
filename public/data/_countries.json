@@ -1,0 +1,75 @@
+[
+  {
+    "id": 1,
+    "name": {
+      "en": "United States of America",
+      "ar": "الولايات المتحدة الأمريكية"
+    },
+    "description": {
+      "en": "Study English in the USA and experience world-class education and culture.",
+      "ar": "ادرس اللغة الإنجليزية في الولايات المتحدة وجرب تعليمًا وثقافة من طراز عالمي."
+    },
+    "slug": "united-states",
+    "image": "usa.png"
+  },
+  {
+    "id": 2,
+    "name": { "en": "Canada", "ar": "كندا" },
+    "description": {
+      "en": "Discover a welcoming environment and top-tier language programs in Canada.",
+      "ar": "اكتشف بيئة ترحيبية وبرامج لغة من أعلى المستويات في كندا."
+    },
+    "slug": "canada",
+    "image": "canada.png"
+  },
+  {
+    "id": 3,
+    "name": { "en": "United Kingdom", "ar": "المملكة المتحدة" },
+    "description": {
+      "en": "Learn English in its birthplace and explore rich academic history.",
+      "ar": "تعلم اللغة الإنجليزية في مسقط رأسها واستكشف التاريخ الأكاديمي الغني."
+    },
+    "slug": "united-kingdom",
+    "image": "uk.png"
+  },
+  {
+    "id": 4,
+    "name": { "en": "Australia", "ar": "أستراليا" },
+    "description": {
+      "en": "Enjoy stunning landscapes while studying at top Australian language centers.",
+      "ar": "استمتع بالمناظر الطبيعية الخلابة أثناء الدراسة في أفضل مراكز اللغة الأسترالية."
+    },
+    "slug": "australia",
+    "image": "australia.png"
+  },
+  {
+    "id": 5,
+    "name": { "en": "Ireland", "ar": "أيرلندا" },
+    "description": {
+      "en": "Experience warm hospitality and vibrant culture in historic Irish cities.",
+      "ar": "اختبر الضيافة الدافئة والثقافة النابضة بالحياة في المدن الأيرلندية التاريخية."
+    },
+    "slug": "ireland",
+    "image": "ireland.jpg"
+  },
+  {
+    "id": 6,
+    "name": { "en": "South Africa", "ar": "جنوب أفريقيا" },
+    "description": {
+      "en": "An unforgettable adventure combines with high-quality English education.",
+      "ar": "مغامرة لا تُنسى تجتمع مع تعليم لغة إنجليزية عالي الجودة."
+    },
+    "slug": "south-africa",
+    "image": "south-africa.jpg"
+  },
+  {
+    "id": 7,
+    "name": { "en": "Malta", "ar": "مالطا" },
+    "description": {
+      "en": "Learn English on a beautiful, sun-drenched Mediterranean island.",
+      "ar": "تعلم اللغة الإنجليزية في جزيرة متوسطية جميلة ومشمسة."
+    },
+    "slug": "malta",
+    "image": "malta.jpg"
+  }
+]

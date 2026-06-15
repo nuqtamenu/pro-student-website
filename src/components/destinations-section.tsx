@@ -1,8 +1,8 @@
 import { getTranslations, getLocale } from "next-intl/server";
-import Image from "next/image";
-import { cities, tx, type Locale } from "@/lib/data";
+import { countries, tx, type Locale } from "@/lib/data";
 import { SectionHeading } from "./section-heading";
 import { Carousel } from "./carousel";
+import DestinationCard from "./destination-card";
 
 export async function DestinationsSection() {
   const t = await getTranslations("destinations");
@@ -17,28 +17,16 @@ export async function DestinationsSection() {
           // slideGapClass="gap-10"
           slideClassName="basis-[78%] sm:basis-1/2 lg:basis-1/4"
         >
-          {cities.map((city) => (
-            <article
-              key={city.id}
-              className="group relative h-105 overflow-hidden rounded-2xl"
-            >
-              <Image
-                src={city.image || "/placeholder.svg"}
-                alt={tx(city.name, locale)}
-                fill
-                sizes="(max-width: 768px) 80vw, 25vw"
-                className="object-cover transition duration-500 group-hover:scale-105"
-              />
-              <div className="destination-overlay absolute inset-0 " />
-              <span
-                className={`absolute inset-s-4 top-6 w-25 ${locale === "ar" ? "right-0" : "left-0"} bg-dark-orange/90 px-3 py-1 text-sm font-bold text-white shadow`}
-              >
-                {city.schoolsCount} {t("schools")}
-              </span>
-              <h3 className="absolute inset-x-4 bottom-5 text-xl font-medium uppercase text-white drop-shadow-lg">
-                {tx(city.name, locale)}
-              </h3>
-            </article>
+          {countries.map((country) => (
+            <DestinationCard
+              key={country.id}
+              image={`/images/destinations/countries/${country.image}`}
+              alt={tx(country.name, locale)}
+              name={tx(country.name, locale)}
+              labelCount={13}
+              lableText={t("schools")}
+              locale={locale}
+            />
           ))}
         </Carousel>
       </div>

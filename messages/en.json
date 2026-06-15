@@ -7,7 +7,9 @@
     "tagline": "Competitive prices. Genuine service. Real results."
   },
   "ctas": {
-    "seeReviews": "See Reviews"
+    "seeReviews": "See Reviews",
+    "explore": "Explore",
+    "readMore": "Read More"
   },
   "nav": {
     "destinations": "Destinations",
@@ -15,7 +17,9 @@
     "courses": "Courses",
     "about": "About",
     "contact": "Contact",
-    "home": "Home"
+    "home": "Home",
+    "blogs": "Blogs",
+    "requestVisa": "Request Visa"
   },
   "hero": {
     "title": "Start your journey today and learn at the world's best institutes.",
@@ -38,11 +42,22 @@
   "destinations": {
     "label": "DESTINATION",
     "title": "Explore Destinations",
-    "schools": "Schools"
+    "schools": "Schools",
+    "cities": "Cities",
+    "filterCountry": "Filter country",
+    "searchByName": "Search by name",
+    "allCountries": "All countries",
+    "noResults": "No results found",
+    "noResultsDescription": "Try another country or destination name to see matching cities."
   },
   "institutes": {
     "label": "INSTITUTES",
     "title": "Explore Institutes",
+    "filterCity": "Filter city",
+    "searchByName": "Search by name",
+    "allCities": "All cities",
+    "noResults": "No results found",
+    "noResultsDescription": "Try another city or institute name to see matching schools.",
     "explore": "Explore"
   },
   "courses": {
@@ -222,6 +237,101 @@
         "link": "/schoools?country=MT"
       }
     ]
+  },
+  "coursesPage": {
+    "filterLabel": "COURSES FILTER",
+    "filterTitle": "Find the right course for your goals",
+    "filterDescription": "Search by category, name, price or required level without changing the course cards layout.",
+    "category": "Category",
+    "allCategories": "All categories",
+    "search": "Search",
+    "searchPlaceholder": "Search course name",
+    "sortPrice": "Sort by price",
+    "sortDefault": "Default order",
+    "sortHigh": "Price high to low",
+    "sortLow": "Price low to high",
+    "requiredLevel": "Required Level",
+    "allLevels": "All levels",
+    "results": "results found",
+    "noCoursesFound": "No courses found",
+    "noCoursesFoundDescription": "Try a different category, search term, or required level.",
+    "courseCard": {
+      "lessons": "Lessons / Week",
+      "hours": "Hours / Week",
+      "required": "Required Level",
+      "sar": "SAR",
+      "applyNow": "Apply Now",
+      "learnMore": "Learn More"
+    }
+  },
+  "blogsPage": {
+    "label": "BLOGS FILTER",
+    "title": "Find the blog article you need",
+    "description": "Search by title or description and sort by date while keeping the same blog cards layout.",
+    "search": "Search",
+    "searchPlaceholder": "Search blog title or description",
+    "sortDate": "Sort by date",
+    "sortDefault": "Default order",
+    "sortNewest": "Newest first",
+    "sortOldest": "Oldest first",
+    "results": "results found",
+    "noResults": "No results found",
+    "noResultsDescription": "Try a different search term or sort option."
+  },
+  "contactPage": {
+    "title": "Contact Us",
+    "description": "You can subscribe to our newsletter and stay updated with our latest offers. We are also happy to hear from you—our 'Pro Student' team welcomes your feedback and inquiries at the following addresses:",
+    "email": "Email",
+    "phone": "Phone Number",
+    "address": "Address",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "message": "Message",
+    "messagePlaceholder": "Your message",
+    "send": "Send",
+    "sent": "Sent",
+    "certificateTitle": "We are licensed as an authorized agent by ICEF."
+  },
+  "requestVisaPage": {
+    "title": "Request new visa",
+    "description": "Please enter the data to create a visa",
+    "name": "Name",
+    "namePlaceholder": "Your full name",
+    "email": "Email",
+    "emailPlaceholder": "you@email.com",
+    "nationality": "Nationality",
+    "nationalityPlaceholder": "Your nationality",
+    "phone": "Phone Number",
+    "phonePlaceholder": "+966 5X XXX XXXX",
+    "country": "Country",
+    "countryPlaceholder": "Select a country",
+    "visaType": "Visa Type",
+    "visaTypePlaceholder": "Select visa type",
+    "countryOptionSaudiArabia": "Saudi Arabia",
+    "countryOptionUnitedKingdom": "United Kingdom",
+    "countryOptionCanada": "Canada",
+    "countryOptionAustralia": "Australia",
+    "visaTypeOptionStudent": "Student Visa",
+    "visaTypeOptionWork": "Work Visa",
+    "visaTypeOptionTourist": "Tourist Visa",
+    "visaTypeOptionOther": "Other Visa",
+    "note": "Note",
+    "notePlaceholder": "Any additional notes",
+    "nameRequired": "Name is required.",
+    "emailRequired": "Email is required.",
+    "emailInvalid": "Enter a valid email.",
+    "nationalityRequired": "Nationality is required.",
+    "phoneRequired": "Phone number is required.",
+    "phoneInvalid": "Enter a valid phone number.",
+    "countryRequired": "Country is required.",
+    "visaTypeRequired": "Visa type is required.",
+    "noteRequired": "Note is required.",
+    "submit": "Submit request",
+    "sent": "Request sent",
+    "priceIncludesLabel": "Price includes:",
+    "priceIncludes": "Appointment fees, service, medical insurance, travel documents, and tax.",
+    "priceExcludesLabel": "Price does not include:",
+    "priceExcludes": "Unified visa center fees."
   },
   "notFound": {
     "title": "Page not found",

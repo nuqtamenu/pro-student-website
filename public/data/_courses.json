@@ -1,0 +1,170 @@
+[
+  {
+    "id": "lang-8-week-intensive",
+    "name": {
+      "en": "8-week Intensive English",
+      "ar": "الإنجليزية المكثفة لمدة 8 أسابيع"
+    },
+    "description": {
+      "en": "An immersive English course focused on all four skills: speaking, listening, reading, and writing.",
+      "ar": "دورة إنجليزية غامرة تركز على المهارات الأربعة: التحدث والاستماع والقراءة والكتابة."
+    },
+    "image": "",
+    "discount": 15,
+    "instituteIds": [1, 2, 5, 8, 11, 12],
+    "week": 8,
+    "lessons": 24,
+    "requiredLevel": { "en": "Beginner", "ar": "مبتدئ" },
+    "price": 2200,
+    "category": 1
+  },
+  {
+    "id": "ielts-complete-prep",
+    "name": {
+      "en": "IELTS Complete Preparation",
+      "ar": "التحضير الكامل للآيلتس"
+    },
+    "description": {
+      "en": "A comprehensive IELTS course covering academic modules, test techniques, and practice exams.",
+      "ar": "دورة تحضيرية شاملة للآيلتس تغطي الوحدات الأكاديمية وتقنيات الاختبار والامتحانات التجريبية."
+    },
+    "image": "",
+    "discount": 10,
+    "instituteIds": [1, 4, 6, 7, 9, 10],
+    "week": 12,
+    "lessons": 30,
+    "requiredLevel": { "en": "Intermediate", "ar": "متوسط" },
+    "price": 2600,
+    "category": 2
+  },
+  {
+    "id": "academic-english-diploma",
+    "name": {
+      "en": "Academic English Diploma",
+      "ar": "دبلوم اللغة الإنجليزية الأكاديمية"
+    },
+    "description": {
+      "en": "A diploma course that strengthens academic writing, research skills, and advanced communication.",
+      "ar": "دورة دبلوم تعزز الكتابة الأكاديمية ومهارات البحث والتواصل المتقدم."
+    },
+    "image": "",
+    "discount": 12,
+    "instituteIds": [1, 3, 5, 9],
+    "week": 16,
+    "lessons": 40,
+    "requiredLevel": { "en": "Upper Intermediate", "ar": "متوسط متقدم" },
+    "price": 3200,
+    "category": 3
+  },
+  {
+    "id": "business-english-certificate",
+    "name": {
+      "en": "Business English Certificate",
+      "ar": "شهادة الإنجليزية للأعمال"
+    },
+    "description": {
+      "en": "A short certificate course for professionals who need English for business and meetings.",
+      "ar": "دورة شهادة قصيرة للمهنيين الذين يحتاجون الإنجليزية للأعمال والاجتماعات."
+    },
+    "image": "",
+    "discount": 8,
+    "instituteIds": [2, 5, 6, 12],
+    "week": 6,
+    "lessons": 18,
+    "requiredLevel": { "en": "Intermediate", "ar": "متوسط" },
+    "price": 1800,
+    "category": 4
+  },
+  {
+    "id": "foundation-bachelor-pathway",
+    "name": {
+      "en": "Bachelor Foundation Pathway",
+      "ar": "مسار أساسيات البكالوريوس"
+    },
+    "description": {
+      "en": "A foundation program to prepare students for undergraduate study in English-speaking universities.",
+      "ar": "برنامج تأسيسي لتحضير الطلاب للدراسة الجامعية في جامعات ناطقة باللغة الإنجليزية."
+    },
+    "image": "",
+    "discount": 5,
+    "instituteIds": [4, 7, 9, 10],
+    "week": 20,
+    "lessons": 50,
+    "requiredLevel": { "en": "Upper Intermediate", "ar": "متوسط متقدم" },
+    "price": 4200,
+    "category": 5
+  },
+  {
+    "id": "english-exam-boost",
+    "name": {
+      "en": "English Exam Boost",
+      "ar": "تعزيز امتحان اللغة الإنجليزية"
+    },
+    "description": {
+      "en": "A compact exam-focused course for students preparing for university entrance tests and English proficiency certificates.",
+      "ar": "دورة مركزة مخصصة للطلاب الذين يستعدون لاختبارات قبول الجامعة وشهادات كفاءة اللغة الإنجليزية."
+    },
+    "image": "",
+    "discount": 10,
+    "instituteIds": [3, 8, 11],
+    "week": 10,
+    "lessons": 28,
+    "requiredLevel": { "en": "Intermediate", "ar": "متوسط" },
+    "price": 2400,
+    "category": 4
+  },
+  {
+    "id": "online-english-live",
+    "name": {
+      "en": "Online English Live",
+      "ar": "الإنجليزية الحية عبر الإنترنت"
+    },
+    "description": {
+      "en": "Live online English classes with flexible schedules and personalized instructor feedback.",
+      "ar": "دروس إنجليزية مباشرة عبر الإنترنت مع جداول مرنة وتعليقات شخصية من المدرس."
+    },
+    "image": "",
+    "discount": 20,
+    "instituteIds": [4],
+    "week": 4,
+    "lessons": 12,
+    "requiredLevel": { "en": "Beginner", "ar": "مبتدئ" },
+    "price": 900,
+    "category": 1
+  },
+  {
+    "id": "advanced-academic-writing",
+    "name": {
+      "en": "Advanced Academic Writing",
+      "ar": "الكتابة الأكاديمية المتقدمة"
+    },
+    "description": {
+      "en": "A focused course on essay writing, research reports, and academic presentation skills.",
+      "ar": "دورة مركزة على كتابة المقالات وتقارير البحث ومهارات العرض الأكاديمي."
+    },
+    "image": "",
+    "discount": 12,
+    "instituteIds": [1, 3, 5, 9],
+    "week": 12,
+    "lessons": 34,
+    "requiredLevel": { "en": "Upper Intermediate", "ar": "متوسط متقدم" },
+    "price": 2900,
+    "category": 3
+  },
+  {
+    "id": "pre-degree-english",
+    "name": { "en": "Pre-degree English", "ar": "الإنجليزية قبل الدرجة" },
+    "description": {
+      "en": "A bridging course to help students meet English requirements for bachelor program admission.",
+      "ar": "دورة جسرية لمساعدة الطلاب على تلبية متطلبات اللغة الإنجليزية للقبول في برامج البكالوريوس."
+    },
+    "image": "",
+    "discount": 7,
+    "instituteIds": [7, 9, 10, 11],
+    "week": 14,
+    "lessons": 36,
+    "requiredLevel": { "en": "Intermediate", "ar": "متوسط" },
+    "price": 3100,
+    "category": 5
+  }
+]

@@ -7,7 +7,9 @@
     "tagline": "أسعار تنافسية. خدمة حقيقية. نتائج فعلية."
   },
   "ctas": {
-    "seeReviews": "عرض المراجعات"
+    "seeReviews": "عرض المراجعات",
+    "explore": "استكشف",
+    "readMore": "اقرأ المزيد"
   },
   "nav": {
     "destinations": "الوجهات",
@@ -15,7 +17,9 @@
     "courses": "الدورات",
     "about": "من نحن",
     "contact": "تواصل معنا",
-    "home": "الرئيسية"
+    "home": "الرئيسية",
+    "blogs": "مدونات",
+    "requestVisa": "طلب تأشيرة"
   },
   "hero": {
     "title": "ابدأ رحلتك اليوم وتعلّم في أفضل المعاهد حول العالم.",
@@ -38,11 +42,22 @@
   "destinations": {
     "label": "الوجهات",
     "title": "استكشف الوجهات",
-    "schools": "مدارس"
+    "schools": "مدارس",
+    "cities": "مدن",
+    "filterCountry": "تصفية الدولة",
+    "searchByName": "ابحث بالاسم",
+    "allCountries": "كل الدول",
+    "noResults": "لم يتم العثور على نتائج",
+    "noResultsDescription": "حاول دولة أخرى أو اسم وجهة لعرض المدن المتطابقة."
   },
   "institutes": {
     "label": "المعاهد",
     "title": "استكشف المعاهد",
+    "filterCity": "تصفية المدينة",
+    "searchByName": "ابحث بالاسم",
+    "allCities": "كل المدن",
+    "noResults": "لم يتم العثور على نتائج",
+    "noResultsDescription": "حاول اسم مدينة آخر أو اسم معهد لعرض المدارس المتطابقة.",
     "explore": "استكشف"
   },
   "courses": {
@@ -222,6 +237,101 @@
         "link": "/schoools?country=MT"
       }
     ]
+  },
+  "coursesPage": {
+    "filterLabel": "تصفية الدورات",
+    "filterTitle": "اعثر على الدورة المناسبة لأهدافك",
+    "filterDescription": "ابحث حسب الفئة، الاسم، السعر، أو المستوى المطلوب مع الحفاظ على شكل بطاقات الدورة.",
+    "category": "الفئة",
+    "allCategories": "كل الفئات",
+    "search": "البحث",
+    "searchPlaceholder": "ابحث باسم الدورة",
+    "sortPrice": "ترتيب السعر",
+    "sortDefault": "الترتيب الافتراضي",
+    "sortHigh": "السعر من الأعلى إلى الأقل",
+    "sortLow": "السعر من الأقل إلى الأعلى",
+    "requiredLevel": "المستوى المطلوب",
+    "allLevels": "كل المستويات",
+    "results": "نتائج",
+    "noCoursesFound": "لم يتم العثور على دورات",
+    "noCoursesFoundDescription": "جرّب فئة مختلفة أو مصطلح بحث أو مستوى مطلوب آخر.",
+    "courseCard": {
+      "lessons": "دروس / أسبوع",
+      "hours": "ساعات / أسبوع",
+      "required": "المستوى المطلوب",
+      "sar": "ريال سعودي",
+      "applyNow": "قدّم الآن",
+      "learnMore": "اعرف المزيد"
+    }
+  },
+  "blogsPage": {
+    "label": "تصفية المقالات",
+    "title": "اعثر على المقال الذي تحتاجه",
+    "description": "ابحث حسب العنوان أو الوصف ورتب النتائج حسب التاريخ مع الحفاظ على شكل بطاقات المدونة.",
+    "search": "البحث",
+    "searchPlaceholder": "ابحث في عنوان أو وصف المقال",
+    "sortDate": "ترتيب حسب التاريخ",
+    "sortDefault": "الترتيب الافتراضي",
+    "sortNewest": "الأحدث أولاً",
+    "sortOldest": "الأقدم أولاً",
+    "results": "نتائج",
+    "noResults": "لم يتم العثور على نتائج",
+    "noResultsDescription": "جرّب مصطلح بحث أو ترتيب مختلف."
+  },
+  "contactPage": {
+    "title": "تواصل معنا",
+    "description": "يمكنكم الحصول على النشرة الدورية ومعرفة آخر عروضنا، كما يُسعدنا تواصلكم مع فريق عمل 'الطالب المحترف' واستقبال ملاحظاتكم واستفساراتكم على العناوين التالية:",
+    "email": "البريد الإلكتروني",
+    "phone": "رقم الجوال",
+    "address": "العنوان",
+    "name": "الاسم",
+    "namePlaceholder": "اسمك",
+    "message": "الرسالة",
+    "messagePlaceholder": "رسالتك",
+    "send": "إرسال",
+    "sent": "تم الإرسال",
+    "certificateTitle": "حاصلون على رخصة وكيل معتمد لدى مؤسسة ICEF"
+  },
+  "requestVisaPage": {
+    "title": "طلب تأشيرة جديدة",
+    "description": "الرجاء إدخال البيانات لإنشاء التأشيرة",
+    "name": "الاسم",
+    "namePlaceholder": "الاسم الكامل",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "you@email.com",
+    "nationality": "الجنسية",
+    "nationalityPlaceholder": "جنسيتك",
+    "phone": "رقم الجوال",
+    "phonePlaceholder": "+966 5X XXX XXXX",
+    "country": "الدولة",
+    "countryPlaceholder": "اختر الدولة",
+    "visaType": "نوع التأشيرة",
+    "visaTypePlaceholder": "اختر نوع التأشيرة",
+    "countryOptionSaudiArabia": "المملكة العربية السعودية",
+    "countryOptionUnitedKingdom": "المملكة المتحدة",
+    "countryOptionCanada": "كندا",
+    "countryOptionAustralia": "أستراليا",
+    "visaTypeOptionStudent": "تأشيرة طالب",
+    "visaTypeOptionWork": "تأشيرة عمل",
+    "visaTypeOptionTourist": "تأشيرة سياحية",
+    "visaTypeOptionOther": "تأشيرة أخرى",
+    "note": "ملاحظة",
+    "notePlaceholder": "أي ملاحظات إضافية",
+    "nameRequired": "الاسم مطلوب.",
+    "emailRequired": "البريد الإلكتروني مطلوب.",
+    "emailInvalid": "أدخل بريدًا إلكترونيًا صحيحًا.",
+    "nationalityRequired": "الجنسية مطلوبة.",
+    "phoneRequired": "رقم الجوال مطلوب.",
+    "phoneInvalid": "أدخل رقم جوال صحيح.",
+    "countryRequired": "الدولة مطلوبة.",
+    "visaTypeRequired": "نوع التأشيرة مطلوب.",
+    "noteRequired": "الملاحظة مطلوبة.",
+    "submit": "إرسال الطلب",
+    "sent": "تم إرسال الطلب",
+    "priceIncludesLabel": "السعر يشمل:",
+    "priceIncludes": "رسوم الموعد والخدمة والتأمين الطبي ومستندات السفر والضريبة.",
+    "priceExcludesLabel": "السعر لا يشمل:",
+    "priceExcludes": "رسوم المركز الموحد للتأشيرات."
   },
   "notFound": {
     "title": "الصفحة غير موجودة",

@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "title": {
+      "en": "Your Complete UK Student Visa Checklist for 2026",
+      "ar": "قائمة التحقق الكاملة لتأشيرة الطالب في المملكة المتحدة لعام 2026"
+    },
+    "description": {
+      "en": "Everything you need to prepare before submitting your UK student visa application.",
+      "ar": "كل ما تحتاج تحضيره قبل تقديم طلب تأشيرة الطالب البريطاني."
+    },
+    "image": "",
+    "content": {
+      "en": "A step-by-step guide to make sure your UK student visa application is complete and submission-ready.",
+      "ar": "دليل خطوة بخطوة للتأكد من أن طلب تأشيرة الطالب في المملكة المتحدة مكتمل وجاهز للتقديم."
+    },
+    "publishedAt": {
+      "en": "May 12, 2026",
+      "ar": "12 مايو 2026"
+    }
+  },
+  {
+    "id": 2,
+    "title": {
+      "en": "5 Reasons Student Visas Get Rejected — And How to Fix Each One",
+      "ar": "5 أسباب لرفض تأشيرات الطلاب — وكيفية إصلاح كل منها"
+    },
+    "description": {
+      "en": "Learn the most common rejection reasons and how to avoid them in your application.",
+      "ar": "تعرف على أسباب الرفض الأكثر شيوعًا وكيفية تجنبها في طلبك."
+    },
+    "image": "",
+    "content": {
+      "en": "Common visa mistakes and practical solutions to increase your chances of acceptance.",
+      "ar": "أخطاء التأشيرة الشائعة والحلول العملية لزيادة فرص قبولك."
+    },
+    "publishedAt": {
+      "en": "June 2, 2026",
+      "ar": "2 يونيو 2026"
+    }
+  },
+  {
+    "id": 3,
+    "title": {
+      "en": "Student Visa vs. Study Permit: What's the Difference and Which Do You Need?",
+      "ar": "تأشيرة الطالب مقابل تصريح الدراسة: ما الفرق وأي منهما تحتاج؟"
+    },
+    "description": {
+      "en": "Understand the distinction between visas and study permits for major study destinations.",
+      "ar": "فهم الفرق بين التأشيرات وتصاريح الدراسة للوجهات الدراسية الرئيسية."
+    },
+    "image": "",
+    "content": {
+      "en": "Learn the key differences between visas and study permits for the UK, Canada, and Australia.",
+      "ar": "تعرف على الفروقات الأساسية بين التأشيرات وتصاريح الدراسة للمملكة المتحدة وكندا وأستراليا."
+    },
+    "publishedAt": {
+      "en": "April 28, 2026",
+      "ar": "28 أبريل 2026"
+    }
+  },
+  {
+    "id": 4,
+    "title": {
+      "en": "10 Fully Funded Scholarships Still Open for Applications in 2026",
+      "ar": "10 منح دراسية ممولة بالكامل لا تزال مفتوحة للتقديم في 2026"
+    },
+    "description": {
+      "en": "A curated list of fully funded scholarships you can still apply for this year.",
+      "ar": "قائمة منتقاة بالمنح الدراسية الممولة بالكامل التي يمكنك التقدم لها هذا العام."
+    },
+    "image": "",
+    "content": {
+      "en": "A curated list of scholarships you can still apply for this year with deadlines and eligibility tips.",
+      "ar": "قائمة منتقاة بالمنح التي يمكنك التقديم لها هذا العام مع المواعيد النهائية ونصائح الأهلية."
+    },
+    "publishedAt": {
+      "en": "March 18, 2026",
+      "ar": "18 مارس 2026"
+    }
+  },
+  {
+    "id": 5,
+    "title": {
+      "en": "How to Write a Scholarship Personal Statement That Actually Gets Read",
+      "ar": "كيفية كتابة بيان شخصي للمنحة يُقرأ بالفعل"
+    },
+    "description": {
+      "en": "Clear guidance for writing a personal statement that stands out to scholarship committees.",
+      "ar": "إرشادات واضحة لكتابة بيان شخصي يبرز أمام لجان المنح الدراسية."
+    },
+    "image": "",
+    "content": {
+      "en": "Tips on creating a compelling personal statement that stands out from the rest.",
+      "ar": "نصائح لكتابة بيان شخصي جذاب يبرز بين الباقين."
+    },
+    "publishedAt": {
+      "en": "February 7, 2026",
+      "ar": "7 فبراير 2026"
+    }
+  },
+  {
+    "id": 6,
+    "title": {
+      "en": "First Week Abroad: What Nobody Actually Warns You About",
+      "ar": "الأسبوع الأول في الخارج: ما لا يحذرك منه أحد"
+    },
+    "description": {
+      "en": "Real student advice for a smoother first week away from home.",
+      "ar": "نصائح طالب حقيقية لجعل الأسبوع الأول بعيدًا عن الوطن أكثر سلاسة."
+    },
+    "image": "",
+    "content": {
+      "en": "Practical advice for navigating the first days of living and studying overseas.",
+      "ar": "نصائح عملية للتعامل مع الأيام الأولى للعيش والدراسة في الخارج."
+    },
+    "publishedAt": {
+      "en": "January 21, 2026",
+      "ar": "21 يناير 2026"
+    }
+  },
+  {
+    "id": 7,
+    "title": {
+      "en": "How to Manage Your Money as an International Student (Without Panic)",
+      "ar": "كيف تدير أموالك كطالب دولي (بدون هلع)"
+    },
+    "description": {
+      "en": "Budget tips and practical habits for new international students.",
+      "ar": "نصائح الميزانية والعادات العملية للطلاب الدوليين الجدد."
+    },
+    "image": "",
+    "content": {
+      "en": "Budgeting strategies, cost-saving habits and practical tips for new international students.",
+      "ar": "استراتيجيات الميزانية وعادات التوفير ونصائح عملية للطلاب الدوليين الجدد."
+    },
+    "publishedAt": {
+      "en": "December 5, 2025",
+      "ar": "5 ديسمبر 2025"
+    }
+  },
+  {
+    "id": 8,
+    "title": {
+      "en": "From Riyadh to London: How Sara Got Into Her Dream University on the Second Try",
+      "ar": "من الرياض إلى لندن: كيف التحقت سارة بجامعة أحلامها من المحاولة الثانية"
+    },
+    "description": {
+      "en": "An inspiring student story about persistence and application strategy.",
+      "ar": "قصة طلابية ملهمة عن الإصرار واستراتيجية التقديم."
+    },
+    "image": "",
+    "content": {
+      "en": "A student success story with the lessons she learned from failed applications.",
+      "ar": "قصة نجاح طلابية والدروس التي تعلمتها من طلباتها المرفوضة."
+    },
+    "publishedAt": {
+      "en": "November 10, 2025",
+      "ar": "10 نوفمبر 2025"
+    }
+  },
+  {
+    "id": 9,
+    "title": {
+      "en": "I Failed My IELTS Twice. Here's the One Thing That Finally Made the Difference",
+      "ar": "فشلت في الآيلتس مرتين. هذا هو الشيء الوحيد الذي صنع الفرق أخيرًا"
+    },
+    "description": {
+      "en": "A practical lesson from one student’s journey through repeated IELTS attempts.",
+      "ar": "درس عملي من رحلة طالبة عبر محاولات الآيلتس المتكررة."
+    },
+    "image": "",
+    "content": {
+      "en": "Insights from a student who turned exam failure into a successful study plan.",
+      "ar": "رؤى من طالبة حوّلت فشل الامتحان إلى خطة دراسة ناجحة."
+    },
+    "publishedAt": {
+      "en": "October 1, 2025",
+      "ar": "1 أكتوبر 2025"
+    }
+  }
+]
