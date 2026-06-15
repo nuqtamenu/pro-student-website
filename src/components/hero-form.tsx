@@ -45,7 +45,7 @@ export function HeroForm() {
   const availableSchools = destination
     ? schoolsByCity(Number(destination))
     : [];
-  const availableCourses = school ? coursesBySchool(school) : [];
+  const availableCourses = school ? coursesBySchool(Number(school)) : [];
 
   function onSubmit(data: FormValues) {
     console.log("[v0] Hero quote form submitted:", data);
