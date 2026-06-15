@@ -293,8 +293,8 @@
     "certificateTitle": "We are licensed as an authorized agent by ICEF."
   },
   "requestVisaPage": {
-    "title": "طلب تأشيرة جديدة",
-    "description": "الرجاء إدخال البيانات لإنشاء التأشيرة",
+    "title": "Request new visa",
+    "description": "Please enter the data to create a visa",
     "name": "Name",
     "namePlaceholder": "Your full name",
     "email": "Email",
