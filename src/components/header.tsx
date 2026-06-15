@@ -42,6 +42,12 @@ export function Header() {
       label: "contact",
       nowrap: true, // optional flag for text-nowrap
     },
+    {
+      href: (locale: "en" | "ar") => `/${locale}/request-visa`,
+      icon: "solar:passport-linear",
+      label: "requestVisa",
+      nowrap: true, // optional flag for text-nowrap
+    },
   ];
 
   return (
