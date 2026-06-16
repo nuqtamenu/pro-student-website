@@ -23,7 +23,8 @@
   },
   "hero": {
     "title": "Start your journey today and learn at the world's best institutes.",
-    "description": "We are proud to have Saudi consultants who are graduates of American universities, to help you confidently choose your educational path. Start your journey today and explore the best study abroad opportunities.",
+    "description": "We are proud to have Saudi consultants who are graduates of American universities, to help you confidently choose your educational path.",
+    "description2": "Start your journey today and explore the best study abroad opportunities.",
     "selectDestination": "Select Destination",
     "selectSchool": "Select School",
     "selectCourse": "Select Course / Degree",

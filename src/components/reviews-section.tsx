@@ -16,8 +16,7 @@ export function ReviewsSection() {
         <h2 className="mb-8 text-center text-2xl font-extrabold text-gray-dark sm:text-3xl">
           {t("title")}
         </h2>
-
-        <div className="px-2 sm:px-12">
+        <div className="">
           <Carousel
             showArrows
             align="center"
@@ -61,7 +60,6 @@ export function ReviewsSection() {
             ))}
           </Carousel>
         </div>
-
         <div className="mt-8 flex justify-center">
           <button
             type="button"

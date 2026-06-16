@@ -8,11 +8,17 @@ import { CtaSection } from "@/components/cta-section";
 import { FaqSection } from "@/components/faq-section";
 import { ContactSection } from "@/components/contact-section";
 import { ReviewsSection } from "@/components/reviews-section";
+import HeroGoogleRating from "@/components/hero-google-rating";
 
 export default function Home() {
   return (
     <main className="flex-1">
       <Hero />
+
+      <div className="w-full lg:hidden">
+        <HeroGoogleRating />
+      </div>
+
       <div className="page-gradient">
         <DestinationsSection />
         <InstitutesSection />

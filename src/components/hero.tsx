@@ -19,19 +19,20 @@ export async function Hero() {
           className="h-auto w-full max-w-150"
         />
       </div>
-      {/* <div className="absolute inset-0 hero-gradient"></div> */}
       <div className="relative z-2 mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:pb-24 lg:pt-14">
-        <div className="grid items-start gap-8 lg:grid-cols-[1.4fr_1fr]">
+        <div className="grid items-start gap-0 lg:grid-cols-[3fr_1fr]">
           <div>
-            <h1 className="max-w-3xl text-balance text-3xl font-extrabold leading-tight text-gray-dark">
+            <h1 className="text-balance text-3xl font-extrabold leading-tight text-gray-dark">
               {t("title")}
             </h1>
-            <p className="mt-4 max-w-2xl text-pretty text-sm leading-relaxed text-gray-dark/80 sm:text-base">
+            <p className="mt-4 text-pretty text-sm leading-relaxed text-gray-dark/80 sm:text-base">
               {t("description")}
+              <br />
+              {t("description2")}
             </p>
           </div>
 
-          <div className="flex justify-center lg:justify-end">
+          <div className="hidden lg:flex justify-center lg:justify-end">
             <Image
               src="/logo.png"
               alt="Pro Student"
@@ -44,7 +45,7 @@ export async function Hero() {
 
         <div className="mt-8 grid items-center lg:grid-cols-[1.4fr_1fr] gap-10">
           <HeroForm />
-          <div className="flex justify-center lg:justify-end lg:pb-2">
+          <div className="hidden lg:flex justify-center lg:justify-end lg:pb-2">
             <GoogleRating
               title={t("reviewsTitle")}
               count={t("reviewsCount")}

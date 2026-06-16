@@ -21,7 +21,7 @@ export async function CtaSection() {
           <h2 className="text-balance text-2xl font-extrabold sm:text-3xl">
             {t("title")}
           </h2>
-          <p className="mt-3 max-w-md text-pretty text-sm leading-relaxed text-white/90">
+          <p className="mt-3 max-w-md text-pretty text-sm leading-relaxed text-black">
             {t("description")}
           </p>
           <button

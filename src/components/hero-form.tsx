@@ -53,8 +53,7 @@ export function HeroForm() {
 
   const selectClass =
     "w-full appearance-none rounded-lg border border-white/40 bg-white/70 px-3 py-2.5 text-sm text-gray-dark outline-none transition focus:border-dark-orange focus:bg-white";
-  const labelClass =
-    "mb-1.5 block text-xs font-semibold text-white drop-shadow";
+  const labelClass = "mb-1.5 block text-xs font-semibold drop-shadow";
 
   return (
     <form
@@ -214,9 +213,7 @@ function YesNo({
 }) {
   return (
     <fieldset className="space-y-2">
-      <legend className="text-xs font-semibold text-white drop-shadow">
-        {label}
-      </legend>
+      <legend className="text-xs font-semibold drop-shadow">{label}</legend>
       <div className="flex gap-2">
         {[
           { v: "yes", l: yes },

@@ -115,25 +115,23 @@ export function Header() {
         </div>
       </div>
 
-      {openMenu && (
-        <div
-          className="flex items-center justify-center"
-          dir={locale === "en" ? "ltr" : "rtl"}
-        >
-          <div className="py-4 w-full bg-white flex flex-wrap px-4 items-center justify-center gap-2 sm:gap-4 mx-auto">
-            {navLinks.map(({ href, icon, label }) => (
-              <Link
-                key={label}
-                href={href(locale)}
-                className="flex flex-col gap-1 items-center justify-center font-medium hover:text-dark-orange transition"
-              >
-                <Icon icon={icon} className="size-6" />
-                <span className="text-nowrap text-sm">{navT(label)}</span>
-              </Link>
-            ))}
-          </div>
+      <div
+        className={`${openMenu ? "h-20" : "h-0"} overflow-hidden transition-all duration-300 flex items-center justify-center`}
+        dir={locale === "en" ? "ltr" : "rtl"}
+      >
+        <div className="py-4 w-full bg-white flex flex-wrap px-4 items-center justify-center gap-2 sm:gap-4 mx-auto">
+          {navLinks.map(({ href, icon, label }) => (
+            <Link
+              key={label}
+              href={href(locale)}
+              className="flex flex-col gap-1 items-center justify-center font-medium hover:text-dark-orange transition"
+            >
+              <Icon icon={icon} className="size-6" />
+              <span className="text-nowrap text-sm">{navT(label)}</span>
+            </Link>
+          ))}
         </div>
-      )}
+      </div>
     </header>
   );
 }

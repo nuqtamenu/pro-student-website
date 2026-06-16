@@ -32,7 +32,7 @@ export function FaqSection() {
           </button>
         </div>
 
-        <div className="flex flex-col gap-3 h-100 overflow-y-auto">
+        <div className="flex flex-col gap-3 h-100 overflow-y-auto custom-scrollbar">
           {items.map((item, i) => {
             const isOpen = open === i;
             return (
