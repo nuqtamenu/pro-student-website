@@ -116,6 +116,7 @@ export default function BlogsFilter({ blogs }: Props) {
                 image={blog.image || "blog-placeholder.jpg"}
                 publishedAt={tx(blog.publishedAt, locale)}
                 title={tx(blog.title, locale)}
+                link={`/${locale}/blogs/${blog.slug}`}
                 description={tx(blog.description, locale)}
               />
             ))}

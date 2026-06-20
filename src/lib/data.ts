@@ -79,6 +79,7 @@ export type Course2 = {
 export type Blog = {
   id: number;
   title: Localized;
+  slug: string;
   description: Localized;
   image: string;
   content: Localized; // html content can converted by html-react-parser
