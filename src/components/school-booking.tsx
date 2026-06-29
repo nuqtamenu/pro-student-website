@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
 import { Icon } from "@iconify/react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -238,7 +239,7 @@ export default function SchoolBooking({
               <div className="flex flex-col gap-4 rounded-2xl border border-white/40 bg-white/70 p-5 shadow-sm sm:flex-row sm:items-center">
                 <Image
                   src={`/images/schools/bayswater-english-school.png`}
-                  alt={school.name?.[locale] ?? "School"}
+                  alt={school.name?.[locale] ?? t("school")}
                   width={200}
                   height={200}
                   className="h-28 w-28 rounded-2xl object-cover"
@@ -343,7 +344,7 @@ export default function SchoolBooking({
                           <Image
                             src={`/images/courses/course-placeholder.png`}
                             // src={`/images/courses/${item.image ?? "course-placeholder.png"}`}
-                            alt={item.name?.[locale] ?? "Course"}
+                            alt={item.name?.[locale] ?? t("course")}
                             fill
                             sizes="(max-width: 768px) 100vw, 50vw"
                             className="object-cover"
@@ -352,7 +353,7 @@ export default function SchoolBooking({
                         <div className="flex flex-1 flex-col justify-between p-4">
                           <div>
                             <p className="text-sm text-gray-light">
-                              {category?.categoryName?.[locale] ?? "Course"}
+                              {category?.categoryName?.[locale] ?? t("course")}
                             </p>
                             <h3 className="mt-1 text-lg font-semibold text-gray-dark">
                               {item.name?.[locale] ?? item.name}
@@ -800,6 +801,23 @@ export default function SchoolBooking({
                   <span>{formatPrice(subtotal)}</span>
                 </div>
               </div>
+
+              <Link
+                href={{
+                  pathname: `/${locale}/quotation`,
+                  query: {
+                    ...(typeof window !== "undefined"
+                      ? Object.fromEntries(
+                          new URLSearchParams(window.location.search),
+                        )
+                      : {}),
+                    schoolId: String(school.id),
+                  },
+                }}
+                className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-dark-orange px-5 py-3 text-sm font-semibold text-white transition hover:bg-red"
+              >
+                {t("getQuote")}
+              </Link>
             </aside>
           </div>
         </div>

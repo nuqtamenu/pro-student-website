@@ -195,7 +195,8 @@ export function SearchResults({
           return (
             <CourseCard
               key={course.id}
-              image={course.image ?? "course-placeholder.png"}
+              image={"course-placeholder.png"}
+              // image={course.image ?? "course-placeholder.png"}
               name={tx(course.name, locale)}
               discount={course.discount ?? 0}
               lessons={lessons}
