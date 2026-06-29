@@ -28,47 +28,30 @@ interface CommuteOption {
   transport: Transport;
 }
 
-export type RoomPlan = {
+export type AccommodationPlan = {
   planName: Localized;
   amount: number;
   frequency: AmountFrequency;
   optional: boolean;
 };
 
-export type RoomType = {
-  roomName: Localized;
-  durationWeeks?: number | null;
-  remarks?: Localized;
-  location?: RoomLocation[] | null;
-  commuteOptions?: CommuteOption[] | null;
-  roomPlans: RoomPlan[];
-};
-
-export type AccExtraDuration = {
-  from: Date | string;
-  to: Date | string;
-};
-export type AccExtra = {
-  extraName: Localized;
-  duration?: null | AccExtraDuration;
-  amount: number;
-  frequency: AmountFrequency;
-  location?: Localized | null;
-  note?: null | Localized;
-};
-
-export type AccPackage = {
-  packageName: Localized;
-  minimumAge?: number;
-  roomTypes: RoomType[];
-  extras?: AccExtra[] | null;
-};
-
 // <---------- ACCOMMODATION ------------->
 export type Accommodation = {
   id: number;
+  accommodationName: Localized;
+  accommodationDescription?: Localized;
+  image?: string;
+  accommodationCategoryId: number;
+  note?: Localized;
+  minimumAge?: number;
+  durationWeeks?: number;
+  accommodationDates?: Date | string | null;
   schoolId: number;
-  accPackages: AccPackage[];
+  price: number;
+  priceFrequency: AmountFrequency;
+  location?: RoomLocation[] | null;
+  commuteOptions?: CommuteOption[] | null;
+  accommodationPlans: AccommodationPlan[];
 };
 
 // Transfers

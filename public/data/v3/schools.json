@@ -1,396 +1,289 @@
 [
   {
     "id": 1,
-    "name": { "en": "Bayswater London", "ar": "بايسووتر لندن" },
-    "description": {
-      "en": "167 Queensway, London W2 4SB",
+    "schoolName": { "en": "Bayswater London", "ar": "بايسووتر لندن" },
+    "schoolDescription": {
+      "en": "167 Queensway, London",
       "ar": "١٦٧ كوينزواي، لندن"
     },
     "slug": "bayswater-london",
+    "logo": "bayswater-logo.png",
     "image": "london-school.jpg",
-    "countryId": 1,
-    "cityId": 1,
     "fees": [
       {
-        "name": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
-        "amount": 95,
+        "feeName": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
+        "feeAmount": 100,
+        "feeFrequency": "fixed",
         "optional": false,
-        "frequency": "fixed"
+        "feeCategoryId": 1,
+        "note": { "en": "", "ar": "" }
       },
       {
-        "name": { "en": "Bank Charges", "ar": "الرسوم المصرفية" },
-        "amount": 12,
+        "feeName": { "en": "Material Fee", "ar": "رسوم المواد" },
+        "feeAmount": 50,
+        "feeFrequency": "fixed",
         "optional": false,
-        "frequency": "fixed"
+        "feeCategoryId": 2,
+        "note": { "en": "", "ar": "" }
       },
       {
-        "name": { "en": "Materials Fee", "ar": "رسوم المواد الدراسية" },
-        "amount": 7,
-        "optional": false,
-        "frequency": "weekly"
-      },
-      {
-        "name": { "en": "Insurance", "ar": "التأمين" },
-        "amount": 8,
+        "feeName": { "en": "Insurance", "ar": "التأمين" },
+        "feeAmount": 25,
+        "feeFrequency": "weekly",
         "optional": true,
-        "frequency": "weekly"
+        "feeCategoryId": 4,
+        "note": { "en": "", "ar": "" }
       }
-    ]
+    ],
+    "instituteId": 1,
+    "countryId": 1,
+    "cityId": 1,
+    "note": { "en": "", "ar": "" }
   },
   {
     "id": 2,
-    "name": { "en": "Bayswater Liverpool", "ar": "بايسووتر ليفربول" },
-    "description": {
-      "en": "42-46 Whitechapel, Liverpool L1 6DS",
+    "schoolName": { "en": "Bayswater Liverpool", "ar": "بايسووتر ليفربول" },
+    "schoolDescription": {
+      "en": "42-46 Whitechapel, Liverpool",
       "ar": "٤٢-٤٦ وايتشابل، ليفربول"
     },
     "slug": "bayswater-liverpool",
+    "logo": "bayswater-logo.png",
     "image": "liverpool-school.jpg",
-    "countryId": 1,
-    "cityId": 2,
     "fees": [
       {
-        "name": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
-        "amount": 95,
+        "feeName": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
+        "feeAmount": 100,
+        "feeFrequency": "fixed",
         "optional": false,
-        "frequency": "fixed"
+        "feeCategoryId": 1,
+        "note": { "en": "", "ar": "" }
       },
       {
-        "name": { "en": "Bank Charges", "ar": "الرسوم المصرفية" },
-        "amount": 12,
+        "feeName": { "en": "Material Fee", "ar": "رسوم المواد" },
+        "feeAmount": 50,
+        "feeFrequency": "fixed",
         "optional": false,
-        "frequency": "fixed"
+        "feeCategoryId": 2,
+        "note": { "en": "", "ar": "" }
       },
       {
-        "name": { "en": "Materials Fee", "ar": "رسوم المواد الدراسية" },
-        "amount": 7,
-        "optional": false,
-        "frequency": "weekly"
-      },
-      {
-        "name": { "en": "Insurance", "ar": "التأمين" },
-        "amount": 8,
+        "feeName": { "en": "Insurance", "ar": "التأمين" },
+        "feeAmount": 25,
+        "feeFrequency": "weekly",
         "optional": true,
-        "frequency": "weekly"
+        "feeCategoryId": 4,
+        "note": { "en": "", "ar": "" }
       }
-    ]
+    ],
+    "instituteId": 1,
+    "countryId": 1,
+    "cityId": 2,
+    "note": { "en": "", "ar": "" }
   },
   {
     "id": 3,
-    "name": { "en": "Bayswater Leeds", "ar": "بايسووتر ليدز" },
-    "description": {
-      "en": "Atlus House, Tower House St, Leeds LS2 8PA",
+    "schoolName": { "en": "Bayswater Leeds", "ar": "بايسووتر ليدز" },
+    "schoolDescription": {
+      "en": "Atlas House, Tower House Street, Leeds",
       "ar": "أطلس هاوس، شارع تاور هاوس، ليدز"
     },
     "slug": "bayswater-leeds",
+    "logo": "bayswater-logo.png",
     "image": "leeds-school.jpg",
-    "countryId": 1,
-    "cityId": 3,
     "fees": [
       {
-        "name": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
-        "amount": 95,
+        "feeName": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
+        "feeAmount": 100,
+        "feeFrequency": "fixed",
         "optional": false,
-        "frequency": "fixed"
+        "feeCategoryId": 1,
+        "note": { "en": "", "ar": "" }
       },
       {
-        "name": { "en": "Bank Charges", "ar": "الرسوم المصرفية" },
-        "amount": 12,
+        "feeName": { "en": "Material Fee", "ar": "رسوم المواد" },
+        "feeAmount": 50,
+        "feeFrequency": "fixed",
         "optional": false,
-        "frequency": "fixed"
+        "feeCategoryId": 2,
+        "note": { "en": "", "ar": "" }
       },
       {
-        "name": { "en": "Materials Fee", "ar": "رسوم المواد الدراسية" },
-        "amount": 7,
-        "optional": false,
-        "frequency": "weekly"
-      },
-      {
-        "name": { "en": "Insurance", "ar": "التأمين" },
-        "amount": 8,
+        "feeName": { "en": "Insurance", "ar": "التأمين" },
+        "feeAmount": 25,
+        "feeFrequency": "weekly",
         "optional": true,
-        "frequency": "weekly"
+        "feeCategoryId": 4,
+        "note": { "en": "", "ar": "" }
       }
-    ]
+    ],
+    "instituteId": 1,
+    "countryId": 1,
+    "cityId": 3,
+    "note": { "en": "", "ar": "" }
   },
   {
     "id": 4,
-    "name": { "en": "Bayswater Brighton", "ar": "بايسووتر برايتون" },
-    "description": {
-      "en": "61 Western Rd, Hove BN3 1JD",
+    "schoolName": { "en": "Bayswater Brighton", "ar": "بايسووتر برايتون" },
+    "schoolDescription": {
+      "en": "61 Western Road, Brighton",
       "ar": "٦١ طريق ويسترن، برايتون"
     },
     "slug": "bayswater-brighton",
+    "logo": "bayswater-logo.png",
     "image": "brighton-school.jpg",
-    "countryId": 1,
-    "cityId": 4,
     "fees": [
       {
-        "name": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
-        "amount": 95,
+        "feeName": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
+        "feeAmount": 100,
+        "feeFrequency": "fixed",
         "optional": false,
-        "frequency": "fixed"
+        "feeCategoryId": 1,
+        "note": { "en": "", "ar": "" }
       },
       {
-        "name": { "en": "Bank Charges", "ar": "الرسوم المصرفية" },
-        "amount": 12,
+        "feeName": { "en": "Material Fee", "ar": "رسوم المواد" },
+        "feeAmount": 50,
+        "feeFrequency": "fixed",
         "optional": false,
-        "frequency": "fixed"
+        "feeCategoryId": 2,
+        "note": { "en": "", "ar": "" }
       },
       {
-        "name": { "en": "Materials Fee", "ar": "رسوم المواد الدراسية" },
-        "amount": 7,
-        "optional": false,
-        "frequency": "weekly"
-      },
-      {
-        "name": { "en": "Insurance", "ar": "التأمين" },
-        "amount": 8,
+        "feeName": { "en": "Insurance", "ar": "التأمين" },
+        "feeAmount": 25,
+        "feeFrequency": "weekly",
         "optional": true,
-        "frequency": "weekly"
+        "feeCategoryId": 4,
+        "note": { "en": "", "ar": "" }
       }
-    ]
+    ],
+    "instituteId": 1,
+    "countryId": 1,
+    "cityId": 4,
+    "note": { "en": "", "ar": "" }
   },
   {
     "id": 5,
-    "name": { "en": "Bayswater Bournemouth", "ar": "بايسووتر بورنموث" },
-    "description": {
-      "en": "St Peters Quarter, Bournemouth BH1 2AD",
+    "schoolName": { "en": "Bayswater Bournemouth", "ar": "بايسووتر بورنموث" },
+    "schoolDescription": {
+      "en": "St Peters Quarter, Bournemouth",
       "ar": "سانت بيترز كوارتر، بورنموث"
     },
     "slug": "bayswater-bournemouth",
+    "logo": "bayswater-logo.png",
     "image": "bournemouth-school.jpg",
-    "countryId": 1,
-    "cityId": 5,
     "fees": [
       {
-        "name": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
-        "amount": 95,
+        "feeName": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
+        "feeAmount": 100,
+        "feeFrequency": "fixed",
         "optional": false,
-        "frequency": "fixed"
+        "feeCategoryId": 1,
+        "note": { "en": "", "ar": "" }
       },
       {
-        "name": { "en": "Bank Charges", "ar": "الرسوم المصرفية" },
-        "amount": 12,
+        "feeName": { "en": "Material Fee", "ar": "رسوم المواد" },
+        "feeAmount": 50,
+        "feeFrequency": "fixed",
         "optional": false,
-        "frequency": "fixed"
+        "feeCategoryId": 2,
+        "note": { "en": "", "ar": "" }
       },
       {
-        "name": { "en": "Materials Fee", "ar": "رسوم المواد الدراسية" },
-        "amount": 7,
-        "optional": false,
-        "frequency": "weekly"
-      },
-      {
-        "name": { "en": "Insurance", "ar": "التأمين" },
-        "amount": 8,
+        "feeName": { "en": "Insurance", "ar": "التأمين" },
+        "feeAmount": 25,
+        "feeFrequency": "weekly",
         "optional": true,
-        "frequency": "weekly"
+        "feeCategoryId": 4,
+        "note": { "en": "", "ar": "" }
       }
-    ]
+    ],
+    "instituteId": 1,
+    "countryId": 1,
+    "cityId": 5,
+    "note": { "en": "", "ar": "" }
   },
   {
     "id": 6,
-    "name": { "en": "Bayswater Vancouver", "ar": "بايسووتر فانكوفر" },
-    "description": {
-      "en": "549 Howe Street, 9th Floor, Vancouver, BC V6C 2C2",
+    "schoolName": { "en": "Bayswater Vancouver", "ar": "بايسووتر فانكوفر" },
+    "schoolDescription": {
+      "en": "549 Howe Street, Vancouver",
       "ar": "٥٤٩ شارع هاو، فانكوفر"
     },
     "slug": "bayswater-vancouver",
+    "logo": "bayswater-logo.png",
     "image": "vancouver-school.jpg",
-    "countryId": 2,
-    "cityId": 6,
     "fees": [
       {
-        "name": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
-        "amount": 190,
+        "feeName": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
+        "feeAmount": 100,
+        "feeFrequency": "fixed",
         "optional": false,
-        "frequency": "fixed"
+        "feeCategoryId": 1,
+        "note": { "en": "", "ar": "" }
       },
       {
-        "name": { "en": "Bank Charges", "ar": "الرسوم المصرفية" },
-        "amount": 35,
+        "feeName": { "en": "Material Fee", "ar": "رسوم المواد" },
+        "feeAmount": 50,
+        "feeFrequency": "fixed",
         "optional": false,
-        "frequency": "fixed"
+        "feeCategoryId": 2,
+        "note": { "en": "", "ar": "" }
       },
       {
-        "name": { "en": "Materials Fee", "ar": "رسوم المواد الدراسية" },
-        "amount": 10,
-        "optional": false,
-        "frequency": "weekly"
-      },
-      {
-        "name": { "en": "Insurance", "ar": "التأمين" },
-        "amount": 25,
+        "feeName": { "en": "Insurance", "ar": "التأمين" },
+        "feeAmount": 25,
+        "feeFrequency": "weekly",
         "optional": true,
-        "frequency": "weekly"
+        "feeCategoryId": 4,
+        "note": { "en": "", "ar": "" }
       }
-    ]
+    ],
+    "instituteId": 1,
+    "countryId": 2,
+    "cityId": 6,
+    "note": { "en": "", "ar": "" }
   },
   {
     "id": 7,
-    "name": { "en": "Bayswater Toronto", "ar": "بايسووتر تورونتو" },
-    "description": {
-      "en": "5 Park Home Ave., 6th Floor, Toronto, ON M2N 6L4",
+    "schoolName": { "en": "Bayswater Toronto", "ar": "بايسووتر تورونتو" },
+    "schoolDescription": {
+      "en": "5 Park Home, Toronto",
       "ar": "٥ بارك هوم، تورونتو"
     },
     "slug": "bayswater-toronto",
+    "logo": "bayswater-logo.png",
     "image": "toronto-school.jpg",
+    "fees": [
+      {
+        "feeName": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
+        "feeAmount": 100,
+        "feeFrequency": "fixed",
+        "optional": false,
+        "feeCategoryId": 1,
+        "note": { "en": "", "ar": "" }
+      },
+      {
+        "feeName": { "en": "Material Fee", "ar": "رسوم المواد" },
+        "feeAmount": 50,
+        "feeFrequency": "fixed",
+        "optional": false,
+        "feeCategoryId": 2,
+        "note": { "en": "", "ar": "" }
+      },
+      {
+        "feeName": { "en": "Insurance", "ar": "التأمين" },
+        "feeAmount": 25,
+        "feeFrequency": "weekly",
+        "optional": true,
+        "feeCategoryId": 4,
+        "note": { "en": "", "ar": "" }
+      }
+    ],
+    "instituteId": 1,
     "countryId": 2,
     "cityId": 7,
-    "fees": [
-      {
-        "name": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
-        "amount": 190,
-        "optional": false,
-        "frequency": "fixed"
-      },
-      {
-        "name": { "en": "Bank Charges", "ar": "الرسوم المصرفية" },
-        "amount": 35,
-        "optional": false,
-        "frequency": "fixed"
-      },
-      {
-        "name": { "en": "Materials Fee", "ar": "رسوم المواد الدراسية" },
-        "amount": 10,
-        "optional": false,
-        "frequency": "weekly"
-      },
-      {
-        "name": { "en": "Insurance", "ar": "التأمين" },
-        "amount": 25,
-        "optional": true,
-        "frequency": "weekly"
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "name": { "en": "Bayswater Calgary", "ar": "بايسووتر كالغاري" },
-    "description": {
-      "en": "#100, 840 6 Ave SW, Calgary, AB T2P 3E5",
-      "ar": "٨٤٠ الجادة السادسة، كالغاري"
-    },
-    "slug": "bayswater-calgary",
-    "image": "calgary-school.jpg",
-    "countryId": 2,
-    "cityId": 8,
-    "fees": [
-      {
-        "name": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
-        "amount": 190,
-        "optional": false,
-        "frequency": "fixed"
-      },
-      {
-        "name": { "en": "Bank Charges", "ar": "الرسوم المصرفية" },
-        "amount": 35,
-        "optional": false,
-        "frequency": "fixed"
-      },
-      {
-        "name": { "en": "Materials Fee", "ar": "رسوم المواد الدراسية" },
-        "amount": 10,
-        "optional": false,
-        "frequency": "weekly"
-      },
-      {
-        "name": { "en": "Insurance", "ar": "التأمين" },
-        "amount": 25,
-        "optional": true,
-        "frequency": "weekly"
-      }
-    ]
-  },
-  {
-    "id": 9,
-    "name": { "en": "Bayswater Paris", "ar": "بايسووتر باريس" },
-    "description": {
-      "en": "15 Rue Montmartre, 75001 Paris, France",
-      "ar": "١٥ شارع مونمارتر، باريس"
-    },
-    "slug": "bayswater-paris",
-    "image": "paris-school.jpg",
-    "countryId": 3,
-    "cityId": 9,
-    "fees": [
-      {
-        "name": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
-        "amount": 95,
-        "optional": false,
-        "frequency": "fixed"
-      },
-      {
-        "name": { "en": "Bank Charges", "ar": "الرسوم المصرفية" },
-        "amount": 12,
-        "optional": false,
-        "frequency": "fixed"
-      },
-      {
-        "name": { "en": "Materials Fee", "ar": "رسوم المواد الدراسية" },
-        "amount": 7,
-        "optional": false,
-        "frequency": "weekly"
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "name": { "en": "Bayswater Cape Town", "ar": "بايسووتر كيب تاون" },
-    "description": {
-      "en": "40 Shortmarket Street, Cape Town, 8001",
-      "ar": "٤٠ شارع شورت ماركت، كيب تاون"
-    },
-    "slug": "bayswater-cape-town",
-    "image": "capetown-school.jpg",
-    "countryId": 4,
-    "cityId": 10,
-    "fees": [
-      {
-        "name": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
-        "amount": 75,
-        "optional": false,
-        "frequency": "fixed"
-      },
-      {
-        "name": { "en": "Bank Charges", "ar": "الرسوم المصرفية" },
-        "amount": 12,
-        "optional": false,
-        "frequency": "fixed"
-      },
-      {
-        "name": { "en": "Materials Fee", "ar": "رسوم المواد الدراسية" },
-        "amount": 7,
-        "optional": false,
-        "frequency": "weekly"
-      }
-    ]
-  },
-  {
-    "id": 11,
-    "name": { "en": "Bayswater Limassol", "ar": "بايسووتر ليماسول" },
-    "description": {
-      "en": "138 Vasileos Constantinou, Limassol 3080, Cyprus",
-      "ar": "١٣٨ فاسيليوس كونستانتينو، ليماسول"
-    },
-    "slug": "bayswater-limassol",
-    "image": "limassol-school.jpg",
-    "countryId": 5,
-    "cityId": 11,
-    "fees": [
-      {
-        "name": { "en": "Registration Fee", "ar": "رسوم التسجيل" },
-        "amount": 75,
-        "optional": false,
-        "frequency": "fixed"
-      },
-      {
-        "name": { "en": "Materials Fee", "ar": "رسوم المواد الدراسية" },
-        "amount": 7,
-        "optional": false,
-        "frequency": "weekly"
-      }
-    ]
+    "note": { "en": "", "ar": "" }
   }
 ]

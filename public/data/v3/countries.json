@@ -1,77 +1,77 @@
 [
   {
     "id": 1,
-    "name": { "en": "United Kingdom", "ar": "المملكة المتحدة" },
-    "description": {
+    "countryName": { "en": "United Kingdom", "ar": "المملكة المتحدة" },
+    "countryDescription": {
       "en": "Study English or professional courses across historic and vibrant cities in the UK.",
       "ar": "دراسة اللغة الإنجليزية أو الدورات المهنية في مدن تاريخية وحيوية في المملكة المتحدة."
     },
     "slug": "united-kingdom",
     "image": "united-kingdom.jpg",
     "currency": {
-      "currencyName": "British Pound",
-      "currencyIcon": "£",
-      "currencyCode": "GBP"
+      "code": "GBP",
+      "symbol": "£",
+      "currencyName": { "en": "British Pound", "ar": "الجنيه البريطاني" }
     }
   },
   {
     "id": 2,
-    "name": { "en": "Canada", "ar": "كندا" },
-    "description": {
+    "countryName": { "en": "Canada", "ar": "كندا" },
+    "countryDescription": {
       "en": "Experience world-class education and outdoor adventures in premier Canadian destinations.",
       "ar": "تجربة تعليم عالمي المستوى ومغامرات في الهواء الطلق في وجهات كندية متميزة."
     },
     "slug": "canada",
     "image": "canada.jpg",
     "currency": {
-      "currencyName": "Canadian Dollar",
-      "currencyIcon": "$",
-      "currencyCode": "CAD"
+      "code": "CAD",
+      "symbol": "$",
+      "currencyName": { "en": "Canadian Dollar", "ar": "الدولار الكندي" }
     }
   },
   {
     "id": 3,
-    "name": { "en": "France", "ar": "فرنسا" },
-    "description": {
+    "countryName": { "en": "France", "ar": "فرنسا" },
+    "countryDescription": {
       "en": "Immerse yourself in French culture and language learning in the heart of Paris.",
       "ar": "انغمس في الثقافة الفرنسية وتعلم اللغة في قلب باريس."
     },
     "slug": "france",
     "image": "france.jpg",
     "currency": {
-      "currencyName": "Euro",
-      "currencyIcon": "€",
-      "currencyCode": "EUR"
+      "code": "EUR",
+      "symbol": "€",
+      "currencyName": { "en": "Euro", "ar": "اليورو" }
     }
   },
   {
     "id": 4,
-    "name": { "en": "South Africa", "ar": "جنوب أفريقيا" },
-    "description": {
+    "countryName": { "en": "South Africa", "ar": "جنوب أفريقيا" },
+    "countryDescription": {
       "en": "Learn English surrounded by beautiful coastal landscapes and vibrant wildlife in Cape Town.",
       "ar": "تعلم اللغة الإنجليزية محاطًا بالمناظر الساحلية الجميلة والحياة البرية النابضة بالحياة في كيب تاون."
     },
     "slug": "south-africa",
     "image": "south-africa.jpg",
     "currency": {
-      "currencyName": "South African Rand",
-      "currencyIcon": "R",
-      "currencyCode": "ZAR"
+      "code": "ZAR",
+      "symbol": "R",
+      "currencyName": { "en": "South African Rand", "ar": "راند جنوب أفريقيا" }
     }
   },
   {
     "id": 5,
-    "name": { "en": "Cyprus", "ar": "قبرص" },
-    "description": {
+    "countryName": { "en": "Cyprus", "ar": "قبرص" },
+    "countryDescription": {
       "en": "Enjoy Mediterranean sunshine while accelerating your language proficiency in Limassol.",
       "ar": "استمتع بأشعة شمس البحر الأبيض المتوسط أثناء تسريع كفاءتك اللغوية في ليماسول."
     },
     "slug": "cyprus",
     "image": "cyprus.jpg",
     "currency": {
-      "currencyName": "Euro",
-      "currencyIcon": "€",
-      "currencyCode": "EUR"
+      "code": "EUR",
+      "symbol": "€",
+      "currencyName": { "en": "Euro", "ar": "اليورو" }
     }
   }
 ]

@@ -14,6 +14,9 @@ type Props = {
   category: string;
   hours: number;
   requiredLevel: string;
+  instituteName: string;
+  location: string;
+  onApply?: () => void;
 };
 export default function CourseCard({
   image,
@@ -25,6 +28,9 @@ export default function CourseCard({
   hours,
   requiredLevel,
   price,
+  instituteName,
+  location,
+  onApply,
 }: Props) {
   const t = useTranslations("coursesPage.courseCard");
   const discountedPrice = discount ? price - (price * discount) / 100 : price;
@@ -49,6 +55,10 @@ export default function CourseCard({
           <p className="mt-1 text-gray-light">{category}</p>
         </div>
         <h3 className="text-xl font-bold text-gray-dark">{name}</h3>
+        <div className="mt-2 space-y-1 text-sm text-gray-light">
+          {instituteName ? <p>{instituteName}</p> : null}
+          {location ? <p>{location}</p> : null}
+        </div>
 
         {/* Course Details */}
         <div className="my-2">
@@ -87,19 +97,13 @@ export default function CourseCard({
           </p>
         </div>
 
-        {/* Buttons */}
-        <div className="grid grid-cols-2 gap-2">
+        <div className="mt-4">
           <button
             type="button"
-            className="mt-4 rounded-lg bg-light-orange py-2 text-sm font-bold text-gray-dark transition hover:bg-dark-orange hover:text-white cursor-pointer"
+            onClick={onApply}
+            className="w-full rounded-lg bg-light-orange py-2 text-sm font-bold text-gray-dark transition hover:bg-dark-orange hover:text-white cursor-pointer"
           >
             {t("applyNow")}
-          </button>
-          <button
-            type="button"
-            className="mt-4 rounded-lg bg-light-orange py-2 text-sm font-bold text-gray-dark transition hover:bg-dark-orange hover:text-white cursor-pointer"
-          >
-            {t("learnMore")}
           </button>
         </div>
       </div>

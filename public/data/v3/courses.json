@@ -1,0 +1,1302 @@
+[
+  {
+    "id": 1,
+    "courseName": {
+      "en": "Standard",
+      "ar": "البرنامج القياسي"
+    },
+    "courseDescription": {
+      "en": "IELTS Preparation is available in Standard 20 lessons, or can be combined with an additional 5 or 10 General English lessons as part of an Intensive or Super Intensive Course.",
+      "ar": "يتوفر برنامج الإعداد لاختبار الآيلتس في الدورة القياسية المكونة من 20 درسًا، أو يمكن دمجه مع 5 أو 10 دروس إضافية من الإنجليزية العامة كجزء من الدورة المكثفة أو المكثفة للغاية."
+    },
+    "image": "general-english.jpg",
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 1,
+    "coursePlans": [
+      {
+        "price": 375,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 335,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 290,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": null
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 6,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 2,
+    "courseName": {
+      "en": "Intensive",
+      "ar": "البرنامج المكثف"
+    },
+    "courseDescription": {
+      "en": "IELTS Preparation is available in Standard 20 lessons, or can be combined with an additional 5 or 10 General English lessons as part of an Intensive or Super Intensive Course.",
+      "ar": "يتوفر برنامج الإعداد لاختبار الآيلتس في الدورة القياسية المكونة من 20 درسًا، أو يمكن دمجه مع 5 أو 10 دروس إضافية من الإنجليزية العامة كجزء من الدورة المكثفة أو المكثفة للغاية."
+    },
+    "image": "general-english.jpg",
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 1,
+    "coursePlans": [
+      {
+        "price": 420,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 375,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 320,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": null
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 6,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 3,
+    "courseName": {
+      "en": "Super Intensive",
+      "ar": "البرنامج المكثف للغاية"
+    },
+    "courseDescription": {
+      "en": "IELTS Preparation is available in Standard 20 lessons, or can be combined with an additional 5 or 10 General English lessons as part of an Intensive or Super Intensive Course.",
+      "ar": "يتوفر برنامج الإعداد لاختبار الآيلتس في الدورة القياسية المكونة من 20 درسًا، أو يمكن دمجه مع 5 أو 10 دروس إضافية من الإنجليزية العامة كجزء من الدورة المكثفة أو المكثفة للغاية."
+    },
+    "image": "general-english.jpg",
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 1,
+    "coursePlans": [
+      {
+        "price": 465,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 420,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 370,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": null
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 6,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 4,
+    "courseName": {
+      "en": "Standard",
+      "ar": "البرنامج القياسي"
+    },
+    "courseDescription": {
+      "en": "IELTS Preparation is available in Standard 20 lessons, or can be combined with an additional 5 or 10 General English lessons as part of an Intensive or Super Intensive Course.",
+      "ar": "يتوفر برنامج الإعداد لاختبار الآيلتس في الدورة القياسية المكونة من 20 درسًا، أو يمكن دمجه مع 5 أو 10 دروس إضافية من الإنجليزية العامة كجزء من الدورة المكثفة أو المكثفة للغاية."
+    },
+    "image": "liverpool-general-english.jpg",
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 2,
+    "coursePlans": [
+      {
+        "price": 290,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 260,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 225,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": null
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 6,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 5,
+    "courseName": {
+      "en": "Intensive",
+      "ar": "البرنامج المكثف"
+    },
+    "courseDescription": {
+      "en": "IELTS Preparation is available in Standard 20 lessons, or can be combined with an additional 5 or 10 General English lessons as part of an Intensive or Super Intensive Course.",
+      "ar": "يتوفر برنامج الإعداد لاختبار الآيلتس في الدورة القياسية المكونة من 20 درسًا، أو يمكن دمجه مع 5 أو 10 دروس إضافية من الإنجليزية العامة كجزء من الدورة المكثفة أو المكثفة للغاية."
+    },
+    "image": "liverpool-general-english.jpg",
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 2,
+    "coursePlans": [
+      {
+        "price": 335,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 295,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 255,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": null
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 6,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 6,
+    "courseName": {
+      "en": "Super Intensive",
+      "ar": "البرنامج المكثف للغاية"
+    },
+    "courseDescription": {
+      "en": "IELTS Preparation is available in Standard 20 lessons, or can be combined with an additional 5 or 10 General English lessons as part of an Intensive or Super Intensive Course.",
+      "ar": "يتوفر برنامج الإعداد لاختبار الآيلتس في الدورة القياسية المكونة من 20 درسًا، أو يمكن دمجه مع 5 أو 10 دروس إضافية من الإنجليزية العامة كجزء من الدورة المكثفة أو المكثفة للغاية."
+    },
+    "image": "liverpool-general-english.jpg",
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 2,
+    "coursePlans": [
+      {
+        "price": 380,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 335,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 295,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": null
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 6,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 7,
+    "courseName": {
+      "en": "General English 20",
+      "ar": "اللغة الإنجليزية العامة 20"
+    },
+    "courseDescription": {
+      "en": "Standard English course focusing on core language skills.",
+      "ar": "دورة اللغة الإنجليزية القياسية التي تركز على مهارات اللغة الأساسية."
+    },
+    "image": null,
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 3,
+    "coursePlans": [
+      {
+        "price": 280,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 250,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 220,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": 35
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 210,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 36,
+          "max": null
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 1,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 8,
+    "courseName": {
+      "en": "General English 25",
+      "ar": "اللغة الإنجليزية العامة 25"
+    },
+    "courseDescription": {
+      "en": "Standard English course focusing on core language skills.",
+      "ar": "دورة اللغة الإنجليزية القياسية التي تركز على مهارات اللغة الأساسية."
+    },
+    "image": null,
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 3,
+    "coursePlans": [
+      {
+        "price": 325,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 290,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 250,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": 35
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 235,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 36,
+          "max": null
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 1,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 9,
+    "courseName": {
+      "en": "General English 30",
+      "ar": "اللغة الإنجليزية العامة 30"
+    },
+    "courseDescription": {
+      "en": "Standard English course focusing on core language skills.",
+      "ar": "دورة اللغة الإنجليزية القياسية التي تركز على مهارات اللغة الأساسية."
+    },
+    "image": null,
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 3,
+    "coursePlans": [
+      {
+        "price": 365,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 325,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 280,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": 35
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 260,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 36,
+          "max": null
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 1,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 10,
+    "courseName": {
+      "en": "IELTS Preparation 20",
+      "ar": "التحضير لاختبار آيلتس 20"
+    },
+    "courseDescription": {
+      "en": "Preparation for the IELTS exam with 20 lessons per week.",
+      "ar": "التحضير لامتحان الآيلتس بمعدل 20 درساً في الأسبوع."
+    },
+    "image": null,
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 3,
+    "coursePlans": [
+      {
+        "price": 280,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 250,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 220,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": 35
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 210,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 36,
+          "max": null
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 6,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 11,
+    "courseName": {
+      "en": "Individual Lessons (per lesson)",
+      "ar": "دروس فردية (لكل درس)"
+    },
+    "courseDescription": {
+      "en": "Private individual lessons tailored to the student's needs.",
+      "ar": "دروس فردية خاصة مصممة خصيصاً لتلبية احتياجات الطالب."
+    },
+    "image": null,
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 3,
+    "coursePlans": [
+      {
+        "price": 65,
+        "priceFrequency": "fixed",
+        "weekRange": null,
+        "lessonsPerWeek": null,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 1,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 12,
+    "courseName": {
+      "en": "General English 20",
+      "ar": "اللغة الإنجليزية العامة 20"
+    },
+    "courseDescription": {
+      "en": "Standard General English courses designed to improve core communication skills.",
+      "ar": "دورات اللغة الإنجليزية العامة القياسية المصممة لتحسين مهارات التواصل الأساسية."
+    },
+    "image": "brighton-courses.jpg",
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 4,
+    "coursePlans": [
+      {
+        "price": 290,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 260,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 225,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": 35
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 215,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 36,
+          "max": null
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 1,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 13,
+    "courseName": {
+      "en": "General English 25",
+      "ar": "اللغة الإنجليزية العامة 25"
+    },
+    "courseDescription": {
+      "en": "Standard General English courses designed to improve core communication skills.",
+      "ar": "دورات اللغة الإنجليزية العامة القياسية المصممة لتحسين مهارات التواصل الأساسية."
+    },
+    "image": "brighton-courses.jpg",
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 4,
+    "coursePlans": [
+      {
+        "price": 340,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 300,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 260,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": 35
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 240,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 36,
+          "max": null
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 1,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 14,
+    "courseName": {
+      "en": "General English 30",
+      "ar": "اللغة الإنجليزية العامة 30"
+    },
+    "courseDescription": {
+      "en": "Standard General English courses designed to improve core communication skills.",
+      "ar": "دورات اللغة الإنجليزية العامة القياسية المصممة لتحسين مهارات التواصل الأساسية."
+    },
+    "image": "brighton-courses.jpg",
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 4,
+    "coursePlans": [
+      {
+        "price": 380,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 340,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 290,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": 35
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 270,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 36,
+          "max": null
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 1,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 15,
+    "courseName": {
+      "en": "IELTS Preparation 20",
+      "ar": "التحضير لاختبار آيلتس 20"
+    },
+    "courseDescription": {
+      "en": "Intensive training program targeted at passing the IELTS examination.",
+      "ar": "برنامج تدريبي مكثف يستهدف اجتياز اختبار الآيلتس بنجاح."
+    },
+    "image": "brighton-courses.jpg",
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 4,
+    "coursePlans": [
+      {
+        "price": 290,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 260,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 225,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": 35
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 215,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 36,
+          "max": null
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 6,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 16,
+    "courseName": {
+      "en": "Individual Lessons (per lesson)",
+      "ar": "دروس فردية (لكل درس)"
+    },
+    "courseDescription": {
+      "en": "Private tuition personalized entirely around individual academic objectives.",
+      "ar": "دروس خصوصية مخصصة بالكامل لتلبية الأهداف الأكاديمية الفردية للطالب."
+    },
+    "image": "brighton-courses.jpg",
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 4,
+    "coursePlans": [
+      {
+        "price": 65,
+        "priceFrequency": "fixed",
+        "weekRange": null,
+        "lessonsPerWeek": null,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 1,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 17,
+    "courseName": {
+      "en": "Standard",
+      "ar": "قياسي"
+    },
+    "courseDescription": {
+      "en": "General English and IELTS Preparation courses in Bournemouth",
+      "ar": "دورات اللغة الإنجليزية العامة والتحضير لاختبار آيلتس في بورنموث"
+    },
+    "image": null,
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 5,
+    "coursePlans": [
+      {
+        "price": 285,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 250,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 230,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": null
+        },
+        "lessonsPerWeek": 20,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 6,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 18,
+    "courseName": {
+      "en": "Intensive",
+      "ar": "مكثف"
+    },
+    "courseDescription": {
+      "en": "General English and IELTS Preparation courses in Bournemouth",
+      "ar": "دورات اللغة الإنجليزية العامة والتحضير لاختبار آيلتس في بورنموث"
+    },
+    "image": null,
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 5,
+    "coursePlans": [
+      {
+        "price": 315,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 285,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 255,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": null
+        },
+        "lessonsPerWeek": 25,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 6,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 19,
+    "courseName": {
+      "en": "Super Intensive",
+      "ar": "مكثف للغاية"
+    },
+    "courseDescription": {
+      "en": "General English and IELTS Preparation courses in Bournemouth",
+      "ar": "دورات اللغة الإنجليزية العامة والتحضير لاختبار آيلتس في بورنموث"
+    },
+    "image": null,
+    "discount": 0,
+    "instituteId": 1,
+    "schoolId": 5,
+    "coursePlans": [
+      {
+        "price": 355,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 340,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      },
+      {
+        "price": 300,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": null
+        },
+        "lessonsPerWeek": 30,
+        "note": {
+          "en": "",
+          "ar": ""
+        }
+      }
+    ],
+    "courseCategoryId": 6,
+    "requiredLevel": {
+      "en": "Intermediate",
+      "ar": "متوسط"
+    },
+    "minimumAge": 16,
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  }
+]

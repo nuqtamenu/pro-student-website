@@ -1,22 +1,50 @@
 [
   {
     "id": 1,
-    "name": { "en": "Airport Pickup", "ar": "استقبال من المطار" },
-    "slug": "airport-pickup"
+    "slug": "airport-pickup",
+    "categoryName": {
+      "en": "Airport Pickup",
+      "ar": "استقبال من المطار"
+    },
+    "categoryDescription": {
+      "en": "Airport pickup transfers",
+      "ar": "نقل استقبال من المطار"
+    }
   },
   {
     "id": 2,
-    "name": { "en": "Airport Dropoff", "ar": "توصيل إلى المطار" },
-    "slug": "airport-dropoff"
+    "slug": "airport-dropoff",
+    "categoryName": {
+      "en": "Airport Dropoff",
+      "ar": "توصيل إلى المطار"
+    },
+    "categoryDescription": {
+      "en": "Airport dropoff transfers",
+      "ar": "نقل توصيل إلى المطار"
+    }
   },
   {
     "id": 3,
-    "name": { "en": "Train Station Pickup", "ar": "استقبال من محطة القطار" },
-    "slug": "train-station-pickup"
+    "slug": "train-station-pickup",
+    "categoryName": {
+      "en": "Train Station Pickup",
+      "ar": "استقبال من محطة القطار"
+    },
+    "categoryDescription": {
+      "en": "Train station pickup transfers",
+      "ar": "نقل استقبال من محطة القطار"
+    }
   },
   {
     "id": 4,
-    "name": { "en": "Train Station Dropoff", "ar": "توصيل إلى محطة القطار" },
-    "slug": "train-station-dropoff"
+    "slug": "train-station-dropoff",
+    "categoryName": {
+      "en": "Train Station Dropoff",
+      "ar": "توصيل إلى محطة القطار"
+    },
+    "categoryDescription": {
+      "en": "Train station dropoff transfers",
+      "ar": "نقل توصيل إلى محطة القطار"
+    }
   }
 ]

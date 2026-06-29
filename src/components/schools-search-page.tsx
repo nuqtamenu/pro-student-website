@@ -29,6 +29,9 @@ export default function SchoolsSearchPage({ initialFilters, locale }: Props) {
     if (filters.search) params.set("search", filters.search);
     if (filters.countryId) params.set("country_id", String(filters.countryId));
     if (filters.cityId) params.set("city_id", String(filters.cityId));
+    if (typeof filters.courseTypeId === "number") {
+      params.set("course_type_id", String(filters.courseTypeId));
+    }
     if (typeof filters.durationWeeks === "number") {
       params.set("duration_weeks", String(filters.durationWeeks));
     }

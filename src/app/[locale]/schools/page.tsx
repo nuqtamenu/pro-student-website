@@ -30,6 +30,7 @@ export default async function InstitutesPage({ params, searchParams }: Props) {
     search: parseString(awaitedParams.search),
     countryId: parseNumber(awaitedParams.country_id),
     cityId: parseNumber(awaitedParams.city_id),
+    courseTypeId: parseNumber(awaitedParams.course_type_id),
     durationWeeks:
       parseNumber(awaitedParams.duration_weeks) ??
       parseNumber(awaitedParams.duration_min),

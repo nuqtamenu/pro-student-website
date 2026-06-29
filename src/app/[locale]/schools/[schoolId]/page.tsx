@@ -2,16 +2,15 @@ import SchoolBooking from "@/components/school-booking";
 import {
   accommodationsV2,
   coursesV2,
-  getCityById,
-  getCountryById,
   schoolsV2,
   transfersV2,
 } from "@/lib/v2-search-data";
 import { type Locale } from "@/lib/data";
+import { getTranslations } from "next-intl/server";
 
 type Props = {
   params: Promise<{ locale: string; schoolId: string }>;
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 function parseNumber(value: string | string[] | undefined): number | undefined {
@@ -26,6 +25,7 @@ function parseString(value: string | string[] | undefined): string {
 
 export default async function SchoolsPage({ params, searchParams }: Props) {
   const { locale, schoolId } = await params;
+  const t = await getTranslations("schoolBooking");
   const schoolIdNumber = Number(schoolId);
   const school = schoolsV2.find((item) => item.id === schoolIdNumber);
 
@@ -38,6 +38,10 @@ export default async function SchoolsPage({ params, searchParams }: Props) {
     (item) => item.schoolId === school.id,
   );
   const transfers = transfersV2.filter((item) => item.schoolId === school.id);
+  const parsedWeeks =
+    parseNumber((await searchParams).weeks) ??
+    parseNumber((await searchParams).duration_weeks) ??
+    1;
 
   return (
     <SchoolBooking
@@ -46,15 +50,19 @@ export default async function SchoolsPage({ params, searchParams }: Props) {
       accommodations={accommodations}
       transfers={transfers}
       initial={{
-        courseId: parseNumber(searchParams.course_id),
-        startDate: parseString(searchParams.start_date),
-        weeks: parseNumber(searchParams.weeks) ?? 1,
-        residenceId: parseNumber(searchParams.residence_id),
-        residenceWeeks: parseNumber(searchParams.residence_weeks),
-        airportId: parseNumber(searchParams.airport_id),
-        insurance: searchParams.insurance === "1",
+        courseId: parseNumber((await searchParams).course_id),
+        courseTypeId: parseNumber((await searchParams).course_type_id),
+        startDate: parseString((await searchParams).start_date),
+        weeks: parsedWeeks,
+        residenceId: parseNumber((await searchParams).residence_id),
+        residenceWeeks: parseNumber((await searchParams).residence_weeks),
+        airportId: parseNumber((await searchParams).airport_id),
+        accommodation: (await searchParams).accommodation === "1",
+        airportPickup: (await searchParams).airport_pickup === "1",
+        insurance: (await searchParams).insurance === "1",
       }}
       locale={locale as Locale}
+      pageTitle={t("pageTitle")}
     />
   );
 }

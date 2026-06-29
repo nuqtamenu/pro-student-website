@@ -1,88 +1,100 @@
 [
   {
     "id": 1,
-    "name": { "en": "London", "ar": "لندن" },
-    "description": { "en": "Bayswater London", "ar": "بايسووتر لندن" },
+    "cityName": { "en": "London", "ar": "لندن" },
+    "cityDescription": { "en": "Bayswater London", "ar": "بايسووتر لندن" },
     "slug": "london",
     "image": "london.jpg",
     "countryId": 1
   },
   {
     "id": 2,
-    "name": { "en": "Liverpool", "ar": "ليفربول" },
-    "description": { "en": "Bayswater Liverpool", "ar": "بايسووتر ليفربول" },
+    "cityName": { "en": "Liverpool", "ar": "ليفربول" },
+    "cityDescription": {
+      "en": "Bayswater Liverpool",
+      "ar": "بايسووتر ليفربول"
+    },
     "slug": "liverpool",
     "image": "liverpool.jpg",
     "countryId": 1
   },
   {
     "id": 3,
-    "name": { "en": "Leeds", "ar": "ليدز" },
-    "description": { "en": "Bayswater Leeds", "ar": "بايسووتر ليدز" },
+    "cityName": { "en": "Leeds", "ar": "ليدز" },
+    "cityDescription": { "en": "Bayswater Leeds", "ar": "بايسووتر ليدز" },
     "slug": "leeds",
     "image": "leeds.jpg",
     "countryId": 1
   },
   {
     "id": 4,
-    "name": { "en": "Brighton", "ar": "برايتون" },
-    "description": { "en": "Bayswater Brighton", "ar": "بايسووتر برايتون" },
+    "cityName": { "en": "Brighton", "ar": "برايتون" },
+    "cityDescription": { "en": "Bayswater Brighton", "ar": "بايسووتر برايتون" },
     "slug": "brighton",
     "image": "brighton.jpg",
     "countryId": 1
   },
   {
     "id": 5,
-    "name": { "en": "Bournemouth", "ar": "بورنموث" },
-    "description": { "en": "Bayswater Bournemouth", "ar": "بايسووتر بورنموث" },
+    "cityName": { "en": "Bournemouth", "ar": "بورنموث" },
+    "cityDescription": {
+      "en": "Bayswater Bournemouth",
+      "ar": "بايسووتر بورنموث"
+    },
     "slug": "bournemouth",
     "image": "bournemouth.jpg",
     "countryId": 1
   },
   {
     "id": 6,
-    "name": { "en": "Vancouver", "ar": "فانكوفر" },
-    "description": { "en": "Bayswater Vancouver", "ar": "بايسووتر فانكوفر" },
+    "cityName": { "en": "Vancouver", "ar": "فانكوفر" },
+    "cityDescription": {
+      "en": "Bayswater Vancouver",
+      "ar": "بايسووتر فانكوفر"
+    },
     "slug": "vancouver",
     "image": "vancouver.jpg",
     "countryId": 2
   },
   {
     "id": 7,
-    "name": { "en": "Toronto", "ar": "تورونتو" },
-    "description": { "en": "Bayswater Toronto", "ar": "بايسووتر تورونتو" },
+    "cityName": { "en": "Toronto", "ar": "تورونتو" },
+    "cityDescription": { "en": "Bayswater Toronto", "ar": "بايسووتر تورونتو" },
     "slug": "toronto",
     "image": "toronto.jpg",
     "countryId": 2
   },
   {
     "id": 8,
-    "name": { "en": "Calgary", "ar": "كالغاري" },
-    "description": { "en": "Bayswater Calgary", "ar": "بايسووتر كالغاري" },
+    "cityName": { "en": "Calgary", "ar": "كالغاري" },
+    "cityDescription": { "en": "Bayswater Calgary", "ar": "بايسووتر كالغاري" },
     "slug": "calgary",
     "image": "calgary.jpg",
     "countryId": 2
   },
   {
     "id": 9,
-    "name": { "en": "Paris", "ar": "باريس" },
-    "description": { "en": "Bayswater Paris", "ar": "بايسووتر باريس" },
+    "cityName": { "en": "Paris", "ar": "باريس" },
+    "cityDescription": { "en": "Bayswater Paris", "ar": "بايسووتر باريس" },
     "slug": "paris",
     "image": "paris.jpg",
     "countryId": 3
   },
   {
     "id": 10,
-    "name": { "en": "Cape Town", "ar": "كيب تاون" },
-    "description": { "en": "Bayswater Cape Town", "ar": "بايسووتر كيب تاون" },
+    "cityName": { "en": "Cape Town", "ar": "كيب تاون" },
+    "cityDescription": {
+      "en": "Bayswater Cape Town",
+      "ar": "بايسووتر كيب تاون"
+    },
     "slug": "cape-town",
     "image": "cape-town.jpg",
     "countryId": 4
   },
   {
     "id": 11,
-    "name": { "en": "Limassol", "ar": "ليماسول" },
-    "description": { "en": "Bayswater Limassol", "ar": "بايسووتر ليماسول" },
+    "cityName": { "en": "Limassol", "ar": "ليماسول" },
+    "cityDescription": { "en": "Bayswater Limassol", "ar": "بايسووتر ليماسول" },
     "slug": "limassol",
     "image": "limassol.jpg",
     "countryId": 5

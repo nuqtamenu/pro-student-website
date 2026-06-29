@@ -7,6 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {
   countriesV2,
+  courseCategoriesV3,
   getCitiesByCountry,
   type SchoolSearchFilters,
 } from "@/lib/v2-search-data";
@@ -27,6 +28,9 @@ export function SearchSidebar({ filters, setFilters, locale }: Props) {
     () => getCitiesByCountry(filters.countryId),
     [filters.countryId],
   );
+  const courseTypeLabel =
+    locale === "ar" ? "اختر نوع الدورة" : "Select Course Type";
+  const courseTypePlaceholder = locale === "ar" ? "كل الأنواع" : "All Types";
 
   return (
     <aside className="rounded-2xl border border-white/20 p-6 shadow-2xl backdrop-blur-xl">
@@ -115,6 +119,37 @@ export function SearchSidebar({ filters, setFilters, locale }: Props) {
               {cityOptions.map((city) => (
                 <option key={city.id} value={city.id}>
                   {city.name[locale]}
+                </option>
+              ))}
+            </select>
+            <Icon
+              icon="lucide:chevron-down"
+              width={18}
+              className="pointer-events-none absolute inset-y-0 inset-e-3 my-auto text-gray-light"
+            />
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          <label className="block text-sm font-semibold text-gray-dark">
+            {courseTypeLabel}
+          </label>
+          <div className="relative">
+            <select
+              value={filters.courseTypeId ?? ""}
+              onChange={(event) => {
+                const value = event.target.value;
+                setFilters({
+                  ...filters,
+                  courseTypeId: value ? Number(value) : undefined,
+                });
+              }}
+              className="w-full rounded-2xl border border-white/40 bg-white/70 py-3 px-4 text-sm text-gray-dark outline-none transition focus:border-dark-orange focus:bg-white"
+            >
+              <option value="">{courseTypePlaceholder}</option>
+              {courseCategoriesV3.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.categoryName[locale]}
                 </option>
               ))}
             </select>

@@ -119,6 +119,33 @@ export type Course = {
 };
 
 // <---------- ACCOMMODATION -------------> [Accommodation Addons/Extras will be added later]
+export type RoomLocation = {
+  name: Localized;
+  mapUrl: null | string;
+};
+
+interface TravelTime {
+  min: number;
+  max: number;
+  unit: "minutes" | "hours";
+}
+
+interface Transport {
+  mode: Localized;
+  icon?: string;
+}
+interface CommuteOption {
+  travelTime: TravelTime;
+  transport: Transport;
+}
+
+export type AccommodationPlan = {
+  planName: Localized;
+  amount: number;
+  frequency: Frequency;
+  optional: boolean;
+};
+
 export type Accommodation = {
   id: number;
   accommodationName: Localized;
@@ -130,6 +157,11 @@ export type Accommodation = {
   durationWeeks?: number;
   accommodationDates?: Dates;
   schoolId: number;
+  price: number;
+  priceFrequency: Frequency;
+  location?: RoomLocation[] | null;
+  commuteOptions?: CommuteOption[] | null;
+  accommodationPlans: AccommodationPlan[];
 };
 
 // <---------- TRANSFER ------------->

@@ -5,8 +5,13 @@ import { usePathname, useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useTranslations } from "next-intl";
 import { tx, type Locale } from "@/lib/data";
-import { getCityById, getCountryById } from "@/lib/v2-search-data";
+import {
+  courseCategoriesV3,
+  getCityById,
+  getCountryById,
+} from "@/lib/v2-search-data";
 import {
   type Course,
   type School,
@@ -28,6 +33,7 @@ export default function SchoolBooking({
   transfers,
   initial,
   locale,
+  pageTitle,
 }: {
   school: School;
   courses: Course[];
@@ -35,23 +41,31 @@ export default function SchoolBooking({
   transfers: Transfer[];
   initial: {
     courseId?: number;
+    courseTypeId?: number;
     startDate?: string;
     weeks?: number;
     residenceId?: number;
     residenceWeeks?: number;
     airportId?: number;
+    accommodation?: boolean;
+    airportPickup?: boolean;
     insurance?: boolean;
   };
   locale: Locale;
+  pageTitle?: string;
 }) {
   const router = useRouter();
+  const t = useTranslations("schoolBooking");
   const pathname = usePathname();
   const hasMounted = useRef(false);
 
+  const availableCourses = useMemo(() => courses, [courses]);
+
   const resolvedCourseId =
-    initial.courseId && courses.some((course) => course.id === initial.courseId)
+    initial.courseId &&
+    availableCourses.some((course) => course.id === initial.courseId)
       ? initial.courseId
-      : courses[0]?.id;
+      : availableCourses[0]?.id;
   const resolvedResidenceId =
     initial.residenceId &&
     accommodations.some((item) => item.id === initial.residenceId)
@@ -68,7 +82,7 @@ export default function SchoolBooking({
   const [startDate, setStartDate] = useState<string>(initial.startDate ?? "");
   const [weeks, setWeeks] = useState<number>(initial.weeks ?? 1);
   const [hasAccommodation, setHasAccommodation] = useState<boolean>(
-    !!initial.residenceId,
+    initial.accommodation ?? Boolean(initial.residenceId),
   );
   const [selectedResidenceId, setSelectedResidenceId] = useState<
     number | undefined
@@ -77,7 +91,7 @@ export default function SchoolBooking({
     initial.residenceWeeks ?? initial.weeks ?? 1,
   );
   const [hasAirport, setHasAirport] = useState<boolean>(
-    !!initial.airportId && Boolean(resolvedAirportId),
+    initial.airportPickup ?? Boolean(initial.airportId && resolvedAirportId),
   );
   const [selectedAirportId, setSelectedAirportId] = useState<
     number | undefined
@@ -90,8 +104,10 @@ export default function SchoolBooking({
   const city = getCityById(school.cityId);
 
   const course = useMemo(
-    () => courses.find((item) => item.id === selectedCourseId) ?? courses[0],
-    [courses, selectedCourseId],
+    () =>
+      availableCourses.find((item) => item.id === selectedCourseId) ??
+      availableCourses[0],
+    [availableCourses, selectedCourseId],
   );
 
   const selectedResidence = useMemo(
@@ -120,10 +136,9 @@ export default function SchoolBooking({
 
   const accommodationPrice = useMemo(() => {
     if (!selectedResidence || !hasAccommodation) return 0;
-    const firstPackage = selectedResidence.accPackages?.[0];
-    const firstRoomType = firstPackage?.roomTypes?.[0];
-    const firstPlan = firstRoomType?.roomPlans?.[0];
-    return (firstPlan?.amount ?? 0) * (residenceWeeks || weeks);
+    const firstPlan = selectedResidence.accommodationPlans?.[0];
+    const basePrice = firstPlan?.amount ?? selectedResidence.price ?? 0;
+    return basePrice * (residenceWeeks || weeks);
   }, [selectedResidence, residenceWeeks, weeks, hasAccommodation]);
 
   const transferPrice = useMemo(() => {
@@ -173,14 +188,22 @@ export default function SchoolBooking({
     const params = new URLSearchParams();
     if (selectedCourseId) params.set("course_id", String(selectedCourseId));
     if (startDate) params.set("start_date", startDate);
-    if (weeks) params.set("weeks", String(weeks));
+    if (weeks) {
+      params.set("weeks", String(weeks));
+      params.set("duration_weeks", String(weeks));
+    }
     if (hasAccommodation && selectedResidenceId)
       params.set("residence_id", String(selectedResidenceId));
     if (hasAccommodation && residenceWeeks)
       params.set("residence_weeks", String(residenceWeeks));
     if (hasAirport && selectedAirportId)
       params.set("airport_id", String(selectedAirportId));
+    if (hasAccommodation) params.set("accommodation", "1");
+    if (hasAirport) params.set("airport_pickup", "1");
     if (hasInsurance) params.set("insurance", "1");
+    if (typeof initial.courseTypeId === "number") {
+      params.set("course_type_id", String(initial.courseTypeId));
+    }
 
     const query = params.toString();
     const nextUrl = query ? `${pathname}?${query}` : pathname;
@@ -201,6 +224,7 @@ export default function SchoolBooking({
     hasAirport,
     selectedAirportId,
     hasInsurance,
+    initial.courseTypeId,
     pathname,
     router,
   ]);
@@ -209,7 +233,7 @@ export default function SchoolBooking({
     <div className="bg-linear-to-b from-dark-orange via-light-orange to-white w-full">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
         <div className="rounded-4xl border border-white/40 bg-white/80 p-6 shadow-2xl backdrop-blur-xl sm:p-8">
-          <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="grid gap-6">
             <div className="space-y-6">
               <div className="flex flex-col gap-4 rounded-2xl border border-white/40 bg-white/70 p-5 shadow-sm sm:flex-row sm:items-center">
                 <Image
@@ -220,6 +244,9 @@ export default function SchoolBooking({
                   className="h-28 w-28 rounded-2xl object-cover"
                 />
                 <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.25em] text-dark-orange">
+                    {pageTitle ?? t("pageTitle")}
+                  </p>
                   <h1 className="text-2xl font-bold text-gray-dark">
                     {tx(school.name ?? { en: "School", ar: "مدرسة" }, locale)}
                   </h1>
@@ -237,7 +264,7 @@ export default function SchoolBooking({
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-sm font-semibold text-gray-dark">
-                      Course Start Date
+                      {t("courseStartDate")}
                     </label>
                     <div className="w-full" dir="ltr">
                       <DatePicker
@@ -247,7 +274,7 @@ export default function SchoolBooking({
                             date ? date.toISOString().split("T")[0] : "",
                           )
                         }
-                        placeholderText="Choose start date"
+                        placeholderText={t("chooseStartDate")}
                         filterDate={(date) => date.getDay() === 1}
                         dateFormat="yyyy-MM-dd"
                         className="w-full rounded-2xl border border-white/40 bg-white/70 px-4 py-3 text-sm text-gray-dark outline-none transition focus:border-dark-orange focus:bg-white"
@@ -257,7 +284,7 @@ export default function SchoolBooking({
                   </div>
                   <div>
                     <label className="mb-2 block text-sm font-semibold text-gray-dark">
-                      Study Duration (Weeks)
+                      {t("studyDuration")}
                     </label>
                     <select
                       value={weeks}
@@ -277,11 +304,11 @@ export default function SchoolBooking({
               <section className="rounded-2xl border border-white/40 bg-white/70 p-5 shadow-sm">
                 <div className="flex items-center justify-between">
                   <h2 className="text-lg font-semibold text-gray-dark">
-                    Find Courses
+                    {t("findCourses")}
                   </h2>
                 </div>
-                <div className="mt-4 space-y-3">
-                  {courses.map((item) => {
+                <div className="mt-4 grid gap-4 lg:grid-cols-2">
+                  {availableCourses.map((item) => {
                     const selected = item.id === selectedCourseId;
                     const price =
                       (item.programs
@@ -292,70 +319,87 @@ export default function SchoolBooking({
                           const max = tier.weekRange?.max ?? min;
                           return weeks >= min && weeks <= max;
                         })?.price ?? 0) * weeks;
+                    const lessons =
+                      item.programs
+                        .flatMap((program) => program.courses)
+                        .reduce(
+                          (sum, programCourse) =>
+                            sum + (programCourse.lessonsPerWeek ?? 0),
+                          0,
+                        ) || 0;
+                    const category = courseCategoriesV3.find(
+                      (entry) =>
+                        entry.id ===
+                        (item as Course & { courseCategoryId?: number })
+                          .courseCategoryId,
+                    );
 
                     return (
                       <label
                         key={item.id}
-                        className={`flex cursor-pointer flex-col gap-3 rounded-2xl border p-4 transition ${selected ? "border-dark-orange bg-orange-50" : "border-white/40 bg-white/70"}`}
+                        className={`flex cursor-pointer flex-col overflow-hidden rounded-2xl border shadow-sm transition ${selected ? "border-dark-orange bg-orange-50" : "border-white/40 bg-white/70"}`}
                       >
-                        <div className="flex items-start justify-between gap-3">
-                          <div className="flex items-start gap-3">
-                            <input
-                              type="radio"
-                              name="course"
-                              checked={selected}
-                              onChange={() => setSelectedCourseId(item.id)}
-                              className="mt-1 h-4 w-4 accent-dark-orange"
-                            />
-                            <div>
-                              <h3 className="font-semibold text-gray-dark">
-                                {item.name?.[locale] ?? item.name}
-                              </h3>
-                              <p className="mt-1 text-sm text-gray-dark/70">
-                                {item.description?.[locale] ?? ""}
-                              </p>
-                            </div>
-                          </div>
-                          <div className="text-right">
-                            <p className="text-sm font-semibold text-gray-dark">
-                              {formatPrice(price)}
-                            </p>
-                            <p className="text-xs text-gray-dark/60">
-                              {weeks} weeks
-                            </p>
-                          </div>
+                        <div className="relative h-36">
+                          <Image
+                            src={`/images/courses/course-placeholder.png`}
+                            // src={`/images/courses/${item.image ?? "course-placeholder.png"}`}
+                            alt={item.name?.[locale] ?? "Course"}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="object-cover"
+                          />
                         </div>
-                        <div className="flex flex-wrap gap-3 text-sm text-gray-dark/70">
-                          {item.programs
-                            .flatMap((program) => program.courses)
-                            .map((programCourse, index) => (
-                              <span
-                                key={`${item.id}-${index}`}
-                                className="flex items-center gap-1 rounded-full border border-white/40 bg-white px-2 py-1"
-                              >
+                        <div className="flex flex-1 flex-col justify-between p-4">
+                          <div>
+                            <p className="text-sm text-gray-light">
+                              {category?.categoryName?.[locale] ?? "Course"}
+                            </p>
+                            <h3 className="mt-1 text-lg font-semibold text-gray-dark">
+                              {item.name?.[locale] ?? item.name}
+                            </h3>
+                            <p className="mt-2 text-sm text-gray-dark/70">
+                              {item.description?.[locale] ?? ""}
+                            </p>
+                          </div>
+                          <div className="mt-4 space-y-3">
+                            <div className="grid grid-cols-2 gap-2 text-sm text-gray-dark/70">
+                              <div className="flex items-center gap-2 rounded-full border border-white/40 bg-white px-2 py-1">
                                 <Icon
-                                  icon="mdi:book-open-page-variant"
+                                  icon="mdi:teach"
                                   width={16}
                                   className="text-dark-orange"
                                 />
-                                {programCourse.lessonsPerWeek ?? "-"} lessons
-                              </span>
-                            ))}
-                          <span className="flex items-center gap-1 rounded-full border border-white/40 bg-white px-2 py-1">
-                            <Icon
-                              icon="mdi:clock-outline"
-                              width={16}
-                              className="text-dark-orange"
-                            />
-                            {item.programs
-                              .flatMap((program) => program.courses)
-                              .reduce(
-                                (sum, programCourse) =>
-                                  sum + (programCourse.lessonsPerWeek ?? 0),
-                                0,
-                              )}{" "}
-                            hours
-                          </span>
+                                {t("lessons", { count: lessons })}
+                              </div>
+                              <div className="flex items-center gap-2 rounded-full border border-white/40 bg-white px-2 py-1">
+                                <Icon
+                                  icon="mdi:clock-outline"
+                                  width={16}
+                                  className="text-dark-orange"
+                                />
+                                {t("weekCount", { count: weeks })}
+                              </div>
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <input
+                                  type="radio"
+                                  name="course"
+                                  checked={selected}
+                                  onChange={() => setSelectedCourseId(item.id)}
+                                  className="h-4 w-4 accent-dark-orange"
+                                />
+                                <span className="text-sm text-gray-dark/80">
+                                  {t("select")}
+                                </span>
+                              </div>
+                              <div className="text-right">
+                                <p className="text-sm font-semibold text-gray-dark">
+                                  {formatPrice(price)}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </label>
                     );
@@ -366,7 +410,7 @@ export default function SchoolBooking({
               <section className="rounded-2xl border border-white/40 bg-white/70 p-5 shadow-sm">
                 <div className="flex items-center justify-between">
                   <h2 className="text-lg font-semibold text-gray-dark">
-                    Accommodation
+                    {t("accommodation")}
                   </h2>
                   <label className="flex items-center gap-2 text-sm text-gray-dark">
                     <input
@@ -382,19 +426,40 @@ export default function SchoolBooking({
                       }}
                       className="h-4 w-4 accent-dark-orange"
                     />
-                    Include accommodation
+                    {t("includeAccommodation")}
                   </label>
                 </div>
 
                 {hasAccommodation ? (
                   <div className="mt-4 space-y-4">
+                    <div className="mx-auto max-w-xl">
+                      <label className="mb-2 block text-sm font-semibold text-gray-dark">
+                        {t("accommodationDuration")}
+                      </label>
+                      <select
+                        value={residenceWeeks}
+                        onChange={(event) =>
+                          setResidenceWeeks(Number(event.target.value))
+                        }
+                        className="w-full rounded-2xl border border-white/40 bg-white/70 px-4 py-3 text-sm text-gray-dark outline-none transition focus:border-dark-orange focus:bg-white"
+                      >
+                        {weeksRange.map((week) => (
+                          <option key={week} value={week}>
+                            {t("weekCount", { count: week })}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
                     <div className="space-y-3">
                       {accommodations.map((item) => {
                         const selected = item.id === selectedResidenceId;
-                        const firstPackage = item.accPackages?.[0];
-                        const firstRoomType = firstPackage?.roomTypes?.[0];
-                        const firstPlan = firstRoomType?.roomPlans?.[0];
-                        const packagePrice = firstPlan?.amount ?? 0;
+                        const basePrice =
+                          item.accommodationPlans?.[0]?.amount ??
+                          item.price ??
+                          0;
+                        const totalPrice =
+                          basePrice * (residenceWeeks || weeks);
 
                         return (
                           <label
@@ -414,67 +479,129 @@ export default function SchoolBooking({
                                 />
                                 <div>
                                   <h3 className="font-semibold text-gray-dark">
-                                    {firstPackage
-                                      ? tx(firstPackage.packageName, locale)
-                                      : `Accommodation ${item.id}`}
+                                    {tx(item.accommodationName, locale)}
                                   </h3>
-                                  {firstRoomType && (
+                                  {item.accommodationDescription ? (
                                     <p className="mt-1 text-sm text-gray-dark/70">
-                                      {tx(firstRoomType.roomName, locale)}
+                                      {tx(
+                                        item.accommodationDescription,
+                                        locale,
+                                      )}
                                     </p>
-                                  )}
+                                  ) : null}
+                                  <div className="mt-2 flex flex-wrap gap-2">
+                                    {typeof item.minimumAge === "number" ? (
+                                      <span className="rounded-full border border-white/40 bg-white px-2 py-1 text-xs text-gray-dark/70">
+                                        {t("minAge", { age: item.minimumAge })}
+                                      </span>
+                                    ) : null}
+                                    <span className="rounded-full border border-white/40 bg-white px-2 py-1 text-xs text-gray-dark/70">
+                                      {t(
+                                        `frequency.${item.priceFrequency ?? "weekly"}`,
+                                      )}
+                                    </span>
+                                  </div>
                                 </div>
                               </div>
                               <div className="text-right">
                                 <p className="text-sm font-semibold text-gray-dark">
-                                  {formatPrice(packagePrice)}
+                                  {formatPrice(totalPrice)}
                                 </p>
                                 <p className="text-xs text-gray-dark/60">
-                                  per week
+                                  {t("forWeeks", {
+                                    count: residenceWeeks || weeks,
+                                  })}
                                 </p>
                               </div>
                             </div>
-                            {firstRoomType?.roomPlans &&
-                              firstRoomType.roomPlans.length > 0 && (
-                                <div className="flex flex-wrap gap-3 text-sm text-gray-dark/70">
-                                  {firstRoomType.roomPlans.map(
-                                    (plan, index) => (
-                                      <span
-                                        key={`${item.id}-plan-${index}`}
-                                        className="flex items-center gap-1 rounded-full border border-white/40 bg-white px-2 py-1"
+
+                            <div className="space-y-3 rounded-2xl border border-white/40 bg-white/70 p-3">
+                              {item.location && item.location.length > 0 ? (
+                                <div>
+                                  <p className="text-sm font-semibold text-gray-dark">
+                                    {t("location")}
+                                  </p>
+                                  <div className="mt-2 flex flex-wrap gap-2">
+                                    {item.location.map(
+                                      (location, locationIndex) => (
+                                        <span
+                                          key={`${item.id}-location-${locationIndex}`}
+                                          className="rounded-full border border-white/40 bg-orange-50 px-2 py-1 text-xs text-gray-dark"
+                                        >
+                                          {location.name?.[locale] ??
+                                            location.name?.en}
+                                        </span>
+                                      ),
+                                    )}
+                                  </div>
+                                </div>
+                              ) : null}
+
+                              {item.commuteOptions &&
+                              item.commuteOptions.length > 0 ? (
+                                <div>
+                                  <p className="text-sm font-semibold text-gray-dark">
+                                    {t("commute")}
+                                  </p>
+                                  <div className="mt-2 flex flex-wrap gap-2">
+                                    {item.commuteOptions.map(
+                                      (option, optionIndex) => (
+                                        <span
+                                          key={`${item.id}-commute-${optionIndex}`}
+                                          className="rounded-full border border-white/40 bg-white px-2 py-1 text-xs text-gray-dark"
+                                        >
+                                          {option.transport?.mode?.[locale] ??
+                                            option.transport?.mode?.en}{" "}
+                                          · {option.travelTime.min}-
+                                          {option.travelTime.max}{" "}
+                                          {option.travelTime.unit}
+                                        </span>
+                                      ),
+                                    )}
+                                  </div>
+                                </div>
+                              ) : null}
+
+                              {/* Hidded the */}
+                              {/* <div>
+                                <p className="text-sm font-semibold text-gray-dark">
+                                  {t("plans")}
+                                </p>
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                  {item.accommodationPlans.map(
+                                    (plan, planIndex) => (
+                                      <div
+                                        key={`${item.id}-plan-${planIndex}`}
+                                        className="rounded-xl border border-white/40 bg-white p-3 text-sm"
                                       >
-                                        <Icon
-                                          icon="mdi:bed-outline"
-                                          width={16}
-                                          className="text-dark-orange"
-                                        />
-                                        {tx(plan.planName, locale)}
-                                      </span>
+                                        <p className="font-medium text-gray-dark">
+                                          {tx(plan.planName, locale)}
+                                        </p>
+                                        <p className="mt-1 text-xs text-gray-dark/70">
+                                          {formatPrice(plan.amount)} /{" "}
+                                          {plan.frequency}
+                                        </p>
+                                        <p className="mt-1 text-xs font-semibold text-dark-orange">
+                                          {formatPrice(
+                                            plan.amount *
+                                              (residenceWeeks || weeks),
+                                          )}
+                                        </p>
+                                      </div>
                                     ),
                                   )}
                                 </div>
-                              )}
+                              </div> */}
+
+                              {item.note ? (
+                                <p className="text-sm text-gray-dark/70">
+                                  {tx(item.note, locale)}
+                                </p>
+                              ) : null}
+                            </div>
                           </label>
                         );
                       })}
-                    </div>
-                    <div>
-                      <label className="mb-2 block text-sm font-semibold text-gray-dark">
-                        Accommodation Duration (Weeks)
-                      </label>
-                      <select
-                        value={residenceWeeks}
-                        onChange={(event) =>
-                          setResidenceWeeks(Number(event.target.value))
-                        }
-                        className="w-full rounded-2xl border border-white/40 bg-white/70 px-4 py-3 text-sm text-gray-dark outline-none transition focus:border-dark-orange focus:bg-white"
-                      >
-                        {weeksRange.map((week) => (
-                          <option key={week} value={week}>
-                            {week} week{week > 1 ? "s" : ""}
-                          </option>
-                        ))}
-                      </select>
                     </div>
                   </div>
                 ) : null}
@@ -483,7 +610,7 @@ export default function SchoolBooking({
               <section className="rounded-2xl border border-white/40 bg-white/70 p-5 shadow-sm">
                 <div className="flex items-center justify-between">
                   <h2 className="text-lg font-semibold text-gray-dark">
-                    Airport Pickup
+                    {t("airportPickup")}
                   </h2>
                   <label className="flex items-center gap-2 text-sm text-gray-dark">
                     <input
@@ -499,24 +626,98 @@ export default function SchoolBooking({
                       }}
                       className="h-4 w-4 accent-dark-orange"
                     />
-                    Include airport transfer
+                    {t("includeAirportTransfer")}
                   </label>
                 </div>
                 {hasAirport ? (
-                  <div className="mt-4">
-                    <select
-                      value={selectedAirportId ?? ""}
-                      onChange={(event) =>
-                        setSelectedAirportId(Number(event.target.value))
-                      }
-                      className="w-full rounded-2xl border border-white/40 bg-white/70 px-4 py-3 text-sm text-gray-dark outline-none transition focus:border-dark-orange focus:bg-white"
-                    >
-                      {transfers.map((item) => (
-                        <option key={item.id} value={item.id}>
-                          {item.serviceName?.[locale] ?? `Transfer ${item.id}`}
-                        </option>
-                      ))}
-                    </select>
+                  <div className="mt-4 space-y-3">
+                    {transfers.map((item) => {
+                      const selected = item.id === selectedAirportId;
+                      const firstOption =
+                        item.transferPackages?.[0]?.transferOptions?.[0];
+                      const amount = firstOption?.amount ?? 0;
+                      const pickupLocation = firstOption?.pickupLocation;
+                      const tripType = firstOption?.tripType;
+
+                      return (
+                        <label
+                          key={item.id}
+                          className={`flex cursor-pointer flex-col gap-3 rounded-2xl border p-4 transition ${selected ? "border-dark-orange bg-orange-50" : "border-white/40 bg-white/70"}`}
+                        >
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex items-start gap-3">
+                              <input
+                                type="radio"
+                                name="transfer"
+                                checked={selected}
+                                onChange={() => setSelectedAirportId(item.id)}
+                                className="mt-1 h-4 w-4 accent-dark-orange"
+                              />
+                              <div>
+                                <h3 className="font-semibold text-gray-dark">
+                                  {tx(item.serviceName, locale)}
+                                </h3>
+                                {item.serviceNote ? (
+                                  <p className="mt-1 text-sm text-gray-dark/70">
+                                    {tx(item.serviceNote, locale)}
+                                  </p>
+                                ) : null}
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                  {pickupLocation ? (
+                                    <span className="rounded-full border border-white/40 bg-white px-2 py-1 text-xs text-gray-dark/70">
+                                      {t("pickup", {
+                                        location: tx(pickupLocation, locale),
+                                      })}
+                                    </span>
+                                  ) : null}
+                                  <span className="rounded-full border border-white/40 bg-white px-2 py-1 text-xs text-gray-dark/70">
+                                    {tripType === "roundTrip"
+                                      ? t("roundTrip")
+                                      : t("oneWay")}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-sm font-semibold text-gray-dark">
+                                {formatPrice(amount)}
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* <div className="space-y-2 rounded-2xl border border-white/40 bg-blue-600/70 p-3">
+                            {item.transferPackages?.map((pkg, pkgIndex) => (
+                              <div key={`${item.id}-package-${pkgIndex}`}>
+                                <p className="text-sm font-semibold text-gray-dark">
+                                  {tx(pkg.packageName, locale)}
+                                </p>
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                  {pkg.transferOptions.map(
+                                    (option, optionIndex) => (
+                                      <div
+                                        key={`${item.id}-option-${pkgIndex}-${optionIndex}`}
+                                        className="rounded-xl border border-white/40 bg-white p-3 text-sm"
+                                      >
+                                        <p className="font-medium text-gray-dark">
+                                          {tx(option.optionName, locale)}
+                                        </p>
+                                        <p className="mt-1 text-xs text-gray-dark/70">
+                                          Pickup:{" "}
+                                          {tx(option.pickupLocation, locale)}
+                                        </p>
+                                        <p className="mt-1 text-xs font-semibold text-dark-orange">
+                                          {formatPrice(option.amount)}
+                                        </p>
+                                      </div>
+                                    ),
+                                  )}
+                                </div>
+                              </div>
+                            ))}
+                          </div> */}
+                        </label>
+                      );
+                    })}
                   </div>
                 ) : null}
               </section>
@@ -524,7 +725,7 @@ export default function SchoolBooking({
               <section className="rounded-2xl border border-white/40 bg-white/70 p-5 shadow-sm">
                 <div className="flex items-center justify-between">
                   <h2 className="text-lg font-semibold text-gray-dark">
-                    Insurance
+                    {t("insurance")}
                   </h2>
                   <label className="flex items-center gap-2 text-sm text-gray-dark">
                     <input
@@ -535,46 +736,43 @@ export default function SchoolBooking({
                       }
                       className="h-4 w-4 accent-dark-orange"
                     />
-                    Add insurance
+                    {t("addInsurance")}
                   </label>
                 </div>
               </section>
             </div>
 
             <aside className="rounded-4xl border border-white/40 bg-white/80 p-6 shadow-xl">
-              <h2 className="text-xl font-semibold text-gray-dark">Summary</h2>
+              <h2 className="text-xl font-semibold text-gray-dark">
+                {t("summary")}
+              </h2>
               <div className="mt-4 space-y-3 text-sm text-gray-dark/80">
                 <div className="flex items-center justify-between border-b border-gray-100 pb-2">
-                  <span>Course</span>
+                  <span>{t("course")}</span>
                   <span>{formatPrice(coursePrice)}</span>
                 </div>
                 <div className="flex items-center justify-between border-b border-gray-100 pb-2">
-                  <span>Accommodation</span>
+                  <span>{t("accommodation")}</span>
                   <span>{formatPrice(accommodationPrice)}</span>
                 </div>
                 <div className="flex items-center justify-between border-b border-gray-100 pb-2">
-                  <span>Airport Pickup</span>
+                  <span>{t("airportPickup")}</span>
                   <span>{formatPrice(transferPrice)}</span>
                 </div>
                 <div className="flex items-center justify-between border-b border-gray-100 pb-2">
-                  <span>Insurance</span>
+                  <span>{t("insurance")}</span>
                   <span>{formatPrice(insurancePrice)}</span>
                 </div>
                 <div className="flex items-center justify-between border-b border-gray-100 pb-2">
-                  <span>Fixed fees</span>
+                  <span>{t("fixedFees")}</span>
                   <span>{formatPrice(fixedFeesTotal)}</span>
                 </div>
               </div>
 
-              <div className="mt-5 rounded-2xl bg-dark-orange/10 p-4">
-                <div className="flex items-center justify-between text-lg font-semibold text-gray-dark">
-                  <span>Subtotal</span>
-                  <span>{formatPrice(subtotal)}</span>
-                </div>
-              </div>
-
               <div className="mt-6 space-y-3">
-                <h3 className="font-semibold text-gray-dark">Fixed Fees</h3>
+                <h3 className="font-semibold text-gray-dark">
+                  {t("fixedFeeSection")}
+                </h3>
                 {school.fees
                   .filter((fee) => fee.frequency === "fixed")
                   .map((fee) => (
@@ -595,6 +793,12 @@ export default function SchoolBooking({
                       </p>
                     </div>
                   ))}
+              </div>
+              <div className="mt-5 rounded-2xl bg-dark-orange/10 p-4">
+                <div className="flex items-center justify-between text-lg font-semibold text-gray-dark">
+                  <span>{t("subtotal")}</span>
+                  <span>{formatPrice(subtotal)}</span>
+                </div>
               </div>
             </aside>
           </div>
