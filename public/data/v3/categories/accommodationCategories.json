@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": {
+      "en": "Homestay",
+      "ar": "الإقامة مع عائلة"
+    },
+    "slug": "homestay"
+  },
+  {
+    "id": 2,
+    "name": {
+      "en": "Student Residence",
+      "ar": "إقامة الطلاب"
+    },
+    "slug": "student-residence"
+  },
+  {
+    "id": 3,
+    "name": {
+      "en": "Hotel",
+      "ar": "فندق"
+    },
+    "slug": "hotel"
+  }
+]

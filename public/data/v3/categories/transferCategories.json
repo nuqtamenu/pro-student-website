@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": { "en": "Airport Pickup", "ar": "استقبال من المطار" },
+    "slug": "airport-pickup"
+  },
+  {
+    "id": 2,
+    "name": { "en": "Airport Dropoff", "ar": "توصيل إلى المطار" },
+    "slug": "airport-dropoff"
+  },
+  {
+    "id": 3,
+    "name": { "en": "Train Station Pickup", "ar": "استقبال من محطة القطار" },
+    "slug": "train-station-pickup"
+  },
+  {
+    "id": 4,
+    "name": { "en": "Train Station Dropoff", "ar": "توصيل إلى محطة القطار" },
+    "slug": "train-station-dropoff"
+  }
+]

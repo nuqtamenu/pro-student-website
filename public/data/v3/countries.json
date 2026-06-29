@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "name": { "en": "United Kingdom", "ar": "المملكة المتحدة" },
+    "description": {
+      "en": "Study English or professional courses across historic and vibrant cities in the UK.",
+      "ar": "دراسة اللغة الإنجليزية أو الدورات المهنية في مدن تاريخية وحيوية في المملكة المتحدة."
+    },
+    "slug": "united-kingdom",
+    "image": "united-kingdom.jpg",
+    "currency": {
+      "currencyName": "British Pound",
+      "currencyIcon": "£",
+      "currencyCode": "GBP"
+    }
+  },
+  {
+    "id": 2,
+    "name": { "en": "Canada", "ar": "كندا" },
+    "description": {
+      "en": "Experience world-class education and outdoor adventures in premier Canadian destinations.",
+      "ar": "تجربة تعليم عالمي المستوى ومغامرات في الهواء الطلق في وجهات كندية متميزة."
+    },
+    "slug": "canada",
+    "image": "canada.jpg",
+    "currency": {
+      "currencyName": "Canadian Dollar",
+      "currencyIcon": "$",
+      "currencyCode": "CAD"
+    }
+  },
+  {
+    "id": 3,
+    "name": { "en": "France", "ar": "فرنسا" },
+    "description": {
+      "en": "Immerse yourself in French culture and language learning in the heart of Paris.",
+      "ar": "انغمس في الثقافة الفرنسية وتعلم اللغة في قلب باريس."
+    },
+    "slug": "france",
+    "image": "france.jpg",
+    "currency": {
+      "currencyName": "Euro",
+      "currencyIcon": "€",
+      "currencyCode": "EUR"
+    }
+  },
+  {
+    "id": 4,
+    "name": { "en": "South Africa", "ar": "جنوب أفريقيا" },
+    "description": {
+      "en": "Learn English surrounded by beautiful coastal landscapes and vibrant wildlife in Cape Town.",
+      "ar": "تعلم اللغة الإنجليزية محاطًا بالمناظر الساحلية الجميلة والحياة البرية النابضة بالحياة في كيب تاون."
+    },
+    "slug": "south-africa",
+    "image": "south-africa.jpg",
+    "currency": {
+      "currencyName": "South African Rand",
+      "currencyIcon": "R",
+      "currencyCode": "ZAR"
+    }
+  },
+  {
+    "id": 5,
+    "name": { "en": "Cyprus", "ar": "قبرص" },
+    "description": {
+      "en": "Enjoy Mediterranean sunshine while accelerating your language proficiency in Limassol.",
+      "ar": "استمتع بأشعة شمس البحر الأبيض المتوسط أثناء تسريع كفاءتك اللغوية في ليماسول."
+    },
+    "slug": "cyprus",
+    "image": "cyprus.jpg",
+    "currency": {
+      "currencyName": "Euro",
+      "currencyIcon": "€",
+      "currencyCode": "EUR"
+    }
+  }
+]

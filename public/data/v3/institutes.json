@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": { "en": "Bayswater", "ar": "بايسووتر" },
+    "description": {
+      "en": "We think differently about education, offering global upskilling experiences that prepare students for the future of work.",
+      "ar": "نفكر بشكل مختلف في التعليم، حيث نقدم خبرات صقل المهارات العالمية التي تعد الطلاب لمستقبل العمل."
+    },
+    "slug": "bayswater",
+    "logo": "bayswater-logo.png",
+    "image": "bayswater-brand.jpg",
+    "schools": []
+  }
+]

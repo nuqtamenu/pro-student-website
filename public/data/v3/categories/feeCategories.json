@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": { "en": "Admission Fee", "ar": "رسوم القبول" },
+    "slug": "admission-fee"
+  },
+  {
+    "id": 2,
+    "name": { "en": "Material Fee", "ar": "رسوم المواد" },
+    "slug": "material-fee"
+  },
+  {
+    "id": 3,
+    "name": { "en": "Exam Fee", "ar": "رسوم الامتحان" },
+    "slug": "exam-fee"
+  },
+  {
+    "id": 4,
+    "name": { "en": "Insurance Fee", "ar": "رسوم التأمين" },
+    "slug": "insurance-fee"
+  }
+]

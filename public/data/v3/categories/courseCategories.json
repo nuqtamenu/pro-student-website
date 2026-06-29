@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "name": { "en": "General English", "ar": "اللغة الإنجليزية العامة" },
+    "slug": "general-english"
+  },
+  {
+    "id": 2,
+    "name": { "en": "Business English", "ar": "اللغة الإنجليزية للأعمال" },
+    "slug": "business-english"
+  },
+  {
+    "id": 3,
+    "name": { "en": "Exam Preparation", "ar": "التحضير للامتحانات" },
+    "slug": "exam-preparation"
+  },
+  {
+    "id": 4,
+    "name": {
+      "en": "English for Specific Purposes",
+      "ar": "اللغة الإنجليزية لأغراض محددة"
+    },
+    "slug": "english-for-specific-purposes"
+  },
+  {
+    "id": 5,
+    "name": { "en": "Other Courses", "ar": "دورات أخرى" },
+    "slug": "other-courses"
+  },
+  {
+    "id": 6,
+    "name": { "en": "IELTS Preparation", "ar": "التحضير لامتحان IELTS" },
+    "slug": "ielts-preparation"
+  }
+]
