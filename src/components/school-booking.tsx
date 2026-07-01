@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import { Icon } from "@iconify/react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useTranslations } from "next-intl";
@@ -12,14 +11,24 @@ import {
   courseCategoriesV3,
   getCityById,
   getCountryById,
-} from "@/lib/v2-search-data";
+} from "../lib/search-data";
 import {
+  type AccommodationAddon,
+  type Category,
   type Course,
+  type CourseAddon,
   type School,
   type Accommodation,
   type Transfer,
-} from "@/lib/new_data";
+} from "@/lib/v4-dsa";
 import Image from "next/image";
+import courseAddonsData from "../../public/data/v4/courseAddons.json";
+import accommodationAddonsData from "../../public/data/v4/accommodationAddons.json";
+import accommodationCategoriesData from "../../public/data/v4/categories.json";
+import CourseSelectCard from "./course-select-card";
+import CourseAddonSelectCard from "./course-addon-select-card";
+import AccommodationSelectCard from "./accommodation-select-card";
+import TransferSelectCard from "./transfer-select-card";
 
 const weeksRange = Array.from({ length: 48 }, (_, index) => index + 1);
 
@@ -51,6 +60,8 @@ export default function SchoolBooking({
     accommodation?: boolean;
     airportPickup?: boolean;
     insurance?: boolean;
+    courseAddonIds?: number[];
+    accommodationAddonIds?: number[];
   };
   locale: Locale;
   pageTitle?: string;
@@ -61,6 +72,14 @@ export default function SchoolBooking({
   const hasMounted = useRef(false);
 
   const availableCourses = useMemo(() => courses, [courses]);
+  const availableCourseAddons = useMemo(() => {
+    return (courseAddonsData as CourseAddon[]).filter(
+      (addon): addon is CourseAddon =>
+        addon.schoolId === school.id &&
+        typeof addon.price === "number" &&
+        Boolean(addon.addonName),
+    );
+  }, [school.id]);
 
   const resolvedCourseId =
     initial.courseId &&
@@ -88,6 +107,10 @@ export default function SchoolBooking({
   const [selectedResidenceId, setSelectedResidenceId] = useState<
     number | undefined
   >(resolvedResidenceId);
+  const [selectedAccommodationTypeId, setSelectedAccommodationTypeId] =
+    useState<number | "all">("all");
+  const [selectedAccommodationAddonIds, setSelectedAccommodationAddonIds] =
+    useState<number[]>(initial.accommodationAddonIds ?? []);
   const [residenceWeeks, setResidenceWeeks] = useState<number>(
     initial.residenceWeeks ?? initial.weeks ?? 1,
   );
@@ -99,6 +122,9 @@ export default function SchoolBooking({
   >(resolvedAirportId);
   const [hasInsurance, setHasInsurance] = useState<boolean>(
     !!initial.insurance,
+  );
+  const [selectedAddonIds, setSelectedAddonIds] = useState<number[]>(
+    initial.courseAddonIds ?? [],
   );
 
   const country = getCountryById(school.countryId);
@@ -121,60 +147,125 @@ export default function SchoolBooking({
     [transfers, selectedAirportId],
   );
 
+  const accommodationTypeOptions = useMemo(() => {
+    return (accommodationCategoriesData as Category[]).filter(
+      (category) => category.type === "accommodation",
+    );
+  }, []);
+
+  const filteredAccommodations = useMemo(() => {
+    if (selectedAccommodationTypeId === "all") {
+      return accommodations;
+    }
+
+    return accommodations.filter(
+      (item) => item.categoryId === selectedAccommodationTypeId,
+    );
+  }, [accommodations, selectedAccommodationTypeId]);
+
+  const availableAccommodationAddons = useMemo(() => {
+    if (!hasAccommodation || !selectedResidence?.categoryId) {
+      return [];
+    }
+
+    return (accommodationAddonsData as AccommodationAddon[]).filter(
+      (addon) =>
+        addon.schoolId === school.id &&
+        addon.categoryId === selectedResidence.categoryId &&
+        typeof addon.amount === "number",
+    );
+  }, [hasAccommodation, school.id, selectedResidence]);
+
+  const activeAccommodationAddonIds = useMemo(() => {
+    const availableIds = new Set(
+      availableAccommodationAddons.map((addon) => addon.id),
+    );
+    return selectedAccommodationAddonIds.filter((id) => availableIds.has(id));
+  }, [availableAccommodationAddons, selectedAccommodationAddonIds]);
+
+  const selectedAccommodationAddons = useMemo(
+    () =>
+      availableAccommodationAddons.filter((addon) =>
+        activeAccommodationAddonIds.includes(addon.id),
+      ),
+    [activeAccommodationAddonIds, availableAccommodationAddons],
+  );
+
+  const accommodationAddonsPrice = useMemo(() => {
+    return selectedAccommodationAddons.reduce(
+      (sum, addon) => sum + addon.amount * (residenceWeeks || weeks),
+      0,
+    );
+  }, [residenceWeeks, selectedAccommodationAddons, weeks]);
+
   const coursePrice = useMemo(() => {
     if (!course) return 0;
-    const priceTier = course.programs
-      .flatMap((program) => program.courses)
-      .flatMap((programCourse) => programCourse.pricingTiers)
-      .find((tier) => {
-        const min = tier.weekRange?.min ?? 1;
-        const max = tier.weekRange?.max ?? min;
-        return weeks >= min && weeks <= max;
-      });
+    const priceTier = course.coursePlans.find((plan) => {
+      const min = plan.weekRange?.min ?? 1;
+      const max = plan.weekRange?.max ?? min;
+      return weeks >= min && weeks <= max;
+    });
 
-    return (priceTier?.price ?? 0) * weeks;
+    return (priceTier?.price ?? course.coursePlans[0]?.price ?? 0) * weeks;
   }, [course, weeks]);
+
+  const selectedCourseAddons = useMemo(
+    () =>
+      availableCourseAddons.filter((addon) =>
+        selectedAddonIds.includes(addon.id),
+      ),
+    [availableCourseAddons, selectedAddonIds],
+  );
+
+  const courseAddonsPrice = useMemo(() => {
+    return selectedCourseAddons.reduce(
+      (sum, addon) => sum + addon.price * weeks,
+      0,
+    );
+  }, [selectedCourseAddons, weeks]);
 
   const accommodationPrice = useMemo(() => {
     if (!selectedResidence || !hasAccommodation) return 0;
-    const firstPlan = selectedResidence.accommodationPlans?.[0];
-    const basePrice = firstPlan?.amount ?? selectedResidence.price ?? 0;
+    const basePrice = selectedResidence.price ?? 0;
     return basePrice * (residenceWeeks || weeks);
   }, [selectedResidence, residenceWeeks, weeks, hasAccommodation]);
 
   const transferPrice = useMemo(() => {
     if (!selectedAirport || !hasAirport) return 0;
-    const firstPackage = selectedAirport.transferPackages?.[0];
-    return firstPackage?.transferOptions?.[0]?.amount ?? 0;
+    return selectedAirport.amount ?? 0;
   }, [selectedAirport, hasAirport]);
 
   const insurancePrice = useMemo(() => {
     if (!hasInsurance) return 0;
     const insuranceFee = school.fees.find((fee) => {
-      const name = fee.name?.en?.toLowerCase() ?? "";
-      const arabicName = fee.name?.ar?.toLowerCase() ?? "";
+      const name = fee.feeName?.en?.toLowerCase() ?? "";
+      const arabicName = fee.feeName?.ar?.toLowerCase() ?? "";
       return name.includes("insurance") || arabicName.includes("التأمين");
     });
-    return (insuranceFee?.amount ?? 0) * weeks;
+    return (insuranceFee?.feeAmount ?? 0) * weeks;
   }, [hasInsurance, school.fees, weeks]);
 
   const fixedFeesTotal = useMemo(() => {
     return school.fees
-      .filter((fee) => fee.frequency === "fixed")
-      .reduce((sum, fee) => sum + fee.amount, 0);
+      .filter((fee) => fee.feeFrequency === "fixed")
+      .reduce((sum, fee) => sum + fee.feeAmount, 0);
   }, [school.fees]);
 
   const subtotal = useMemo(() => {
     return (
       coursePrice +
+      courseAddonsPrice +
       accommodationPrice +
+      accommodationAddonsPrice +
       transferPrice +
       insurancePrice +
       fixedFeesTotal
     );
   }, [
     coursePrice,
+    courseAddonsPrice,
     accommodationPrice,
+    accommodationAddonsPrice,
     transferPrice,
     insurancePrice,
     fixedFeesTotal,
@@ -202,6 +293,19 @@ export default function SchoolBooking({
     if (hasAccommodation) params.set("accommodation", "1");
     if (hasAirport) params.set("airport_pickup", "1");
     if (hasInsurance) params.set("insurance", "1");
+    if (selectedAddonIds.length > 0) {
+      params.set("course_addon_ids", selectedAddonIds.join(","));
+    } else {
+      params.delete("course_addon_ids");
+    }
+    if (activeAccommodationAddonIds.length > 0) {
+      params.set(
+        "accommodation_addon_ids",
+        activeAccommodationAddonIds.join(","),
+      );
+    } else {
+      params.delete("accommodation_addon_ids");
+    }
     if (typeof initial.courseTypeId === "number") {
       params.set("course_type_id", String(initial.courseTypeId));
     }
@@ -225,6 +329,8 @@ export default function SchoolBooking({
     hasAirport,
     selectedAirportId,
     hasInsurance,
+    selectedAddonIds,
+    activeAccommodationAddonIds,
     initial.courseTypeId,
     pathname,
     router,
@@ -239,7 +345,7 @@ export default function SchoolBooking({
               <div className="flex flex-col gap-4 rounded-2xl border border-white/40 bg-white/70 p-5 shadow-sm sm:flex-row sm:items-center">
                 <Image
                   src={`/images/schools/bayswater-english-school.png`}
-                  alt={school.name?.[locale] ?? t("school")}
+                  alt={school.schoolName?.[locale] ?? t("school")}
                   width={200}
                   height={200}
                   className="h-28 w-28 rounded-2xl object-cover"
@@ -249,18 +355,22 @@ export default function SchoolBooking({
                     {pageTitle ?? t("pageTitle")}
                   </p>
                   <h1 className="text-2xl font-bold text-gray-dark">
-                    {tx(school.name ?? { en: "School", ar: "مدرسة" }, locale)}
+                    {tx(
+                      school.schoolName ?? { en: "School", ar: "مدرسة" },
+                      locale,
+                    )}
                   </h1>
                   <p className="mt-1 text-sm text-gray-dark/70">
-                    {city ? tx(city.name, locale) : ""},{" "}
-                    {country ? tx(country.name, locale) : ""}
+                    {city ? tx(city.cityName, locale) : ""},{" "}
+                    {country ? tx(country.countryName, locale) : ""}
                   </p>
                   <p className="mt-2 text-sm text-gray-dark/75">
-                    {tx(school.description ?? { en: "", ar: "" }, locale)}
+                    {tx(school.schoolDescription ?? { en: "", ar: "" }, locale)}
                   </p>
                 </div>
               </div>
 
+              {/* Booking configuration section: start date and study duration */}
               <section className="rounded-2xl border border-white/40 bg-white/70 p-5 shadow-sm">
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
@@ -302,6 +412,7 @@ export default function SchoolBooking({
                 </div>
               </section>
 
+              {/* Course selection section */}
               <section className="rounded-2xl border border-white/40 bg-white/70 p-5 shadow-sm">
                 <div className="flex items-center justify-between">
                   <h2 className="text-lg font-semibold text-gray-dark">
@@ -311,103 +422,85 @@ export default function SchoolBooking({
                 <div className="mt-4 grid gap-4 lg:grid-cols-3">
                   {availableCourses.map((item) => {
                     const selected = item.id === selectedCourseId;
+                    const selectedPlan = item.coursePlans.find((plan) => {
+                      const min = plan.weekRange?.min ?? 1;
+                      const max = plan.weekRange?.max ?? min;
+                      return weeks >= min && weeks <= max;
+                    });
                     const price =
-                      (item.programs
-                        ?.flatMap((program) => program.courses)
-                        .flatMap((programCourse) => programCourse.pricingTiers)
-                        .find((tier) => {
-                          const min = tier.weekRange?.min ?? 1;
-                          const max = tier.weekRange?.max ?? min;
-                          return weeks >= min && weeks <= max;
-                        })?.price ?? 0) * weeks;
-                    const lessons =
-                      item.programs
-                        .flatMap((program) => program.courses)
-                        .reduce(
-                          (sum, programCourse) =>
-                            sum + (programCourse.lessonsPerWeek ?? 0),
-                          0,
-                        ) || 0;
+                      (selectedPlan?.price ?? item.coursePlans[0]?.price ?? 0) *
+                      weeks;
+                    const lessons = selectedPlan?.lessonsPerWeek ?? 0;
+                    const hours =
+                      item.oneLessonMins && lessons
+                        ? Math.round((lessons * item.oneLessonMins) / 60)
+                        : 0;
                     const category = courseCategoriesV3.find(
-                      (entry) =>
-                        entry.id ===
-                        (item as Course & { courseCategoryId?: number })
-                          .courseCategoryId,
+                      (entry) => entry.id === item.categoryId,
                     );
 
                     return (
-                      <label
+                      <CourseSelectCard
                         key={item.id}
-                        className={`flex cursor-pointer flex-col overflow-hidden rounded-2xl border shadow-sm transition ${selected ? "border-dark-orange bg-orange-50" : "border-white/40 bg-white/70"}`}
-                      >
-                        <div className="relative h-36">
-                          <Image
-                            src={`/images/courses/course-placeholder.png`}
-                            // src={`/images/courses/${item.image ?? "course-placeholder.png"}`}
-                            alt={item.name?.[locale] ?? t("course")}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                            className="object-cover"
-                          />
-                        </div>
-                        <div className="flex flex-1 flex-col justify-between p-4">
-                          <div>
-                            <p className="text-sm text-gray-light">
-                              {category?.categoryName?.[locale] ?? t("course")}
-                            </p>
-                            <h3 className="mt-1 text-lg font-semibold text-gray-dark">
-                              {item.name?.[locale] ?? item.name}
-                            </h3>
-                            <p className="mt-2 text-sm text-gray-dark/70">
-                              {item.description?.[locale] ?? ""}
-                            </p>
-                          </div>
-                          <div className="mt-4 space-y-3">
-                            <div className="grid grid-cols-2 gap-2 text-sm text-gray-dark/70">
-                              <div className="flex items-center gap-2 rounded-full border border-white/40 bg-white px-2 py-1">
-                                <Icon
-                                  icon="mdi:teach"
-                                  width={16}
-                                  className="text-dark-orange"
-                                />
-                                {t("lessons", { count: lessons })}
-                              </div>
-                              <div className="flex items-center gap-2 rounded-full border border-white/40 bg-white px-2 py-1">
-                                <Icon
-                                  icon="mdi:clock-outline"
-                                  width={16}
-                                  className="text-dark-orange"
-                                />
-                                {t("weekCount", { count: weeks })}
-                              </div>
-                            </div>
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <input
-                                  type="radio"
-                                  name="course"
-                                  checked={selected}
-                                  onChange={() => setSelectedCourseId(item.id)}
-                                  className="h-4 w-4 accent-dark-orange"
-                                />
-                                <span className="text-sm text-gray-dark/80">
-                                  {t("select")}
-                                </span>
-                              </div>
-                              <div className="text-right">
-                                <p className="text-sm font-semibold text-gray-dark">
-                                  {formatPrice(price)}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </label>
+                        course={item}
+                        locale={locale}
+                        selected={selected}
+                        lessons={lessons}
+                        hours={hours}
+                        price={price}
+                        categoryLabel={
+                          category?.categoryName?.[locale] ?? t("course")
+                        }
+                        onSelect={() => setSelectedCourseId(item.id)}
+                        formatPrice={formatPrice}
+                      />
                     );
                   })}
                 </div>
               </section>
 
+              {/* Optional course addon selection */}
+              <section className="rounded-2xl border border-white/40 bg-white/70 p-5 shadow-sm">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-lg font-semibold text-gray-dark">
+                    {t("courseAddons")}
+                  </h2>
+                </div>
+                <p className="mt-2 text-sm text-gray-dark/70">
+                  {t("courseAddonsDescription")}
+                </p>
+                {availableCourseAddons.length > 0 ? (
+                  <div className="mt-4 space-y-3">
+                    {availableCourseAddons.map((addon) => {
+                      const selected = selectedAddonIds.includes(addon.id);
+
+                      return (
+                        <CourseAddonSelectCard
+                          key={addon.id}
+                          addon={addon}
+                          locale={locale}
+                          selected={selected}
+                          weeks={weeks}
+                          onToggle={() => {
+                            setSelectedAddonIds((current) =>
+                              current.includes(addon.id)
+                                ? current.filter((id) => id !== addon.id)
+                                : [...current, addon.id],
+                            );
+                          }}
+                          formatPrice={formatPrice}
+                        />
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <p className="mt-4 text-sm text-gray-dark/70">
+                    {t("noCourseAddons")}
+                  </p>
+                )}
+              </section>
+
+              {/* Accommodation selection section */}
               <section className="rounded-2xl border border-white/40 bg-white/70 p-5 shadow-sm">
                 <div className="flex items-center justify-between">
                   <h2 className="text-lg font-semibold text-gray-dark">
@@ -418,9 +511,11 @@ export default function SchoolBooking({
                       type="checkbox"
                       checked={hasAccommodation}
                       onChange={(event) => {
-                        setHasAccommodation(event.target.checked);
-                        if (!event.target.checked) {
+                        const checked = event.target.checked;
+                        setHasAccommodation(checked);
+                        if (!checked) {
                           setSelectedResidenceId(undefined);
+                          setSelectedAccommodationAddonIds([]);
                         } else if (!selectedResidenceId && accommodations[0]) {
                           setSelectedResidenceId(accommodations[0].id);
                         }
@@ -433,181 +528,205 @@ export default function SchoolBooking({
 
                 {hasAccommodation ? (
                   <div className="mt-4 space-y-4">
-                    <div className="mx-auto max-w-xl">
-                      <label className="mb-2 block text-sm font-semibold text-gray-dark">
-                        {t("accommodationDuration")}
-                      </label>
-                      <select
-                        value={residenceWeeks}
-                        onChange={(event) =>
-                          setResidenceWeeks(Number(event.target.value))
-                        }
-                        className="w-full rounded-2xl border border-white/40 bg-white/70 px-4 py-3 text-sm text-gray-dark outline-none transition focus:border-dark-orange focus:bg-white"
-                      >
-                        {weeksRange.map((week) => (
-                          <option key={week} value={week}>
-                            {t("weekCount", { count: week })}
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <div>
+                        <label className="mb-2 block text-sm font-semibold text-gray-dark">
+                          {t("accommodationDuration")}
+                        </label>
+                        <select
+                          value={residenceWeeks}
+                          onChange={(event) =>
+                            setResidenceWeeks(Number(event.target.value))
+                          }
+                          className="w-full rounded-2xl border border-white/40 bg-white/70 px-4 py-3 text-sm text-gray-dark outline-none transition focus:border-dark-orange focus:bg-white"
+                        >
+                          {weeksRange.map((week) => (
+                            <option key={week} value={week}>
+                              {t("weekCount", { count: week })}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="mb-2 block text-sm font-semibold text-gray-dark">
+                          {t("accommodationType")}
+                        </label>
+                        <select
+                          value={selectedAccommodationTypeId}
+                          onChange={(event) => {
+                            const nextValue = event.target.value;
+                            const nextTypeId =
+                              nextValue === "all" ? "all" : Number(nextValue);
+                            const nextMatches =
+                              nextTypeId === "all"
+                                ? accommodations
+                                : accommodations.filter(
+                                    (item) => item.categoryId === nextTypeId,
+                                  );
+
+                            setSelectedAccommodationTypeId(nextTypeId);
+
+                            if (
+                              !selectedResidenceId ||
+                              !nextMatches.some(
+                                (item) => item.id === selectedResidenceId,
+                              )
+                            ) {
+                              setSelectedResidenceId(nextMatches[0]?.id);
+                            }
+                          }}
+                          className="w-full rounded-2xl border border-white/40 bg-white/70 px-4 py-3 text-sm text-gray-dark outline-none transition focus:border-dark-orange focus:bg-white"
+                        >
+                          <option value="all">
+                            {t("allAccommodationTypes")}
                           </option>
-                        ))}
-                      </select>
+                          {accommodationTypeOptions.map((category) => (
+                            <option key={category.id} value={category.id}>
+                              {tx(category.categoryName, locale)}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
 
-                    <div className="space-y-3">
-                      {accommodations.map((item) => {
-                        const selected = item.id === selectedResidenceId;
-                        const basePrice =
-                          item.accommodationPlans?.[0]?.amount ??
-                          item.price ??
-                          0;
-                        const totalPrice =
-                          basePrice * (residenceWeeks || weeks);
+                    {filteredAccommodations.length > 0 ? (
+                      <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                        {filteredAccommodations.map((item) => {
+                          const selected = item.id === selectedResidenceId;
+                          const basePrice = item.price ?? 0;
+                          const totalPrice =
+                            basePrice * (residenceWeeks || weeks);
 
-                        return (
-                          <label
-                            key={item.id}
-                            className={`flex cursor-pointer flex-col gap-3 rounded-2xl border p-4 transition ${selected ? "border-dark-orange bg-orange-50" : "border-white/40 bg-white/70"}`}
-                          >
-                            <div className="flex items-start justify-between gap-3">
-                              <div className="flex items-start gap-3">
-                                <input
-                                  type="radio"
-                                  name="accommodation"
-                                  checked={selected}
-                                  onChange={() =>
-                                    setSelectedResidenceId(item.id)
-                                  }
-                                  className="mt-1 h-4 w-4 accent-dark-orange"
-                                />
-                                <div>
-                                  <h3 className="font-semibold text-gray-dark">
-                                    {tx(item.accommodationName, locale)}
-                                  </h3>
-                                  {item.accommodationDescription ? (
-                                    <p className="mt-1 text-sm text-gray-dark/70">
-                                      {tx(
-                                        item.accommodationDescription,
-                                        locale,
-                                      )}
-                                    </p>
-                                  ) : null}
-                                  <div className="mt-2 flex flex-wrap gap-2">
-                                    {typeof item.minimumAge === "number" ? (
-                                      <span className="rounded-full border border-white/40 bg-white px-2 py-1 text-xs text-gray-dark/70">
-                                        {t("minAge", { age: item.minimumAge })}
-                                      </span>
-                                    ) : null}
-                                    <span className="rounded-full border border-white/40 bg-white px-2 py-1 text-xs text-gray-dark/70">
-                                      {t(
-                                        `frequency.${item.priceFrequency ?? "weekly"}`,
-                                      )}
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="text-right">
-                                <p className="text-sm font-semibold text-gray-dark">
-                                  {formatPrice(totalPrice)}
-                                </p>
-                                <p className="text-xs text-gray-dark/60">
-                                  {t("forWeeks", {
-                                    count: residenceWeeks || weeks,
-                                  })}
-                                </p>
-                              </div>
-                            </div>
+                          return (
+                            <AccommodationSelectCard
+                              key={item.id}
+                              accommodation={item}
+                              locale={locale}
+                              selected={selected}
+                              price={totalPrice}
+                              weeks={residenceWeeks || weeks}
+                              onSelect={() => setSelectedResidenceId(item.id)}
+                              formatPrice={formatPrice}
+                            />
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <p className="rounded-2xl border border-dashed border-white/40 bg-white/70 p-4 text-sm text-gray-dark/70">
+                        {t("noAccommodationOptions")}
+                      </p>
+                    )}
 
-                            <div className="space-y-3 rounded-2xl border border-white/40 bg-white/70 p-3">
-                              {item.location && item.location.length > 0 ? (
-                                <div>
-                                  <p className="text-sm font-semibold text-gray-dark">
-                                    {t("location")}
-                                  </p>
-                                  <div className="mt-2 flex flex-wrap gap-2">
-                                    {item.location.map(
-                                      (location, locationIndex) => (
-                                        <span
-                                          key={`${item.id}-location-${locationIndex}`}
-                                          className="rounded-full border border-white/40 bg-orange-50 px-2 py-1 text-xs text-gray-dark"
-                                        >
-                                          {location.name?.[locale] ??
-                                            location.name?.en}
-                                        </span>
-                                      ),
-                                    )}
-                                  </div>
-                                </div>
-                              ) : null}
+                    {hasAccommodation && selectedResidence ? (
+                      <div className="rounded-2xl border border-white/40 bg-orange-50/40 p-4">
+                        <div className="flex items-center justify-between gap-3">
+                          <div>
+                            <h3 className="text-base font-semibold text-gray-dark">
+                              {t("accommodationAddons")}
+                            </h3>
+                            {availableAccommodationAddons.length > 0 && (
+                              <p className="mt-1 text-sm text-gray-dark/70">
+                                {t("accommodationAddonsDescription")}
+                              </p>
+                            )}
+                          </div>
+                        </div>
 
-                              {item.commuteOptions &&
-                              item.commuteOptions.length > 0 ? (
-                                <div>
-                                  <p className="text-sm font-semibold text-gray-dark">
-                                    {t("commute")}
-                                  </p>
-                                  <div className="mt-2 flex flex-wrap gap-2">
-                                    {item.commuteOptions.map(
-                                      (option, optionIndex) => (
-                                        <span
-                                          key={`${item.id}-commute-${optionIndex}`}
-                                          className="rounded-full border border-white/40 bg-white px-2 py-1 text-xs text-gray-dark"
-                                        >
-                                          {option.transport?.mode?.[locale] ??
-                                            option.transport?.mode?.en}{" "}
-                                          · {option.travelTime.min}-
-                                          {option.travelTime.max}{" "}
-                                          {option.travelTime.unit}
-                                        </span>
-                                      ),
-                                    )}
-                                  </div>
-                                </div>
-                              ) : null}
+                        {availableAccommodationAddons.length > 0 ? (
+                          <div className="mt-4 space-y-3">
+                            {availableAccommodationAddons.map((addon) => {
+                              const selected =
+                                activeAccommodationAddonIds.includes(addon.id);
+                              const addonPrice =
+                                addon.amount * (residenceWeeks || weeks);
 
-                              {/* Hidded the */}
-                              {/* <div>
-                                <p className="text-sm font-semibold text-gray-dark">
-                                  {t("plans")}
-                                </p>
-                                <div className="mt-2 flex flex-wrap gap-2">
-                                  {item.accommodationPlans.map(
-                                    (plan, planIndex) => (
-                                      <div
-                                        key={`${item.id}-plan-${planIndex}`}
-                                        className="rounded-xl border border-white/40 bg-white p-3 text-sm"
-                                      >
-                                        <p className="font-medium text-gray-dark">
-                                          {tx(plan.planName, locale)}
-                                        </p>
-                                        <p className="mt-1 text-xs text-gray-dark/70">
-                                          {formatPrice(plan.amount)} /{" "}
-                                          {plan.frequency}
-                                        </p>
-                                        <p className="mt-1 text-xs font-semibold text-dark-orange">
-                                          {formatPrice(
-                                            plan.amount *
-                                              (residenceWeeks || weeks),
-                                          )}
-                                        </p>
+                              return (
+                                <label
+                                  key={addon.id}
+                                  className={`flex cursor-pointer flex-col gap-3 rounded-2xl border p-4 transition ${selected ? "border-dark-orange bg-white" : "border-white/40 bg-white/70"}`}
+                                >
+                                  <div className="flex items-start justify-between gap-3">
+                                    <div className="flex items-start gap-3">
+                                      <input
+                                        type="checkbox"
+                                        checked={selected}
+                                        onChange={() => {
+                                          setSelectedAccommodationAddonIds(
+                                            (current) =>
+                                              current.includes(addon.id)
+                                                ? current.filter(
+                                                    (id) => id !== addon.id,
+                                                  )
+                                                : [...current, addon.id],
+                                          );
+                                        }}
+                                        className="mt-1 h-4 w-4 accent-dark-orange"
+                                      />
+                                      <div>
+                                        <h4 className="font-semibold text-gray-dark">
+                                          {tx(addon.addonName, locale)}
+                                        </h4>
+                                        {addon.duration ? (
+                                          <p className="mt-1 text-sm text-gray-dark/70">
+                                            {t("from")}:{" "}
+                                            {new Date(
+                                              addon.duration.from,
+                                            ).toLocaleDateString(
+                                              locale === "ar"
+                                                ? "ar-SA"
+                                                : "en-GB",
+                                            )}{" "}
+                                            · {t("to")}:{" "}
+                                            {new Date(
+                                              addon.duration.to,
+                                            ).toLocaleDateString(
+                                              locale === "ar"
+                                                ? "ar-SA"
+                                                : "en-GB",
+                                            )}
+                                          </p>
+                                        ) : null}
+                                        {addon.location ? (
+                                          <p className="mt-1 text-sm text-gray-dark/70">
+                                            {t("location")}:{" "}
+                                            {tx(addon.location, locale)}
+                                          </p>
+                                        ) : null}
+                                        {addon.note ? (
+                                          <p className="mt-1 text-sm text-gray-dark/70">
+                                            {tx(addon.note, locale)}
+                                          </p>
+                                        ) : null}
                                       </div>
-                                    ),
-                                  )}
-                                </div>
-                              </div> */}
-
-                              {item.note ? (
-                                <p className="text-sm text-gray-dark/70">
-                                  {tx(item.note, locale)}
-                                </p>
-                              ) : null}
-                            </div>
-                          </label>
-                        );
-                      })}
-                    </div>
+                                    </div>
+                                    <div className="text-right">
+                                      <p className="text-sm font-semibold text-gray-dark">
+                                        {formatPrice(addonPrice)}
+                                      </p>
+                                      <p className="text-xs text-gray-dark/60">
+                                        {t("forWeeks", {
+                                          count: residenceWeeks || weeks,
+                                        })}
+                                      </p>
+                                    </div>
+                                  </div>
+                                </label>
+                              );
+                            })}
+                          </div>
+                        ) : (
+                          <p className="mt-4 text-sm text-gray-dark/70">
+                            {t("noAccommodationAddons")}
+                          </p>
+                        )}
+                      </div>
+                    ) : null}
                   </div>
                 ) : null}
               </section>
 
+              {/* Transfer selection section */}
               <section className="rounded-2xl border border-white/40 bg-white/70 p-5 shadow-sm">
                 <div className="flex items-center justify-between">
                   <h2 className="text-lg font-semibold text-gray-dark">
@@ -631,98 +750,28 @@ export default function SchoolBooking({
                   </label>
                 </div>
                 {hasAirport ? (
-                  <div className="mt-4 space-y-3">
+                  <div className="mt-4 space-y-3 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                     {transfers.map((item) => {
                       const selected = item.id === selectedAirportId;
-                      const firstOption =
-                        item.transferPackages?.[0]?.transferOptions?.[0];
-                      const amount = firstOption?.amount ?? 0;
-                      const pickupLocation = firstOption?.pickupLocation;
-                      const tripType = firstOption?.tripType;
+                      const amount = item.amount ?? 0;
 
                       return (
-                        <label
+                        <TransferSelectCard
                           key={item.id}
-                          className={`flex cursor-pointer flex-col gap-3 rounded-2xl border p-4 transition ${selected ? "border-dark-orange bg-orange-50" : "border-white/40 bg-white/70"}`}
-                        >
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="flex items-start gap-3">
-                              <input
-                                type="radio"
-                                name="transfer"
-                                checked={selected}
-                                onChange={() => setSelectedAirportId(item.id)}
-                                className="mt-1 h-4 w-4 accent-dark-orange"
-                              />
-                              <div>
-                                <h3 className="font-semibold text-gray-dark">
-                                  {tx(item.serviceName, locale)}
-                                </h3>
-                                {item.serviceNote ? (
-                                  <p className="mt-1 text-sm text-gray-dark/70">
-                                    {tx(item.serviceNote, locale)}
-                                  </p>
-                                ) : null}
-                                <div className="mt-2 flex flex-wrap gap-2">
-                                  {pickupLocation ? (
-                                    <span className="rounded-full border border-white/40 bg-white px-2 py-1 text-xs text-gray-dark/70">
-                                      {t("pickup", {
-                                        location: tx(pickupLocation, locale),
-                                      })}
-                                    </span>
-                                  ) : null}
-                                  <span className="rounded-full border border-white/40 bg-white px-2 py-1 text-xs text-gray-dark/70">
-                                    {tripType === "roundTrip"
-                                      ? t("roundTrip")
-                                      : t("oneWay")}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="text-right">
-                              <p className="text-sm font-semibold text-gray-dark">
-                                {formatPrice(amount)}
-                              </p>
-                            </div>
-                          </div>
-
-                          {/* <div className="space-y-2 rounded-2xl border border-white/40 bg-blue-600/70 p-3">
-                            {item.transferPackages?.map((pkg, pkgIndex) => (
-                              <div key={`${item.id}-package-${pkgIndex}`}>
-                                <p className="text-sm font-semibold text-gray-dark">
-                                  {tx(pkg.packageName, locale)}
-                                </p>
-                                <div className="mt-2 flex flex-wrap gap-2">
-                                  {pkg.transferOptions.map(
-                                    (option, optionIndex) => (
-                                      <div
-                                        key={`${item.id}-option-${pkgIndex}-${optionIndex}`}
-                                        className="rounded-xl border border-white/40 bg-white p-3 text-sm"
-                                      >
-                                        <p className="font-medium text-gray-dark">
-                                          {tx(option.optionName, locale)}
-                                        </p>
-                                        <p className="mt-1 text-xs text-gray-dark/70">
-                                          Pickup:{" "}
-                                          {tx(option.pickupLocation, locale)}
-                                        </p>
-                                        <p className="mt-1 text-xs font-semibold text-dark-orange">
-                                          {formatPrice(option.amount)}
-                                        </p>
-                                      </div>
-                                    ),
-                                  )}
-                                </div>
-                              </div>
-                            ))}
-                          </div> */}
-                        </label>
+                          transfer={item}
+                          locale={locale}
+                          selected={selected}
+                          amount={amount}
+                          onSelect={() => setSelectedAirportId(item.id)}
+                          formatPrice={formatPrice}
+                        />
                       );
                     })}
                   </div>
                 ) : null}
               </section>
 
+              {/* Insurance toggle section */}
               <section className="rounded-2xl border border-white/40 bg-white/70 p-5 shadow-sm">
                 <div className="flex items-center justify-between">
                   <h2 className="text-lg font-semibold text-gray-dark">
@@ -743,6 +792,7 @@ export default function SchoolBooking({
               </section>
             </div>
 
+            {/* Quote summary sidebar */}
             <aside className="rounded-4xl border border-white/40 bg-white/80 p-6 shadow-xl">
               <h2 className="text-xl font-semibold text-gray-dark">
                 {t("summary")}
@@ -752,10 +802,22 @@ export default function SchoolBooking({
                   <span>{t("course")}</span>
                   <span>{formatPrice(coursePrice)}</span>
                 </div>
+                {selectedCourseAddons.length > 0 ? (
+                  <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+                    <span>{t("courseAddons")}</span>
+                    <span>{formatPrice(courseAddonsPrice)}</span>
+                  </div>
+                ) : null}
                 <div className="flex items-center justify-between border-b border-gray-100 pb-2">
                   <span>{t("accommodation")}</span>
                   <span>{formatPrice(accommodationPrice)}</span>
                 </div>
+                {selectedAccommodationAddons.length > 0 ? (
+                  <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+                    <span>{t("accommodationAddons")}</span>
+                    <span>{formatPrice(accommodationAddonsPrice)}</span>
+                  </div>
+                ) : null}
                 <div className="flex items-center justify-between border-b border-gray-100 pb-2">
                   <span>{t("airportPickup")}</span>
                   <span>{formatPrice(transferPrice)}</span>
@@ -775,22 +837,22 @@ export default function SchoolBooking({
                   {t("fixedFeeSection")}
                 </h3>
                 {school.fees
-                  .filter((fee) => fee.frequency === "fixed")
+                  .filter((fee) => fee.feeFrequency === "fixed")
                   .map((fee) => (
                     <div
-                      key={fee.name?.en}
+                      key={fee.feeName?.en}
                       className="rounded-2xl border border-white/40 bg-white/70 p-3"
                     >
                       <div className="flex items-center justify-between gap-2">
                         <span className="text-sm font-semibold text-gray-dark">
-                          {fee.name?.[locale] ?? fee.name?.en}
+                          {fee.feeName?.[locale] ?? fee.feeName?.en}
                         </span>
                         <span className="text-sm font-semibold text-gray-dark">
-                          {formatPrice(fee.amount)}
+                          {formatPrice(fee.feeAmount)}
                         </span>
                       </div>
                       <p className="mt-1 text-xs text-gray-dark/70">
-                        {fee.name?.[locale] ?? ""}
+                        {fee.feeName?.[locale] ?? ""}
                       </p>
                     </div>
                   ))}

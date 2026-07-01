@@ -9,7 +9,6 @@ type Props = {
   name: string;
   discount?: number;
   lessons: number;
-  week: number;
   price: number;
   category: string;
   hours: number;
@@ -24,7 +23,6 @@ export default function CourseCard({
   discount,
   category,
   lessons,
-  week,
   hours,
   requiredLevel,
   price,
@@ -52,37 +50,41 @@ export default function CourseCard({
       </div>
       <div className="flex flex-1 flex-col justify-between p-4 bg-cream">
         <div>
-          <p className="mt-1 text-gray-light">{category}</p>
+          <p className="mt-1 text-sm text-gray-light">{category}</p>
         </div>
-        <h3 className="text-xl font-bold text-gray-dark">{name}</h3>
+        <h3 className="text-lg font-bold text-gray-dark">{name}</h3>
         <div className="mt-2 space-y-1 text-sm text-gray-light">
           {instituteName ? <p>{instituteName}</p> : null}
           {location ? <p>{location}</p> : null}
         </div>
 
         {/* Course Details */}
-        <div className="my-2">
-          <div className="grid grid-cols-2">
-            <div className="flex items-center gap-2">
-              <Icon icon={"mdi:teach"} width={20} />
-              <p className="text-xs">{t("lessons")}</p>
-            </div>
-            <div>{Math.ceil(lessons / week)}</div>
-          </div>
-          <div className="grid grid-cols-2">
-            <div className="flex items-center gap-2">
-              <Icon icon={"mage:hour-glass"} width={20} />
-              <p className="text-xs">{t("hours")}</p>
-            </div>
-            <div>{hours}</div>
-          </div>
-          {requiredLevel && (
-            <div className="grid grid-cols-2 items-center">
+        <div className="my-2 flex flex-col gap-2">
+          {lessons && lessons > 0 && (
+            <div className="grid grid-cols-[60%_40%]">
               <div className="flex items-center gap-2">
+                <Icon icon={"mdi:teach"} width={20} />
+                <p className="text-xs">{t("lessons")}</p>
+              </div>
+              <div className="text-xs">{lessons}</div>
+            </div>
+          )}
+          {hours && hours > 0 && (
+            <div className="grid grid-cols-[60%_40%]">
+              <div className="flex items-center gap-2">
+                <Icon icon={"mage:hour-glass"} width={20} />
+                <p className="text-xs">{t("hours")}</p>
+              </div>
+              <div className="text-xs">{hours}</div>
+            </div>
+          )}
+          {requiredLevel && (
+            <div className="grid grid-cols-[60%_40%]">
+              <div className="flex gap-2">
                 <Icon icon={"ooui:level-two-ltr"} width={16} />
                 <p className="text-xs">{t("required")}</p>
               </div>
-              <div>{requiredLevel}</div>
+              <div className="text-xs">{requiredLevel}</div>
             </div>
           )}
         </div>
@@ -94,7 +96,9 @@ export default function CourseCard({
               £{price}
             </p>
           )}
-          <p className="font-bold text-xl">£{discountedPrice}</p>
+          <p className="font-bold text-xl">
+            £{discountedPrice} {t("perWeek")}
+          </p>
         </div>
 
         <div className="mt-4">

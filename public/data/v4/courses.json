@@ -1,0 +1,382 @@
+[
+  {
+    "id": 1,
+    "courseName": {
+      "en": "Standard General English",
+      "ar": "اللغة العامة"
+    },
+    "courseIntensity": {
+      "en": "Standard",
+      "ar": "اللغة العامة"
+    },
+    "courseDescription": {
+      "en": "General English",
+      "ar": "اللغة الإنجليزية العامة"
+    },
+    "instituteId": 1,
+    "schoolId": 1,
+    "categoryId": 1,
+    "oneLessonMins": 45,
+    "requiredLevel": {
+      "en": "",
+      "ar": ""
+    },
+    "note": {
+      "en": "",
+      "ar": ""
+    },
+    "coursePlans": [
+      {
+        "price": 375,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 20
+      },
+      {
+        "price": 335,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 20
+      },
+      {
+        "price": 290,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": null
+        },
+        "lessonsPerWeek": 20
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "courseName": {
+      "en": "Intensive General English",
+      "ar": "اللغة الإنجليزية العامة المكثفة"
+    },
+    "courseIntensity": {
+      "en": "Intensive",
+      "ar": "اللغة الإنجليزية العامة المكثفة"
+    },
+    "courseDescription": {
+      "en": "General English",
+      "ar": "اللغة الإنجليزية العامة"
+    },
+    "instituteId": 1,
+    "schoolId": 1,
+    "categoryId": 1,
+    "oneLessonMins": 45,
+    "coursePlans": [
+      {
+        "price": 420,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 25
+      },
+      {
+        "price": 375,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 25
+      },
+      {
+        "price": 320,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": null
+        },
+        "lessonsPerWeek": 25
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "courseName": {
+      "en": "Super Intensive General English",
+      "ar": "مكثف للغاية"
+    },
+    "courseIntensity": {
+      "en": "Super Intensive",
+      "ar": "مكثف للغاية"
+    },
+    "courseDescription": {
+      "en": "General English",
+      "ar": "اللغة الإنجليزية العامة"
+    },
+    "instituteId": 1,
+    "schoolId": 1,
+    "categoryId": 1,
+    "oneLessonMins": 45,
+    "coursePlans": [
+      {
+        "price": 465,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 30
+      },
+      {
+        "price": 420,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 30
+      },
+      {
+        "price": 370,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": null
+        },
+        "lessonsPerWeek": 30
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "courseName": {
+      "en": "Standard IELTS Preparation",
+      "ar": "التحضير لاختبار آيلتس (IELTS)"
+    },
+    "courseIntensity": {
+      "en": "Standard",
+      "ar": "اللغة العامة"
+    },
+    "courseDescription": {
+      "en": "IELTS Preparation",
+      "ar": "التحضير لاختبار آيلتس (IELTS)"
+    },
+    "instituteId": 1,
+    "schoolId": 1,
+    "categoryId": 2,
+    "oneLessonMins": 45,
+    "requiredLevel": {
+      "en": "Level 4 (Bayswater)/B1 (CEFR)",
+      "ar": "المستوى 4 (بيزووتر) / B1 (CEFR)"
+    },
+    "note": {
+      "en": "",
+      "ar": ""
+    },
+    "coursePlans": [
+      {
+        "price": 375,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 1,
+          "max": 11
+        },
+        "lessonsPerWeek": 20
+      },
+      {
+        "price": 335,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 12,
+          "max": 23
+        },
+        "lessonsPerWeek": 20
+      },
+      {
+        "price": 290,
+        "priceFrequency": "weekly",
+        "weekRange": {
+          "min": 24,
+          "max": null
+        },
+        "lessonsPerWeek": 20
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "courseName": {
+      "en": "Standard General English",
+      "ar": "اللغة العامة"
+    },
+    "courseIntensity": {
+      "en": "Standard",
+      "ar": "اللغة العامة"
+    },
+    "courseDescription": {
+      "en": "General English",
+      "ar": "اللغة الإنجليزية العامة"
+    },
+    "instituteId": 1,
+    "schoolId": 2,
+    "categoryId": 1,
+    "oneLessonMins": 45,
+    "coursePlans": [
+      {
+        "price": 285,
+        "priceFrequency": "weekly",
+        "weekRange": { "min": 1, "max": 11 },
+        "lessonsPerWeek": 20
+      },
+      {
+        "price": 250,
+        "priceFrequency": "weekly",
+        "weekRange": { "min": 12, "max": 23 },
+        "lessonsPerWeek": 20
+      },
+      {
+        "price": 230,
+        "priceFrequency": "weekly",
+        "weekRange": { "min": 24, "max": null },
+        "lessonsPerWeek": 20
+      }
+    ],
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 6,
+    "courseName": {
+      "en": "Intensive General English",
+      "ar": "اللغة الإنجليزية العامة المكثفة"
+    },
+    "courseIntensity": {
+      "en": "Intensive",
+      "ar": "اللغة الإنجليزية العامة المكثفة"
+    },
+    "courseDescription": {
+      "en": "General English",
+      "ar": "اللغة الإنجليزية العامة"
+    },
+    "instituteId": 1,
+    "schoolId": 2,
+    "categoryId": 1,
+    "oneLessonMins": 45,
+    "coursePlans": [
+      {
+        "price": 315,
+        "priceFrequency": "weekly",
+        "weekRange": { "min": 1, "max": 11 },
+        "lessonsPerWeek": 25
+      },
+      {
+        "price": 285,
+        "priceFrequency": "weekly",
+        "weekRange": { "min": 12, "max": 23 },
+        "lessonsPerWeek": 25
+      },
+      {
+        "price": 255,
+        "priceFrequency": "weekly",
+        "weekRange": { "min": 24, "max": null },
+        "lessonsPerWeek": 25
+      }
+    ],
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 7,
+    "courseName": {
+      "en": "Super Intensive General English",
+      "ar": "مكثف للغاية"
+    },
+    "courseIntensity": {
+      "en": "Super Intensive",
+      "ar": "مكثف للغاية"
+    },
+    "courseDescription": {
+      "en": "General English",
+      "ar": "اللغة الإنجليزية العامة"
+    },
+    "instituteId": 1,
+    "schoolId": 2,
+    "categoryId": 18,
+    "oneLessonMins": 45,
+    "coursePlans": [
+      {
+        "price": 355,
+        "priceFrequency": "weekly",
+        "weekRange": { "min": 1, "max": 11 },
+        "lessonsPerWeek": 30
+      },
+      {
+        "price": 340,
+        "priceFrequency": "weekly",
+        "weekRange": { "min": 12, "max": 23 },
+        "lessonsPerWeek": 30
+      },
+      {
+        "price": 300,
+        "priceFrequency": "weekly",
+        "weekRange": { "min": 24, "max": null },
+        "lessonsPerWeek": 30
+      }
+    ],
+    "note": {
+      "en": "",
+      "ar": ""
+    }
+  },
+  {
+    "id": 8,
+    "courseName": {
+      "en": "Standard IELTS Preparation",
+      "ar": "التحضير لاختبار آيلتس (IELTS)"
+    },
+    "courseIntensity": {
+      "en": "Standard",
+      "ar": "اللغة العامة"
+    },
+    "courseDescription": {
+      "en": "IELTS Preparation",
+      "ar": "التحضير لاختبار آيلتس (IELTS)"
+    },
+    "instituteId": 1,
+    "schoolId": 2,
+    "categoryId": 2,
+    "oneLessonMins": 45,
+    "coursePlans": [
+      {
+        "price": 285,
+        "priceFrequency": "weekly",
+        "weekRange": { "min": 1, "max": 11 },
+        "lessonsPerWeek": 20
+      },
+      {
+        "price": 250,
+        "priceFrequency": "weekly",
+        "weekRange": { "min": 12, "max": 23 },
+        "lessonsPerWeek": 20
+      },
+      {
+        "price": 230,
+        "priceFrequency": "weekly",
+        "weekRange": { "min": 24, "max": null },
+        "lessonsPerWeek": 20
+      }
+    ],
+    "note": {
+      "en": "IELTS Preparation: Available in Standard 20 lessons. This can be combined with an additional 5 or 10 General English lessons as part of our Intensive or Super Intensive Course\n• Minimum level for IELTS Preparation: Level 4 (Bayswater)/B1 (CEFR)",
+      "ar": "التحضير لاختبار آيلتس: متوفر في ٢٠ درساً قياسياً. يمكن دمج ذلك مع ٥ أو ١٠ دروس إضافية في اللغة الإنجليزية العامة كجزء من دورتنا المكثفة أو المكثفة للغاية\n• الحد الأدنى للمستوى للتحضير لاختبار آيلتس: المستوى ٤ (بايسووتر) / B1 (الإطار الأوروبي المرجعي الموحد للغات)"
+    }
+  }
+]

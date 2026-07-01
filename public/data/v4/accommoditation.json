@@ -1,0 +1,412 @@
+[
+  {
+    "id": 1,
+    "accommodationName": {
+      "en": "Homestay Single Shared Bathroom (Zone 4-5) - Bed & Breakfast",
+      "ar": "سكن عائلي غرفة مفردة حمام مشترك (منطقة 4-5) - مبيت وإفطار"
+    },
+    "categoryId": 7,
+    "minimumAge": 16,
+    "schoolId": 1,
+    "price": 240,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 45, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Tube", "ar": "مترو الأنفاق" } }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "accommodationName": {
+      "en": "Homestay Single Shared Bathroom (Zone 4-5) - Half Board",
+      "ar": "سكن عائلي غرفة مفردة حمام مشترك (منطقة 4-5) - وجبتين"
+    },
+    "categoryId": 7,
+    "minimumAge": 16,
+    "schoolId": 1,
+    "price": 270,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 45, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Tube", "ar": "مترو الأنفاق" } }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "accommodationName": {
+      "en": "Homestay Twin Shared Bathroom (Zone 4-5) - Bed & Breakfast",
+      "ar": "سكن عائلي غرفة مشتركة حمام مشترك (منطقة 4-5) - مبيت وإفطار"
+    },
+    "categoryId": 7,
+    "note": {
+      "en": "Twin rooms are only available for two people traveling together",
+      "ar": "الغرف المشتركة متاحة فقط لشخصين يسافران معاً"
+    },
+    "minimumAge": 16,
+    "schoolId": 1,
+    "price": 230,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 45, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Tube", "ar": "مترو الأنفاق" } }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "accommodationName": {
+      "en": "Homestay Twin Shared Bathroom (Zone 4-5) - Half Board",
+      "ar": "سكن عائلي غرفة مشتركة حمام مشترك (منطقة 4-5) - وجبتين"
+    },
+    "categoryId": 7,
+    "note": {
+      "en": "Twin rooms are only available for two people traveling together",
+      "ar": "الغرف المشتركة متاحة فقط لشخصين يسافران معاً"
+    },
+    "minimumAge": 16,
+    "schoolId": 1,
+    "price": 260,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 45, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Tube", "ar": "مترو الأنفاق" } }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "accommodationName": {
+      "en": "Homestay Single Shared Bathroom (Zone 3) - Bed & Breakfast",
+      "ar": "سكن عائلي غرفة مفردة حمام مشترك (منطقة 3) - مبيت وإفطار"
+    },
+    "categoryId": 7,
+    "minimumAge": 16,
+    "schoolId": 1,
+    "price": 260,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 30, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Tube", "ar": "مترو الأنفاق" } }
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "accommodationName": {
+      "en": "Homestay Single Shared Bathroom (Zone 3) - Half Board",
+      "ar": "سكن عائلي غرفة مفردة حمام مشترك (منطقة 3) - وجبتين"
+    },
+    "categoryId": 7,
+    "minimumAge": 16,
+    "schoolId": 1,
+    "price": 290,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 30, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Tube", "ar": "مترو الأنفاق" } }
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "accommodationName": {
+      "en": "Homestay Twin Shared Bathroom (Zone 3) - Bed & Breakfast",
+      "ar": "سكن عائلي غرفة مشتركة حمام مشترك (منطقة 3) - مبيت وإفطار"
+    },
+    "categoryId": 7,
+    "note": {
+      "en": "Twin rooms are only available for two people traveling together",
+      "ar": "الغرف المشتركة متاحة فقط لشخصين يسافران معاً"
+    },
+    "minimumAge": 16,
+    "schoolId": 1,
+    "price": 250,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 30, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Tube", "ar": "مترو الأنفاق" } }
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "accommodationName": {
+      "en": "Homestay Twin Shared Bathroom (Zone 3) - Half Board",
+      "ar": "سكن عائلي غرفة مشتركة حمام مشترك (منطقة 3) - وجبتين"
+    },
+    "categoryId": 7,
+    "note": {
+      "en": "Twin rooms are only available for two people traveling together",
+      "ar": "الغرف المشتركة متاحة فقط لشخصين يسافران معاً"
+    },
+    "minimumAge": 16,
+    "schoolId": 1,
+    "price": 280,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 30, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Tube", "ar": "مترو الأنفاق" } }
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "accommodationName": {
+      "en": "Homestay Single Shared Bathroom (Zone 2) - Bed & Breakfast",
+      "ar": "سكن عائلي غرفة مفردة حمام مشترك (منطقة 2) - مبيت وإفطار"
+    },
+    "categoryId": 7,
+    "minimumAge": 16,
+    "schoolId": 1,
+    "price": 270,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 20, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Tube", "ar": "مترو الأنفاق" } }
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "accommodationName": {
+      "en": "Homestay Single Shared Bathroom (Zone 2) - Half Board",
+      "ar": "سكن عائلي غرفة مفردة حمام مشترك (منطقة 2) - وجبتين"
+    },
+    "categoryId": 7,
+    "minimumAge": 16,
+    "schoolId": 1,
+    "price": 300,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 20, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Tube", "ar": "مترو الأنفاق" } }
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "accommodationName": {
+      "en": "Homestay Twin Shared Bathroom (Zone 2) - Bed & Breakfast",
+      "ar": "سكن عائلي غرفة مشتركة حمام مشترك (منطقة 2) - مبيت وإفطار"
+    },
+    "categoryId": 7,
+    "note": {
+      "en": "Twin rooms are only available for two people traveling together",
+      "ar": "الغرف المشتركة متاحة فقط لشخصين يسافران معاً"
+    },
+    "minimumAge": 16,
+    "schoolId": 1,
+    "price": 260,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 20, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Tube", "ar": "مترو الأنفاق" } }
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "accommodationName": {
+      "en": "Homestay Twin Shared Bathroom (Zone 2) - Half Board",
+      "ar": "سكن عائلي غرفة مشتركة حمام مشترك (منطقة 2) - وجبتين"
+    },
+    "categoryId": 7,
+    "note": {
+      "en": "Twin rooms are only available for two people traveling together",
+      "ar": "الغرف المشتركة متاحة فقط لشخصين يسافران معاً"
+    },
+    "minimumAge": 16,
+    "schoolId": 1,
+    "price": 290,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 20, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Tube", "ar": "مترو الأنفاق" } }
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "accommodationName": {
+      "en": "Standard Single Studio (Zone 1-2)",
+      "ar": "استوديو مفرد قياسي (منطقة 1-2)"
+    },
+    "categoryId": 8,
+    "minimumAge": 18,
+    "schoolId": 1,
+    "price": 460,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 20, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Tube", "ar": "مترو الأنفاق" } }
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "accommodationName": {
+      "en": "Premium Single Studio (Zone 1-4)",
+      "ar": "استوديو مفرد مميز (منطقة 1-4)"
+    },
+    "categoryId": 8,
+    "minimumAge": 18,
+    "schoolId": 1,
+    "price": 595,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 20, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Tube", "ar": "مترو الأنفاق" } }
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "accommodationName": {
+      "en": "Homestay Single Shared Bathroom - Bed & Breakfast",
+      "ar": "سكن عائلي غرفة مفردة حمام مشترك - مبيت وإفطار"
+    },
+    "categoryId": 7,
+    "minimumAge": 16,
+    "schoolId": 2,
+    "price": 175,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 30, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Bus", "ar": "حافلة" } }
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "accommodationName": {
+      "en": "Homestay Single Shared Bathroom - Half Board",
+      "ar": "سكن عائلي غرفة مفردة حمام مشترك - وجبتين"
+    },
+    "categoryId": 7,
+    "minimumAge": 16,
+    "schoolId": 2,
+    "price": 200,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 30, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Bus", "ar": "حافلة" } }
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "accommodationName": {
+      "en": "Homestay Twin Shared Bathroom - Bed & Breakfast",
+      "ar": "سكن عائلي غرفة مشتركة حمام مشترك - مبيت وإفطار"
+    },
+    "categoryId": 7,
+    "note": {
+      "en": "Twin rooms are only available for two people traveling together",
+      "ar": "الغرف المشتركة متاحة فقط لشخصين يسافران معاً"
+    },
+    "minimumAge": 16,
+    "schoolId": 2,
+    "price": 165,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 30, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Bus", "ar": "حافلة" } }
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "accommodationName": {
+      "en": "Homestay Twin Shared Bathroom - Half Board",
+      "ar": "سكن عائلي غرفة مشتركة حمام مشترك - وجبتين"
+    },
+    "categoryId": 7,
+    "note": {
+      "en": "Twin rooms are only available for two people traveling together",
+      "ar": "الغرف المشتركة متاحة فقط لشخصين يسافران معاً"
+    },
+    "minimumAge": 16,
+    "schoolId": 2,
+    "price": 190,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 30, "max": 60, "unit": "minutes" },
+        "transport": { "mode": { "en": "Bus", "ar": "حافلة" } }
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "accommodationName": {
+      "en": "Standard Single En suite",
+      "ar": "غرفة مفردة قياسية بحمام داخلي"
+    },
+    "categoryId": 8,
+    "minimumAge": 18,
+    "schoolId": 2,
+    "price": 175,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 10, "max": 15, "unit": "minutes" },
+        "transport": { "mode": { "en": "Walk", "ar": "مشياً على الأقدام" } }
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "accommodationName": {
+      "en": "Premium Single En suite",
+      "ar": "غرفة مفردة مميزة بحمام داخلي"
+    },
+    "categoryId": 8,
+    "minimumAge": 18,
+    "schoolId": 2,
+    "price": 205,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 10, "max": 15, "unit": "minutes" },
+        "transport": { "mode": { "en": "Walk", "ar": "مشياً على الأقدام" } }
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "accommodationName": {
+      "en": "Premium Studio",
+      "ar": "استوديو مميز"
+    },
+    "categoryId": 8,
+    "minimumAge": 18,
+    "schoolId": 2,
+    "price": 265,
+    "priceFrequency": "weekly",
+    "commuteOptions": [
+      {
+        "travelTime": { "min": 10, "max": 15, "unit": "minutes" },
+        "transport": { "mode": { "en": "Walk", "ar": "مشياً على الأقدام" } }
+      }
+    ]
+  }
+]

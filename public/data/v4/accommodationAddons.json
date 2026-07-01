@@ -1,0 +1,140 @@
+[
+  {
+    "id": 1,
+    "addonName": {
+      "en": "Summer Supplement",
+      "ar": "رسوم إضافية لفترة الصيف"
+    },
+    "duration": {
+      "from": "2026-06-21",
+      "to": "2026-08-22"
+    },
+    "amount": 30,
+    "frequency": "weekly",
+    "schoolId": 1,
+    "categoryId": 7
+  },
+  {
+    "id": 2,
+    "addonName": {
+      "en": "Christmas Supplement",
+      "ar": "رسوم إضافية لفترة أعياد الميلاد"
+    },
+    "duration": {
+      "from": "2026-12-20",
+      "to": "2026-12-27"
+    },
+    "amount": 50,
+    "frequency": "weekly",
+    "schoolId": 1,
+    "categoryId": 7
+  },
+  {
+    "id": 3,
+    "addonName": {
+      "en": "Private Bathroom Supplement",
+      "ar": "رسوم إضافية لحمام خاص"
+    },
+    "amount": 45,
+    "frequency": "weekly",
+    "location": {
+      "en": "Only Zone 4/5",
+      "ar": "فقط في المنطقة 4/5"
+    },
+    "schoolId": 1,
+    "categoryId": 7
+  },
+  {
+    "id": 4,
+    "addonName": {
+      "en": "Dietary Supplement",
+      "ar": "رسوم إضافية للوجبات الخاصة"
+    },
+    "amount": 35,
+    "frequency": "weekly",
+    "schoolId": 1,
+    "categoryId": 7
+  },
+  {
+    "id": 5,
+    "addonName": {
+      "en": "Under 18 Supplement",
+      "ar": "رسوم إضافية لمن هم دون سن 18"
+    },
+    "amount": 20,
+    "frequency": "weekly",
+    "note": {
+      "en": "Applicable to ages 16-17. Students under 18 in a homestay must book at least Half Board, a return transfer and provide a parental consent form.",
+      "ar": "تنطبق على الأعمار 16-17 سنة. يجب على الطلاب دون سن 18 عاماً في السكن العائلي حجز وجبتين على الأقل، وتأمين خدمة التوصيل ذهاباً وإياباً، وتقديم نموذج موافقة الوالدين."
+    },
+    "schoolId": 1,
+    "categoryId": 7
+  },
+  {
+    "id": 6,
+    "addonName": {
+      "en": "Summer Supplement",
+      "ar": "رسوم إضافية لفترة الصيف"
+    },
+    "duration": {
+      "from": "2026-06-21",
+      "to": "2026-08-22"
+    },
+    "amount": 30,
+    "frequency": "weekly",
+    "schoolId": 2,
+    "categoryId": 7
+  },
+  {
+    "id": 7,
+    "addonName": {
+      "en": "Christmas Supplement",
+      "ar": "رسوم إضافية لفترة أعياد الميلاد"
+    },
+    "duration": {
+      "from": "2026-12-20",
+      "to": "2026-12-27"
+    },
+    "amount": 50,
+    "frequency": "weekly",
+    "schoolId": 2,
+    "categoryId": 7
+  },
+  {
+    "id": 8,
+    "addonName": {
+      "en": "Private Bathroom Supplement",
+      "ar": "رسوم إضافية لحمام خاص"
+    },
+    "amount": 45,
+    "frequency": "weekly",
+    "schoolId": 2,
+    "categoryId": 7
+  },
+  {
+    "id": 9,
+    "addonName": {
+      "en": "Dietary Supplement",
+      "ar": "رسوم إضافية للوجبات الخاصة"
+    },
+    "amount": 35,
+    "frequency": "weekly",
+    "schoolId": 2,
+    "categoryId": 7
+  },
+  {
+    "id": 10,
+    "addonName": {
+      "en": "Under 18 Supplement",
+      "ar": "رسوم إضافية لمن هم دون سن 18"
+    },
+    "amount": 20,
+    "frequency": "weekly",
+    "note": {
+      "en": "Applicable to ages 16-17. Students under 18 in a homestay must book at least Half Board, a return transfer and provide a parental consent form.",
+      "ar": "تنطبق على الأعمار 16-17 سنة. يجب على الطلاب دون سن 18 عاماً في السكن العائلي حجز وجبتين على الأقل، وتأمين خدمة التوصيل ذهاباً وإياباً، وتقديم نموذج موافقة الوالدين."
+    },
+    "schoolId": 2,
+    "categoryId": 7
+  }
+]

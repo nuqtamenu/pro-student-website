@@ -10,7 +10,7 @@ import {
   courseCategoriesV3,
   getCitiesByCountry,
   type SchoolSearchFilters,
-} from "@/lib/v2-search-data";
+} from "../lib/search-data";
 import { type Locale } from "@/lib/data";
 
 type Props = {
@@ -28,9 +28,9 @@ export function SearchSidebar({ filters, setFilters, locale }: Props) {
     () => getCitiesByCountry(filters.countryId),
     [filters.countryId],
   );
-  const courseTypeLabel =
-    locale === "ar" ? "اختر نوع الدورة" : "Select Course Type";
-  const courseTypePlaceholder = locale === "ar" ? "كل الأنواع" : "All Types";
+  const courseTypeLabel = locale === "ar" ? "نوع الكورس" : "Course Type";
+  const courseTypePlaceholder =
+    locale === "ar" ? "اختر نوع الكورس" : "Select a course type";
 
   return (
     <aside className="rounded-2xl border border-white/20 p-6 shadow-2xl backdrop-blur-xl">
@@ -87,15 +87,10 @@ export function SearchSidebar({ filters, setFilters, locale }: Props) {
               <option value="">{t("chooseCountryPlaceholder")}</option>
               {countriesV2.map((country) => (
                 <option key={country.id} value={country.id}>
-                  {country.name[locale]}
+                  {country.countryName[locale]}
                 </option>
               ))}
             </select>
-            <Icon
-              icon="lucide:chevron-down"
-              width={18}
-              className="pointer-events-none absolute inset-y-0 inset-e-3 my-auto text-gray-light"
-            />
           </div>
         </div>
 
@@ -118,15 +113,10 @@ export function SearchSidebar({ filters, setFilters, locale }: Props) {
               <option value="">{t("chooseCityPlaceholder")}</option>
               {cityOptions.map((city) => (
                 <option key={city.id} value={city.id}>
-                  {city.name[locale]}
+                  {city.cityName[locale]}
                 </option>
               ))}
             </select>
-            <Icon
-              icon="lucide:chevron-down"
-              width={18}
-              className="pointer-events-none absolute inset-y-0 inset-e-3 my-auto text-gray-light"
-            />
           </div>
         </div>
 
@@ -153,11 +143,6 @@ export function SearchSidebar({ filters, setFilters, locale }: Props) {
                 </option>
               ))}
             </select>
-            <Icon
-              icon="lucide:chevron-down"
-              width={18}
-              className="pointer-events-none absolute inset-y-0 inset-e-3 my-auto text-gray-light"
-            />
           </div>
         </div>
 

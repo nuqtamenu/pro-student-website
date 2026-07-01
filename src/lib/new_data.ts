@@ -116,6 +116,7 @@ export type CoursePricing = {
   };
   price: number;
   frequency: AmountFrequency;
+  lessonsPerWeek?: number;
 };
 export type ProgramCourse = {
   courseName: Localized;
@@ -149,6 +150,8 @@ export type Course = {
   cityId: number;
   countryId: number;
   programs: SchoolProgram[];
+  requiredLevel?: Localized;
+  oneLessonMins?: number;
 };
 
 export type Currency = {

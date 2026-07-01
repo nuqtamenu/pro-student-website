@@ -1,0 +1,176 @@
+[
+  {
+    "id": 1,
+    "categoryName": {
+      "en": "General English",
+      "ar": "اللغة الإنجليزية العامة"
+    },
+    "slug": "general-english",
+    "type": "course"
+  },
+  {
+    "id": 2,
+    "categoryName": {
+      "en": "IELTS Preparation",
+      "ar": "التحضير لاختبار آيلتس (IELTS)"
+    },
+    "slug": "ielts-preparation",
+    "type": "course"
+  },
+  {
+    "id": 7,
+    "slug": "homestay",
+    "categoryName": {
+      "en": "Homestay",
+      "ar": "الإقامة مع عائلة"
+    },
+    "categoryDescription": {
+      "en": "Homestay accommodation",
+      "ar": "إقامة مع عائلة"
+    },
+    "type": "accommodation"
+  },
+  {
+    "id": 8,
+    "slug": "student-residence",
+    "categoryName": {
+      "en": "Student Residence",
+      "ar": "إقامة الطلاب"
+    },
+    "categoryDescription": {
+      "en": "Student residence accommodation",
+      "ar": "إقامة طلاب"
+    },
+    "type": "accommodation"
+  },
+  {
+    "id": 9,
+    "slug": "hotel",
+    "categoryName": {
+      "en": "Hotel",
+      "ar": "فندق"
+    },
+    "categoryDescription": {
+      "en": "Hotel accommodation",
+      "ar": "إقامة فندقية"
+    },
+    "type": "accommodation"
+  },
+  {
+    "id": 10,
+    "slug": "admission-fee",
+    "categoryName": {
+      "en": "Admission Fee",
+      "ar": "رسوم القبول"
+    },
+    "categoryDescription": {
+      "en": "School admission charges",
+      "ar": "رسوم قبول المدرسة"
+    },
+    "type": "fee"
+  },
+  {
+    "id": 11,
+    "slug": "material-fee",
+    "categoryName": {
+      "en": "Material Fee",
+      "ar": "رسوم المواد"
+    },
+    "categoryDescription": {
+      "en": "Course materials charges",
+      "ar": "رسوم مواد الدراسة"
+    },
+    "type": "fee"
+  },
+  {
+    "id": 12,
+    "slug": "exam-fee",
+    "categoryName": {
+      "en": "Exam Fee",
+      "ar": "رسوم الامتحان"
+    },
+    "categoryDescription": {
+      "en": "Exam charges",
+      "ar": "رسوم الامتحانات"
+    },
+    "type": "fee"
+  },
+  {
+    "id": 13,
+    "slug": "insurance-fee",
+    "categoryName": {
+      "en": "Insurance Fee",
+      "ar": "رسوم التأمين"
+    },
+    "categoryDescription": {
+      "en": "Insurance charges",
+      "ar": "رسوم التأمين"
+    },
+    "type": "fee"
+  },
+  {
+    "id": 14,
+    "slug": "airport-pickup",
+    "categoryName": {
+      "en": "Airport Pickup",
+      "ar": "استقبال من المطار"
+    },
+    "categoryDescription": {
+      "en": "Airport pickup transfers",
+      "ar": "نقل استقبال من المطار"
+    },
+    "type": "transfer"
+  },
+  {
+    "id": 15,
+    "slug": "airport-dropoff",
+    "categoryName": {
+      "en": "Airport Dropoff",
+      "ar": "توصيل إلى المطار"
+    },
+    "categoryDescription": {
+      "en": "Airport dropoff transfers",
+      "ar": "نقل توصيل إلى المطار"
+    },
+    "type": "transfer"
+  },
+  {
+    "id": 16,
+    "slug": "train-station-pickup",
+    "categoryName": {
+      "en": "Train Station Pickup",
+      "ar": "استقبال من محطة القطار"
+    },
+    "categoryDescription": {
+      "en": "Train station pickup transfers",
+      "ar": "نقل استقبال من محطة القطار"
+    },
+    "type": "transfer"
+  },
+  {
+    "id": 17,
+    "slug": "train-station-dropoff",
+    "categoryName": {
+      "en": "Train Station Dropoff",
+      "ar": "توصيل إلى محطة القطار"
+    },
+    "categoryDescription": {
+      "en": "Train station dropoff transfers",
+      "ar": "نقل توصيل إلى محطة القطار"
+    },
+    "type": "transfer"
+  },
+  {
+    "id": 18,
+    "slug": "general-english-and-ielts-preparation",
+    "categoryName": {
+      "en": "General English and IELTS Preparation",
+      "ar": "اللغة الإنجليزية العامة والتحضير لاختبار IELTS"
+    },
+    "categoryDescription": {
+      "en": "General English and IELTS preparation courses",
+      "ar": "دورات اللغة الإنجليزية العامة والتحضير لاختبار IELTS"
+    },
+    "type": "course"
+  }
+]

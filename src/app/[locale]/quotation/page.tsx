@@ -5,7 +5,10 @@ import {
   coursesV2,
   schoolsV2,
   transfersV2,
-} from "@/lib/v2-search-data";
+} from "../../../lib/search-data";
+import courseAddonsData from "../../../../public/data/v4/courseAddons.json";
+import accommodationAddonsData from "../../../../public/data/v4/accommodationAddons.json";
+import { type AccommodationAddon, type CourseAddon } from "@/lib/v4-dsa";
 
 function parseNumber(value: string | string[] | undefined): number | undefined {
   if (typeof value !== "string") return undefined;
@@ -15,6 +18,15 @@ function parseNumber(value: string | string[] | undefined): number | undefined {
 
 function parseBoolean(value: string | string[] | undefined): boolean {
   return value === "1";
+}
+
+function parseNumberArray(value: string | string[] | undefined): number[] {
+  if (typeof value !== "string") return [];
+
+  return value
+    .split(",")
+    .map((item) => Number(item.trim()))
+    .filter((item) => !Number.isNaN(item));
 }
 
 export default async function QuotationRoute({
@@ -39,6 +51,12 @@ export default async function QuotationRoute({
   const selectedCourseId = parseNumber(resolvedSearchParams.course_id);
   const selectedResidenceId = parseNumber(resolvedSearchParams.residence_id);
   const selectedAirportId = parseNumber(resolvedSearchParams.airport_id);
+  const selectedAddonIds = parseNumberArray(
+    resolvedSearchParams.course_addon_ids,
+  );
+  const selectedAccommodationAddonIds = parseNumberArray(
+    resolvedSearchParams.accommodation_addon_ids,
+  );
   const weeks = parseNumber(resolvedSearchParams.weeks) ?? 1;
   const residenceWeeks =
     parseNumber(resolvedSearchParams.residence_weeks) ?? weeks;
@@ -53,41 +71,61 @@ export default async function QuotationRoute({
     (item) => item.id === selectedResidenceId,
   );
   const transfer = transfersV2.find((item) => item.id === selectedAirportId);
+  const courseAddons = (courseAddonsData as CourseAddon[]).filter(
+    (addon) =>
+      addon.schoolId === school.id &&
+      selectedAddonIds.includes(addon.id) &&
+      typeof addon.price === "number",
+  );
+  const accommodationAddons = (
+    accommodationAddonsData as AccommodationAddon[]
+  ).filter(
+    (addon) =>
+      addon.schoolId === school.id &&
+      selectedAccommodationAddonIds.includes(addon.id) &&
+      typeof addon.amount === "number",
+  );
 
   const coursePrice = course
-    ? (course.programs
-        .flatMap((program) => program.courses)
-        .flatMap((programCourse) => programCourse.pricingTiers)
-        .find((tier) => {
-          const min = tier.weekRange?.min ?? 1;
-          const max = tier.weekRange?.max ?? min;
-          return weeks >= min && weeks <= max;
-        })?.price ?? 0) * weeks
+    ? (course.coursePlans.find((plan) => {
+        const min = plan.weekRange?.min ?? 1;
+        const max = plan.weekRange?.max ?? min;
+        return weeks >= min && weeks <= max;
+      })?.price ??
+        course.coursePlans[0]?.price ??
+        0) * weeks
     : 0;
 
   const accommodationPrice =
     hasAccommodation && accommodation
-      ? (accommodation.accommodationPlans?.[0]?.amount ??
-          accommodation.price ??
-          0) * residenceWeeks
+      ? (accommodation.price ?? 0) * residenceWeeks
       : 0;
+  const accommodationAddonsPrice = accommodationAddons.reduce(
+    (sum, addon) => sum + addon.amount * residenceWeeks,
+    0,
+  );
 
-  const transferPrice =
-    hasAirport && transfer
-      ? (transfer.transferPackages?.[0]?.transferOptions?.[0]?.amount ?? 0)
-      : 0;
+  const transferPrice = hasAirport && transfer ? (transfer.amount ?? 0) : 0;
+  const courseAddonsPrice = courseAddons.reduce(
+    (sum, addon) => sum + addon.price * weeks,
+    0,
+  );
   const insuranceFee = school.fees.find((fee) => {
-    const name = fee.name?.en?.toLowerCase() ?? "";
-    const arabicName = fee.name?.ar?.toLowerCase() ?? "";
+    const name = fee.feeName?.en?.toLowerCase() ?? "";
+    const arabicName = fee.feeName?.ar?.toLowerCase() ?? "";
     return name.includes("insurance") || arabicName.includes("التأمين");
   });
-  const insurancePrice = hasInsurance ? (insuranceFee?.amount ?? 0) * weeks : 0;
+  const insurancePrice = hasInsurance
+    ? (insuranceFee?.feeAmount ?? 0) * weeks
+    : 0;
   const fixedFeesTotal = school.fees
-    .filter((fee) => fee.frequency === "fixed")
-    .reduce((sum, fee) => sum + fee.amount, 0);
+    .filter((fee) => fee.feeFrequency === "fixed")
+    .reduce((sum, fee) => sum + fee.feeAmount, 0);
   const subtotal =
     coursePrice +
+    courseAddonsPrice +
     accommodationPrice +
+    accommodationAddonsPrice +
     transferPrice +
     insurancePrice +
     fixedFeesTotal;
@@ -103,12 +141,26 @@ export default async function QuotationRoute({
         weeks,
         residenceWeeks,
         startDate: resolvedSearchParams.start_date as string | undefined,
+        accommodationStartDate: resolvedSearchParams.start_date as
+          | string
+          | undefined,
+        accommodationEndDate: (() => {
+          const start = resolvedSearchParams.start_date as string | undefined;
+          if (!start) return undefined;
+          const date = new Date(start);
+          date.setDate(date.getDate() + residenceWeeks * 7);
+          return date.toISOString().slice(0, 10);
+        })(),
         hasAccommodation,
         hasAirport,
         hasInsurance,
       }}
       fees={school.fees}
+      courseAddons={courseAddons}
       coursePrice={coursePrice}
+      courseAddonsPrice={courseAddonsPrice}
+      accommodationAddons={accommodationAddons}
+      accommodationAddonsPrice={accommodationAddonsPrice}
       accommodationPrice={accommodationPrice}
       transferPrice={transferPrice}
       insurancePrice={insurancePrice}

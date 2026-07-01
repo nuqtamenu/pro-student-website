@@ -6,12 +6,17 @@ import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { tx, type Locale } from "@/lib/data";
-import { countriesV2, getCitiesByCountry } from "@/lib/v2-search-data";
+import {
+  countriesV2,
+  courseCategoriesV3,
+  getCitiesByCountry,
+} from "../lib/search-data";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 type FormValues = {
   country: string;
   city: string;
+  courseType: string;
   startDate: string;
   duration: string;
   accommodation: string;
@@ -31,6 +36,7 @@ export function HeroForm() {
       defaultValues: {
         country: "",
         city: "",
+        courseType: "",
         startDate: "",
         duration: "",
         accommodation: "no",
@@ -42,6 +48,7 @@ export function HeroForm() {
   const country = watch("country");
 
   const availableCities = country ? getCitiesByCountry(Number(country)) : [];
+  const availableCourseTypes = courseCategoriesV3;
 
   const router = useRouter();
   const routerLocale = useLocale() as Locale;
@@ -51,6 +58,7 @@ export function HeroForm() {
 
     if (data.country) params.set("country_id", data.country);
     if (data.city) params.set("city_id", data.city);
+    if (data.courseType) params.set("course_type_id", data.courseType);
     if (data.duration) params.set("duration_weeks", data.duration);
     if (data.startDate) params.set("start_date", data.startDate);
     if (data.accommodation === "yes") params.set("accommodation", "1");
@@ -88,7 +96,7 @@ export function HeroForm() {
               <option value="">{t("selectCountryPlaceholder")}</option>
               {countriesV2.map((c) => (
                 <option key={c.id} value={c.id}>
-                  {c.name[locale]}
+                  {tx(c.countryName, locale)}
                 </option>
               ))}
             </select>
@@ -111,7 +119,27 @@ export function HeroForm() {
               <option value="">{t("selectCityPlaceholder")}</option>
               {availableCities.map((c) => (
                 <option key={c.id} value={c.id}>
-                  {c.name[locale]}
+                  {tx(c.cityName, locale)}
+                </option>
+              ))}
+            </select>
+            <Chevron />
+          </div>
+        </div>
+
+        {/* Course type */}
+        <div>
+          <label className={labelClass}>{t("selectCourseType")}</label>
+          <div className="relative">
+            <select
+              className={selectClass}
+              {...register("courseType")}
+              onChange={(e) => setValue("courseType", e.target.value)}
+            >
+              <option value="">{t("selectCourseTypePlaceholder")}</option>
+              {availableCourseTypes.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {tx(category.categoryName, locale)}
                 </option>
               ))}
             </select>
@@ -136,7 +164,7 @@ export function HeroForm() {
         </div>
 
         {/* Start date */}
-        <div className="lg:col-span-2">
+        <div className="">
           <label className={labelClass}>{t("courseStartDate")}</label>
           <div className="w-full" dir="ltr">
             <Controller

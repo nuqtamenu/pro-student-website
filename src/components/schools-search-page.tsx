@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { type SchoolSearchFilters } from "@/lib/v2-search-data";
+import { type SchoolSearchFilters } from "../lib/search-data";
 import { type Locale } from "@/lib/data";
 import { SearchSidebar } from "./search-sidebar";
 import { SearchResults } from "./search-results";

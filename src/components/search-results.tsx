@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { Icon } from "@iconify/react";
 import {
   getCityById,
   getCountryById,
@@ -13,16 +14,19 @@ import {
   schoolHasTransfers,
   type SchoolSearchFilters,
   schoolsV2,
-  coursesV2,
-} from "@/lib/v2-search-data";
+} from "../lib/search-data";
+import coursesData from "../../public/data/v4/courses.json";
 import { tx, type Locale } from "@/lib/data";
-import { type Course, type School } from "@/lib/new_data";
+import { type Course, type School, type Institute } from "@/lib/v4-dsa";
 
 import CourseCard from "./course-card";
 
+const coursesV4 = coursesData as Course[];
+type LegacySchool = School;
+
 function isMatchSearch(
   course: Course,
-  school: School,
+  school: LegacySchool,
   search: string,
   locale: Locale,
 ) {
@@ -30,47 +34,40 @@ function isMatchSearch(
   if (!normalizedSearch) return true;
 
   const category =
-    getCourseCategoryById(
-      (course as Course & { courseCategoryId?: number }).courseCategoryId,
-    )?.categoryName[locale] ?? "";
+    getCourseCategoryById(course.categoryId)?.categoryName[locale] ?? "";
 
   return [
-    tx(course.name ?? { en: "", ar: "" }, locale),
-    tx(course.description ?? { en: "", ar: "" }, locale),
-    tx(school.name ?? { en: "", ar: "" }, locale),
+    tx(course.courseName, locale),
+    tx(course.courseDescription ?? { en: "", ar: "" }, locale),
+    tx(school.schoolName ?? { en: "", ar: "" }, locale),
     category,
-    getCityById(school.cityId)?.name[locale] ?? "",
+    getCityById(school.cityId)?.cityName[locale] ?? "",
   ].some((value) => value.toLowerCase().includes(normalizedSearch));
 }
 
-function getCoursePrice(course: Course): number {
-  const prices = course.programs.flatMap((program) =>
-    program.courses.flatMap((programCourse) =>
-      programCourse.pricingTiers.map((tier) => tier.price),
-    ),
-  );
+function selectPricingTier(course: Course, weeks?: number) {
+  const tiers = course.coursePlans ?? [];
 
-  return prices.length > 0 ? Math.min(...prices) : 0;
-}
+  if (typeof weeks === "number") {
+    const found = tiers.find((tier) => {
+      const min = tier.weekRange?.min ?? 1;
+      const max = tier.weekRange?.max ?? min;
+      return min <= weeks && weeks <= max;
+    });
+    return found ?? tiers[0];
+  }
 
-function getCourseLessons(course: Course): number {
-  return course.programs
-    .flatMap((program) =>
-      program.courses.map((programCourse) => programCourse.lessonsPerWeek ?? 0),
-    )
-    .reduce((sum, value) => sum + value, 0);
+  return tiers[0];
 }
 
 function courseMatchesDuration(course: Course, weeks: number): boolean {
-  return course.programs.some((program) =>
-    program.courses.some((programCourse) =>
-      programCourse.pricingTiers.some((tier) => {
-        const min = tier.weekRange?.min ?? 1;
-        const max = tier.weekRange?.max ?? min;
-        return min <= weeks && weeks <= max;
-      }),
-    ),
-  );
+  if (typeof weeks !== "number") return true;
+
+  return (course.coursePlans ?? []).some((tier) => {
+    const min = tier.weekRange?.min ?? 1;
+    const max = tier.weekRange?.max ?? min;
+    return min <= weeks && weeks <= max;
+  });
 }
 
 export function SearchResults({
@@ -81,11 +78,14 @@ export function SearchResults({
   locale: Locale;
 }) {
   const t = useTranslations("institutes");
+  const tc = useTranslations("coursesPage");
   const router = useRouter();
 
   const filteredCourses = useMemo(() => {
-    return coursesV2.filter((course) => {
-      const school = schoolsV2.find((item) => item.id === course.schoolId);
+    return coursesV4.filter((course) => {
+      const school = schoolsV2.find(
+        (item: School) => item.id === course.schoolId,
+      );
       if (!school) {
         return false;
       }
@@ -108,8 +108,7 @@ export function SearchResults({
 
       if (
         typeof filters.courseTypeId === "number" &&
-        (course as Course & { courseCategoryId?: number }).courseCategoryId !==
-          filters.courseTypeId
+        course.categoryId !== filters.courseTypeId
       ) {
         return false;
       }
@@ -136,32 +135,82 @@ export function SearchResults({
         </p>
       </div>
 
-      <div className="grid gap-6 xl:grid-cols-2">
+      {filteredCourses.length === 0 ? (
+        <div className="mx-auto max-w-2xl rounded-xl border border-white/20 p-6 text-center bg-white/60">
+          <h3 className="text-lg font-semibold text-gray-dark">
+            {tc("noCoursesFound")}
+          </h3>
+          <p className="mt-2 text-sm text-gray-dark/75">
+            {tc("noCoursesFoundDescription")}
+          </p>
+          <p className="mt-4 text-sm text-gray-dark/75">
+            {tc("contactSupport")}
+          </p>
+          <div className="mt-3 flex items-center justify-center gap-6">
+            <a
+              href="tel:+966580666525"
+              className="text-dark-orange font-semibold flex items-center gap-2"
+              aria-label="Call +966580666525"
+            >
+              <Icon
+                icon="lucide:phone"
+                width={18}
+                className="text-dark-orange"
+              />
+              <span dir="ltr">+966580666525</span>
+            </a>
+            <a
+              href="https://wa.me/966580666525"
+              target="_blank"
+              rel="noreferrer"
+              className="text-dark-orange font-semibold flex items-center gap-2"
+              aria-label="WhatsApp +966580666525"
+            >
+              <Icon
+                icon="mdi:whatsapp"
+                width={18}
+                className="text-dark-orange"
+              />
+              <span dir="ltr">+966580666525</span>
+            </a>
+          </div>
+        </div>
+      ) : null}
+
+      <div className="grid gap-6 xl:grid-cols-3">
         {filteredCourses.map((course) => {
-          const school = schoolsV2.find((item) => item.id === course.schoolId);
+          const school = schoolsV2.find(
+            (item: School) => item.id === course.schoolId,
+          );
           const category =
-            getCourseCategoryById(
-              (course as Course & { courseCategoryId?: number })
-                .courseCategoryId,
-            )?.categoryName[locale] ?? "";
-          const lessons = getCourseLessons(course);
-          const week = filters.durationWeeks ?? 1;
-          const hours = lessons > 0 ? lessons * 2 : 0;
-          const price = getCoursePrice(course);
+            getCourseCategoryById(course.categoryId)?.categoryName[locale] ??
+            "";
+          const selectedTier = selectPricingTier(course, filters.durationWeeks);
+          const lessons = selectedTier?.lessonsPerWeek ?? 0;
+          const hours =
+            course?.oneLessonMins && lessons
+              ? Math.round((lessons * course.oneLessonMins) / 60)
+              : 0;
+
+          const price = selectedTier?.price ?? 0;
+          const requiredLevel = course.requiredLevel
+            ? tx(course.requiredLevel, locale)
+            : "";
           const schoolId = school?.id ?? course.schoolId;
           const instituteName = institutesV2.find(
-            (item) => item.id === course.instituteId,
+            (item: Institute) => item.id === course.instituteId,
           )
             ? tx(
-                institutesV2.find((item) => item.id === course.instituteId)!
-                  .name,
+                institutesV2.find(
+                  (item: Institute) => item.id === course.instituteId,
+                )!.instituteName,
                 locale,
               )
             : "";
           const location = [
-            school ? (getCityById(school.cityId)?.name[locale] ?? "") : "",
+            school ? (getCityById(school.cityId)?.cityName[locale] ?? "") : "",
             school
-              ? (getCountryById(school.countryId)?.name[locale] ?? "")
+              ? (getCountryById(school.countryId)?.countryName[locale] ?? "")
               : "",
           ]
             .filter(Boolean)
@@ -197,14 +246,13 @@ export function SearchResults({
               key={course.id}
               image={"course-placeholder.png"}
               // image={course.image ?? "course-placeholder.png"}
-              name={tx(course.name, locale)}
+              name={tx(course.courseName, locale)}
               discount={course.discount ?? 0}
               lessons={lessons}
-              week={week}
               price={price}
               category={category}
               hours={hours}
-              requiredLevel=""
+              requiredLevel={requiredLevel}
               instituteName={instituteName}
               location={location}
               onApply={handleApply}

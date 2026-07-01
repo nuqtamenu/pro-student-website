@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "schoolId": 1,
+    "addonName": {
+      "en": "English One to one lessons",
+      "ar": "دروس اللغة الإنجليزية الفردية"
+    },
+    "lessons": 5,
+    "price": 445,
+    "note": {
+      "en": "Custom packages available",
+      "ar": "تتوفر باقات مخصصة"
+    }
+  },
+  {
+    "id": 2,
+    "courseName": {
+      "en": "One to One Lessons",
+      "ar": "دروس فردية (واحد لواحد)"
+    },
+    "courseIntensity": {
+      "en": "English Plus Add-on",
+      "ar": "إضافة بلس للغة الإنجليزية"
+    },
+    "instituteId": 1,
+    "schoolId": 2,
+    "categoryId": 18,
+    "coursePlans": [
+      {
+        "price": 390,
+        "priceFrequency": "weekly",
+        "lessonsPerWeek": 5,
+        "note": { "en": "Custom packages available", "ar": "تتوفر باقات مخصصة" }
+      }
+    ]
+  }
+]

@@ -4,7 +4,7 @@ import {
   coursesV2,
   schoolsV2,
   transfersV2,
-} from "@/lib/v2-search-data";
+} from "@/lib/search-data";
 import { type Locale } from "@/lib/data";
 import { getTranslations } from "next-intl/server";
 
@@ -17,6 +17,15 @@ function parseNumber(value: string | string[] | undefined): number | undefined {
   if (typeof value !== "string") return undefined;
   const parsed = Number(value);
   return Number.isNaN(parsed) ? undefined : parsed;
+}
+
+function parseNumberArray(value: string | string[] | undefined): number[] {
+  if (typeof value !== "string") return [];
+
+  return value
+    .split(",")
+    .map((item) => Number(item.trim()))
+    .filter((item) => !Number.isNaN(item));
 }
 
 function parseString(value: string | string[] | undefined): string {
@@ -60,6 +69,10 @@ export default async function SchoolsPage({ params, searchParams }: Props) {
         accommodation: (await searchParams).accommodation === "1",
         airportPickup: (await searchParams).airport_pickup === "1",
         insurance: (await searchParams).insurance === "1",
+        courseAddonIds: parseNumberArray((await searchParams).course_addon_ids),
+        accommodationAddonIds: parseNumberArray(
+          (await searchParams).accommodation_addon_ids,
+        ),
       }}
       locale={locale as Locale}
       pageTitle={t("pageTitle")}

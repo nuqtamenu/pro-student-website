@@ -180,7 +180,6 @@ export function CoursesFilter() {
                 category={getCategoryName(course.category)}
                 discount={course.discount}
                 lessons={10}
-                week={5}
                 hours={3}
                 requiredLevel={
                   course.requiredLevel ? tx(course.requiredLevel, locale) : ""

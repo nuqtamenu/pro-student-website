@@ -27,17 +27,7 @@ export type Course = {
   requiredLevel?: Localized;
   minimumAge?: number;
   courseDates?: Dates;
-  oneLessionMins?: number;
-  note?: Localized;
-};
-
-// <---------- COURSE ADDON ------------->
-export type CourseAddon = {
-  id: number;
-  courseId: number;
-  addonName: Localized;
-  lessons?: number;
-  price: number;
+  oneLessonMins?: number;
   note?: Localized;
 };
 ```
@@ -46,14 +36,21 @@ export type CourseAddon = {
 
 instituteId:1
 countryId:1
-cityId:5
-schoolId: 5
-home-stay-16 category id : 1
-student-residence-18 category is: 2
+cityId:2
+schoolId: 2
+categoryId: 18
 
-start the accommodations id from 25
+start id of courses from 4
+start id of course addons from 2
 
 ## Task
 
-Please extract the accomodities from the refrence page according to the provided structure
-Also add ar (arabic) translations as well.
+Extract the accurate info about courses and addons from the image according to the Data Structure provided on the top.
+
+Please add these notes to "ELTS Preparation: Available in Standard 20 lessons. This can be combined with an additional 5 or 10 General English lessons  
+as part of our Intensive or Super Intensive Course
+• Minimum level for IELTS Preparation: Level 4 (Bayswater)/B1 (CEFR)"
+
+# Output
+
+Give me json files for all courses extracted from the reference image accurately and also provide the translations for arabic.
