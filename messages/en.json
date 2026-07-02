@@ -63,6 +63,7 @@
     "findCourses": "Find Courses",
     "select": "Select",
     "courseAddons": "Course Add-ons",
+    "courseDuration": "Course Duration",
     "courseAddonsDescription": "Optional add-ons can be selected below.",
     "noCourseAddons": "No add-ons available for this school.",
     "lessons": "{count} lessons",

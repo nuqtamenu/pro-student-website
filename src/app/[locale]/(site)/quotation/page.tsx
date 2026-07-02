@@ -1,4 +1,3 @@
-import QuotationPage from "@/components/quotation-page";
 import QuotationPage2 from "@/components/quotation-page2";
 import { type Locale } from "@/lib/data";
 import {

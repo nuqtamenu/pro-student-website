@@ -1,11 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { tx, type Locale } from "@/lib/data";
 import {
   type Accommodation,
+  type AccommodationAddon,
   type Course,
+  type CourseAddon,
   type School,
   type Transfer,
 } from "@/lib/v4-dsa";
@@ -16,11 +19,17 @@ type Props = {
   course?: Course;
   accommodation?: Accommodation;
   transfer?: Transfer;
+  courseAddons?: CourseAddon[];
+  accommodationAddons?: AccommodationAddon[];
+  courseAddonsPrice?: number;
+  accommodationAddonsPrice?: number;
   locale: Locale;
   initial: {
     weeks: number;
     residenceWeeks: number;
     startDate?: string;
+    accommodationStartDate?: string;
+    accommodationEndDate?: string;
     hasAccommodation: boolean;
     hasAirport: boolean;
     hasInsurance: boolean;
@@ -37,7 +46,32 @@ type Props = {
 };
 
 function formatPrice(value: number) {
-  return `$${value.toFixed(0)}`;
+  return `£${value.toLocaleString("en-US", {
+    maximumFractionDigits: 0,
+  })}`;
+}
+
+function formatDateLabel(value: string | undefined, locale: Locale) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return date.toLocaleDateString(locale === "ar" ? "ar-SA" : "en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+}
+
+function normalizeImageSrc(src: string | undefined) {
+  if (!src) return "/logo.png";
+  if (
+    src.startsWith("/") ||
+    src.startsWith("http://") ||
+    src.startsWith("https://")
+  ) {
+    return src;
+  }
+  return `/${src}`;
 }
 
 export default function QuotationPage2({
@@ -56,10 +90,20 @@ export default function QuotationPage2({
   subtotal,
   pageTitle,
   showPrintButton = true,
+  courseAddons = [],
+  accommodationAddons = [],
 }: Props) {
   const t = useTranslations("schoolBooking");
   const country = getCountryById(school.countryId);
   const city = getCityById(school.cityId);
+
+  const courseEnd = useMemo(() => {
+    if (!initial.startDate) return undefined;
+    const date = new Date(initial.startDate);
+    if (Number.isNaN(date.getTime())) return undefined;
+    date.setDate(date.getDate() + initial.weeks * 7);
+    return date.toISOString().slice(0, 10);
+  }, [initial.startDate, initial.weeks]);
 
   const [printUrl, setPrintUrl] = useState(
     `/api/quotation/print?locale=${locale}`,
@@ -69,60 +113,159 @@ export default function QuotationPage2({
     const items: Array<{ title: string; detail: string; amount: number }> = [];
 
     if (course) {
+      const courseDetails = [
+        ...(course.courseDescription
+          ? [tx(course.courseDescription, locale)]
+          : []),
+        ...(course.courseIntensity
+          ? [`${t("courseIntensity")} : ${tx(course.courseIntensity, locale)}`]
+          : []),
+        ...(course.requiredLevel
+          ? [`${t("requiredLevel")} : ${tx(course.requiredLevel, locale)}`]
+          : []),
+        ...(course.coursePlans?.[0]?.lessonsPerWeek
+          ? [
+              t("lessonsPerWeek", {
+                count: course.coursePlans[0].lessonsPerWeek,
+              }),
+            ]
+          : []),
+      ].filter(Boolean);
+
       items.push({
         title: t("course"),
-        detail: `${tx(course.courseName, locale)} • ${t("studyDuration")}`,
+        detail: courseDetails.join(" • "),
         amount: coursePrice,
       });
     }
 
+    courseAddons.forEach((addon) => {
+      const addonDetails = [
+        ...(typeof addon.lessons === "number"
+          ? [t("lessonsPerWeek", { count: addon.lessons })]
+          : []),
+        ...(addon.note ? [tx(addon.note, locale)] : []),
+      ].filter(Boolean);
+
+      items.push({
+        title: tx(addon.addonName, locale),
+        detail: addonDetails.join(" • "),
+        amount: addon.price * initial.weeks,
+      });
+    });
+
     if (initial.hasAccommodation && accommodation) {
+      const accommodationDetails = [
+        ...(accommodation.accommodationDescription
+          ? [tx(accommodation.accommodationDescription, locale)]
+          : []),
+        ...(accommodation.location?.length
+          ? [
+              `${t("location")} : ${accommodation.location
+                .map((entry) => tx(entry.name, locale))
+                .join(", ")}`,
+            ]
+          : []),
+        ...(accommodation.minimumAge
+          ? [`${t("minAge", { age: accommodation.minimumAge })}`]
+          : []),
+      ].filter(Boolean);
+
       items.push({
         title: t("accommodation"),
-        detail: `${tx(accommodation.accommodationName, locale)} • ${initial.residenceWeeks} ${t("weekCount", { count: initial.residenceWeeks })}`,
+        detail: `${tx(accommodation.accommodationName, locale)} • ${initial.residenceWeeks} ${t("weekCount", { count: initial.residenceWeeks })}${accommodationDetails.length ? ` • ${accommodationDetails.join(" • ")}` : ""}`,
         amount: accommodationPrice,
       });
     }
 
+    accommodationAddons.forEach((addon) => {
+      const addonDetails = [
+        ...(addon.location
+          ? [`${t("location")} : ${tx(addon.location, locale)}`]
+          : []),
+        ...(addon.note ? [tx(addon.note, locale)] : []),
+        ...(addon.duration
+          ? [
+              `${t("from")} : ${formatDateLabel(addon.duration.from as string, locale)} • ${t("to")} : ${formatDateLabel(addon.duration.to as string, locale)}`,
+            ]
+          : []),
+      ].filter(Boolean);
+
+      items.push({
+        title: tx(addon.addonName, locale),
+        detail: addonDetails.join(" • "),
+        amount: addon.amount * initial.residenceWeeks,
+      });
+    });
+
     if (initial.hasAirport && transfer) {
+      const transferDetails = [
+        ...(transfer.transferDescription
+          ? [tx(transfer.transferDescription, locale)]
+          : []),
+        t("pickup", { location: tx(transfer.pickupLocation, locale) }),
+        `${t("tripType")} : ${t(
+          transfer.tripType === "roundTrip" ? "roundTrip" : "oneWay",
+        )}`,
+        ...(transfer.note ? [tx(transfer.note, locale)] : []),
+      ].filter(Boolean);
+
       items.push({
         title: t("airportPickup"),
-        detail: `${tx(transfer.transferName, locale)}`,
+        detail: transferDetails.join(" • "),
         amount: transferPrice,
       });
     }
 
-    if (initial.hasInsurance) {
+    const insuranceFee = fees.find((fee) => {
+      const name = fee.feeName?.en?.toLowerCase() ?? "";
+      const arabicName = fee.feeName?.ar?.toLowerCase() ?? "";
+      return name.includes("insurance") || arabicName.includes("التأمين");
+    });
+
+    fees
+      .filter((fee) => fee !== insuranceFee)
+      .forEach((fee) => {
+        const feeLabel = fee.feeName?.[locale] ?? fee.feeName?.en ?? "";
+        const frequencyLabel =
+          fee.feeFrequency === "weekly"
+            ? t("frequency.weekly")
+            : fee.feeFrequency;
+        items.push({
+          title: feeLabel,
+          detail:
+            fee.feeFrequency === "fixed"
+              ? ""
+              : frequencyLabel
+                ? `${frequencyLabel}`
+                : "",
+          amount: fee.feeAmount ?? 0,
+        });
+      });
+
+    if (initial.hasInsurance && insuranceFee) {
       items.push({
         title: t("insurance"),
-        detail: t("addInsurance"),
+        detail: `(${formatPrice(insuranceFee.feeAmount)} / ${t("frequency.weekly")})`,
         amount: insurancePrice,
-      });
-    }
-
-    if (fixedFeesTotal > 0) {
-      items.push({
-        title: t("fixedFees"),
-        detail: fees
-          .filter((fee) => fee.feeFrequency === "fixed")
-          .map((fee) => fee.feeName?.[locale] ?? fee.feeName?.en)
-          .join(", "),
-        amount: fixedFeesTotal,
       });
     }
 
     return items;
   }, [
     accommodation,
+    accommodationAddons,
     accommodationPrice,
     course,
+    courseAddons,
     coursePrice,
     fees,
-    fixedFeesTotal,
     initial.hasAccommodation,
     initial.hasAirport,
     initial.hasInsurance,
     initial.residenceWeeks,
+    initial.startDate,
+    initial.weeks,
     locale,
     t,
     transfer,
@@ -162,25 +305,33 @@ export default function QuotationPage2({
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-3 print:hidden">
+          <div className="flex flex-col items-end gap-3">
             {showPrintButton ? (
-              <a
-                href={printUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-dark-orange px-5 py-3 text-sm font-semibold text-white transition hover:bg-red"
-              >
-                {t("printQuote")}
-              </a>
-            ) : (
-              <button
-                type="button"
-                onClick={() => window.print()}
-                className="rounded-full bg-dark-orange px-5 py-3 text-sm font-semibold text-white transition hover:bg-red"
-              >
-                {t("printQuote")}
-              </button>
-            )}
+              <div className="flex items-center gap-3">
+                <a
+                  href={printUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Print quotation"
+                  className="inline-flex items-center gap-2 rounded-3xl bg-dark-orange px-4 py-2 text-sm font-semibold text-white hover:opacity-95"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    className="h-5 w-5"
+                    aria-hidden
+                  >
+                    <path d="M6 9V3h12v6" />
+                    <rect x="6" y="13" width="12" height="8" rx="2" />
+                    <path d="M6 17h12" />
+                  </svg>
+                  <span>{t("printQuote")}</span>
+                </a>
+              </div>
+            ) : null}
           </div>
         </div>
 
@@ -199,13 +350,43 @@ export default function QuotationPage2({
                     {t("quoteDescription")}
                   </p>
                 </div>
-                <div className="rounded-2xl bg-orange-50 px-4 py-3 text-sm text-gray-dark">
-                  <p className="font-semibold">{t("quoteReference")}</p>
-                  <p className="mt-1 text-xs text-gray-dark/70">
-                    {new Date().toLocaleDateString(
-                      locale === "ar" ? "ar-SA" : "en-US",
-                    )}
-                  </p>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="rounded-2xl bg-orange-50 px-4 py-3 text-sm text-gray-dark">
+                    <p className="font-semibold">{t("quoteReference")}</p>
+                    <p className="mt-1 text-xs text-gray-dark/70">
+                      {new Date().toLocaleDateString(
+                        locale === "ar" ? "ar-SA" : "en-US",
+                      )}
+                    </p>
+                    {initial.startDate ? (
+                      <div className="mt-2 space-y-1 text-xs text-gray-dark/70">
+                        <p>
+                          <span className="font-semibold">{t("from")}:</span>{" "}
+                          {formatDateLabel(initial.startDate, locale)}
+                        </p>
+                        <p>
+                          <span className="font-semibold">{t("to")}:</span>{" "}
+                          {formatDateLabel(courseEnd, locale)}
+                        </p>
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="rounded-2xl bg-orange-50 px-4 py-3 text-sm text-gray-dark">
+                    <p className="font-semibold">{t("courseDuration")}</p>
+                    {initial.startDate ? (
+                      <div className="mt-2 space-y-1 text-xs text-gray-dark/70">
+                        <p>
+                          <span className="font-semibold">{t("from")}:</span>{" "}
+                          {formatDateLabel(initial.startDate, locale)}
+                        </p>
+                        <p>
+                          <span className="font-semibold">{t("to")}:</span>{" "}
+                          {formatDateLabel(courseEnd, locale)}
+                        </p>
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
               </div>
 
@@ -242,46 +423,22 @@ export default function QuotationPage2({
               <div className="mt-4 space-y-3">
                 {quoteItems.map((item) => (
                   <div
-                    key={item.title}
-                    className="flex items-start justify-between gap-4 rounded-2xl border border-orange-100 bg-orange-50/40 p-4"
+                    key={`${item.title}-${item.amount}-${item.detail}`}
+                    className="flex flex-col gap-3 rounded-2xl border border-orange-100 bg-orange-50/40 p-4"
                   >
-                    <div>
+                    <div className="flex flex-wrap items-start justify-between gap-4">
                       <p className="font-semibold text-gray-dark">
                         {item.title}
                       </p>
-                      <p className="mt-1 text-sm text-gray-dark/70">
-                        {item.detail}
+                      <p className="whitespace-nowrap text-sm font-semibold text-gray-dark">
+                        {formatPrice(item.amount)}
                       </p>
                     </div>
-                    <p className="whitespace-nowrap text-sm font-semibold text-gray-dark">
-                      {formatPrice(item.amount)}
-                    </p>
+                    {item.detail ? (
+                      <p className="text-sm text-gray-dark/70">{item.detail}</p>
+                    ) : null}
                   </div>
                 ))}
-              </div>
-            </section>
-
-            <section className="rounded-4xl border border-white/70 bg-white/85 p-6 shadow-xl shadow-orange-100/60 backdrop-blur">
-              <h3 className="text-xl font-semibold text-gray-dark">
-                {t("servicesIncluded")}
-              </h3>
-              <div className="mt-4 grid gap-4 md:grid-cols-2">
-                <div className="rounded-2xl border border-orange-100 bg-orange-50/40 p-4">
-                  <p className="font-semibold text-gray-dark">
-                    {t("studySupport")}
-                  </p>
-                  <p className="mt-2 text-sm text-gray-dark/70">
-                    {t("studySupportText")}
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-orange-100 bg-orange-50/40 p-4">
-                  <p className="font-semibold text-gray-dark">
-                    {t("arrivalSupport")}
-                  </p>
-                  <p className="mt-2 text-sm text-gray-dark/70">
-                    {t("arrivalSupportText")}
-                  </p>
-                </div>
               </div>
             </section>
           </div>
@@ -328,8 +485,47 @@ export default function QuotationPage2({
               </p>
               <div className="mt-4 rounded-2xl border border-white/20 bg-white/10 p-4 text-sm">
                 <p className="font-semibold">{t("contactUs")}</p>
-                <p className="mt-2">admission@prostudent.com.sa</p>
-                <p dir="ltr">+966 58 066 6525</p>
+                <div className="mt-2 flex items-center gap-3" dir="ltr">
+                  <a
+                    href="tel:966580666525"
+                    className="inline-flex items-center gap-2 rounded-md bg-white/10 px-3 py-1 text-sm text-white hover:bg-white/20"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      className="h-4 w-4"
+                      aria-hidden
+                    >
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3 5.18 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72c.12 1.05.38 2.06.78 3.01a2 2 0 0 1-.45 2.11L9.91 11.09a16 16 0 0 0 6 6l1.24-1.24a2 2 0 0 1 2.11-.45c.95.4 1.96.66 3.01.78A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    <span className="text-sm">+966 58 066 6525</span>
+                  </a>
+
+                  <a
+                    href="https://wa.me/966580666525"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-md bg-white/10 px-3 py-1 text-sm text-white hover:bg-white/20"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <path
+                        fill="currentColor"
+                        d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01m-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18l-3.12.82l.83-3.04l-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24c2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81c-.23-.08-.39-.12-.56.12c-.17.25-.64.81-.78.97c-.14.17-.29.19-.54.06c-.25-.12-1.05-.39-1.99-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.14-.25-.02-.38.11-.51c.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31c-.22.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74c.59.26 1.05.41 1.41.52c.59.19 1.13.16 1.56.1c.48-.07 1.47-.6 1.67-1.18c.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28"
+                      />
+                    </svg>
+
+                    <span className="text-sm">WhatsApp</span>
+                  </a>
+                </div>
               </div>
             </div>
           </aside>

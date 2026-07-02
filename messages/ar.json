@@ -65,6 +65,7 @@
     "courseAddons": "إضافات الكورس",
     "courseAddonsDescription": "يمكن اختيار الإضافات الاختيارية أدناه.",
     "noCourseAddons": "لا توجد إضافات متاحة لهذه المدرسة.",
+    "courseDuration": "عدد أسابيع الكورس",
     "lessons": "{count} دروس",
     "lessonsPerWeek": "{count} دروس / أسبوع",
     "hoursPerWeek": "{count} ساعات / أسبوع",

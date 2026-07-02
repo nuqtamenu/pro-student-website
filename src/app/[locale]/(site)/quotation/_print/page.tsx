@@ -6,8 +6,8 @@ import {
   schoolsV2,
   transfersV2,
 } from "@/lib/search-data";
-import courseAddonsData from "../../../../../public/data/v4/courseAddons.json";
-import accommodationAddonsData from "../../../../../public/data/v4/accommodationAddons.json";
+import courseAddonsData from "../../../../../../public/data/v4/courseAddons.json";
+import accommodationAddonsData from "../../../../../../public/data/v4/accommodationAddons.json";
 import { type AccommodationAddon, type CourseAddon } from "@/lib/v4-dsa";
 
 function parseNumber(value: string | string[] | undefined): number | undefined {

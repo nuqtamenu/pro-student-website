@@ -53,7 +53,7 @@ export async function GET(req: Request) {
     await browser.close();
     browser = null;
 
-    return new Response(pdfBuffer, {
+    return new Response(pdfBuffer as unknown as BodyInit, {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
