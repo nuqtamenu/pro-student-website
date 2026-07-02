@@ -3,12 +3,9 @@ import { Inter, Tajawal, Poppins } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
 import "../globals.css";
-import { CountryLinks } from "@/components/country-links";
+
 import { getTranslations } from "next-intl/server";
-import WhatsappWidget from "@/components/whats-app-widget";
 
 type Props = {
   children: React.ReactNode;
@@ -62,19 +59,7 @@ export default async function RootLayout({ children, params }: Props) {
       data-scroll-behavior="smooth"
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <NextIntlClientProvider>
-          <Header />
-          {/* Tagline strip */}
-          <div className="sticky top-0 left-0 z-20">
-            <p className="px-4 py-4 text-center font-bold tracking-wid mb-2 bg-white">
-              {t("tagline")}
-            </p>
-          </div>
-          {children}
-          <CountryLinks />
-          <Footer />
-          <WhatsappWidget />
-        </NextIntlClientProvider>
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>
   );

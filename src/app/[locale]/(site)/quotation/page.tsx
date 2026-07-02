@@ -1,13 +1,13 @@
-import QuotationPage from "@/components/quotation-page";
+import QuotationPage2 from "@/components/quotation-page2";
 import { type Locale } from "@/lib/data";
 import {
   accommodationsV2,
   coursesV2,
   schoolsV2,
   transfersV2,
-} from "../../../lib/search-data";
-import courseAddonsData from "../../../../public/data/v4/courseAddons.json";
-import accommodationAddonsData from "../../../../public/data/v4/accommodationAddons.json";
+} from "@/lib/search-data";
+import courseAddonsData from "../../../../../public/data/v4/courseAddons.json";
+import accommodationAddonsData from "../../../../../public/data/v4/accommodationAddons.json";
 import { type AccommodationAddon, type CourseAddon } from "@/lib/v4-dsa";
 
 function parseNumber(value: string | string[] | undefined): number | undefined {
@@ -131,41 +131,44 @@ export default async function QuotationRoute({
     fixedFeesTotal;
 
   return (
-    <QuotationPage
-      school={school}
-      course={course}
-      accommodation={accommodation}
-      transfer={transfer}
-      locale={locale as Locale}
-      initial={{
-        weeks,
-        residenceWeeks,
-        startDate: resolvedSearchParams.start_date as string | undefined,
-        accommodationStartDate: resolvedSearchParams.start_date as
-          | string
-          | undefined,
-        accommodationEndDate: (() => {
-          const start = resolvedSearchParams.start_date as string | undefined;
-          if (!start) return undefined;
-          const date = new Date(start);
-          date.setDate(date.getDate() + residenceWeeks * 7);
-          return date.toISOString().slice(0, 10);
-        })(),
-        hasAccommodation,
-        hasAirport,
-        hasInsurance,
-      }}
-      fees={school.fees}
-      courseAddons={courseAddons}
-      coursePrice={coursePrice}
-      courseAddonsPrice={courseAddonsPrice}
-      accommodationAddons={accommodationAddons}
-      accommodationAddonsPrice={accommodationAddonsPrice}
-      accommodationPrice={accommodationPrice}
-      transferPrice={transferPrice}
-      insurancePrice={insurancePrice}
-      fixedFeesTotal={fixedFeesTotal}
-      subtotal={subtotal}
-    />
+    <>
+      <QuotationPage2
+        school={school}
+        course={course}
+        accommodation={accommodation}
+        transfer={transfer}
+        locale={locale as Locale}
+        showPrintButton={true}
+        initial={{
+          weeks,
+          residenceWeeks,
+          startDate: resolvedSearchParams.start_date as string | undefined,
+          accommodationStartDate: resolvedSearchParams.start_date as
+            | string
+            | undefined,
+          accommodationEndDate: (() => {
+            const start = resolvedSearchParams.start_date as string | undefined;
+            if (!start) return undefined;
+            const date = new Date(start);
+            date.setDate(date.getDate() + residenceWeeks * 7);
+            return date.toISOString().slice(0, 10);
+          })(),
+          hasAccommodation,
+          hasAirport,
+          hasInsurance,
+        }}
+        fees={school.fees}
+        courseAddons={courseAddons}
+        coursePrice={coursePrice}
+        courseAddonsPrice={courseAddonsPrice}
+        accommodationAddons={accommodationAddons}
+        accommodationAddonsPrice={accommodationAddonsPrice}
+        accommodationPrice={accommodationPrice}
+        transferPrice={transferPrice}
+        insurancePrice={insurancePrice}
+        fixedFeesTotal={fixedFeesTotal}
+        subtotal={subtotal}
+      />
+    </>
   );
 }

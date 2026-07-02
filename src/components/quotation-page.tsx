@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { tx, type Locale } from "../lib/data";
 import {
@@ -52,6 +52,7 @@ type Props = {
   };
   phoneNumber?: string;
   whatsappNumber?: string;
+  showPrintButton?: boolean;
 };
 
 function formatAmount(value: number, symbol: string) {
@@ -111,6 +112,7 @@ export default function InvoiceQuotePage({
   bank,
   phoneNumber,
   whatsappNumber,
+  showPrintButton = false,
 }: Props) {
   const t = useTranslations("schoolBooking");
   const isRtl = locale === "ar";
@@ -131,6 +133,20 @@ export default function InvoiceQuotePage({
 
   const currencySymbol = country?.currency?.symbol || "£";
   const currencyCode = currency ?? country?.currency?.code ?? "GBP";
+  const [printUrl, setPrintUrl] = useState(
+    `/api/quotation/print?locale=${locale}`,
+  );
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const params = new URLSearchParams(window.location.search);
+    params.delete("locale");
+    const query = params.toString();
+    setPrintUrl(
+      `/api/quotation/print?locale=${locale}${query ? `&${query}` : ""}`,
+    );
+  }, [locale]);
 
   const formattedDate = useMemo(() => {
     const d = issueDate ? new Date(issueDate) : new Date();
@@ -147,7 +163,7 @@ export default function InvoiceQuotePage({
     if (course) {
       const subLines = [
         ...(firstCoursePlan?.lessonsPerWeek
-          ? [`${firstCoursePlan.lessonsPerWeek} ${t("lessonsPerWeek")}`]
+          ? [t("lessonsPerWeek", { count: firstCoursePlan.lessonsPerWeek })]
           : []),
         ...(course.courseDescription
           ? [tx(course.courseDescription, locale)]
@@ -176,7 +192,7 @@ export default function InvoiceQuotePage({
       courseAddons.forEach((addon) => {
         const subLines = [
           ...(typeof addon.lessons === "number"
-            ? [`${addon.lessons} ${t("lessonsPerWeek")}`]
+            ? [t("lessonsPerWeek", { count: addon.lessons })]
             : []),
           ...(addon.note ? [tx(addon.note, locale)] : []),
         ].filter(Boolean);
@@ -198,7 +214,7 @@ export default function InvoiceQuotePage({
           ...(transfer.transferDescription
             ? [tx(transfer.transferDescription, locale)]
             : []),
-          `${t("pickup")}: ${tx(transfer.pickupLocation, locale)}`,
+          t("pickup", { location: tx(transfer.pickupLocation, locale) }),
           `${t("tripType")}: ${t(transfer.tripType === "roundTrip" ? "roundTrip" : "oneWay")}`,
           ...(transfer.note ? [tx(transfer.note, locale)] : []),
         ].filter(Boolean),
@@ -362,6 +378,16 @@ export default function InvoiceQuotePage({
               height={40}
               className=""
             />
+            {showPrintButton ? (
+              <a
+                href={printUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full bg-dark-orange px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600"
+              >
+                {t("printQuote")}
+              </a>
+            ) : null}
           </div>
         </div>
       </header>
