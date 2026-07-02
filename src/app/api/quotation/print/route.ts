@@ -47,7 +47,7 @@ export async function GET(req: Request) {
       format: "A4",
       printBackground: true,
       preferCSSPageSize: false,
-      margin: { top: "0mm", bottom: "0mm", left: "0mm", right: "0mm" },
+      margin: { top: "10mm", bottom: "10mm", left: "0mm", right: "0mm" },
     });
 
     await browser.close();
