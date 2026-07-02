@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { tx, type Locale } from "@/lib/data";
 import {
@@ -8,7 +8,7 @@ import {
   type Course,
   type School,
   type Transfer,
-} from "@/lib/new_data";
+} from "@/lib/v4-dsa";
 import { getCityById, getCountryById } from "@/lib/search-data";
 
 type Props = {
@@ -33,6 +33,7 @@ type Props = {
   fixedFeesTotal: number;
   subtotal: number;
   pageTitle?: string;
+  showPrintButton?: boolean;
 };
 
 function formatPrice(value: number) {
@@ -54,10 +55,15 @@ export default function QuotationPage2({
   fixedFeesTotal,
   subtotal,
   pageTitle,
+  showPrintButton = true,
 }: Props) {
   const t = useTranslations("schoolBooking");
   const country = getCountryById(school.countryId);
   const city = getCityById(school.cityId);
+
+  const [printUrl, setPrintUrl] = useState(
+    `/api/quotation/print?locale=${locale}`,
+  );
 
   const quoteItems = useMemo(() => {
     const items: Array<{ title: string; detail: string; amount: number }> = [];
@@ -65,7 +71,7 @@ export default function QuotationPage2({
     if (course) {
       items.push({
         title: t("course"),
-        detail: `${tx(course.name, locale)} • ${t("studyDuration")}`,
+        detail: `${tx(course.courseName, locale)} • ${t("studyDuration")}`,
         amount: coursePrice,
       });
     }
@@ -81,7 +87,7 @@ export default function QuotationPage2({
     if (initial.hasAirport && transfer) {
       items.push({
         title: t("airportPickup"),
-        detail: `${tx(transfer.serviceName, locale)}`,
+        detail: `${tx(transfer.transferName, locale)}`,
         amount: transferPrice,
       });
     }
@@ -98,8 +104,8 @@ export default function QuotationPage2({
       items.push({
         title: t("fixedFees"),
         detail: fees
-          .filter((fee) => fee.frequency === "fixed")
-          .map((fee) => fee.name?.[locale] ?? fee.name?.en)
+          .filter((fee) => fee.feeFrequency === "fixed")
+          .map((fee) => fee.feeName?.[locale] ?? fee.feeName?.en)
           .join(", "),
         amount: fixedFeesTotal,
       });
@@ -124,6 +130,18 @@ export default function QuotationPage2({
     insurancePrice,
   ]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const params = new URLSearchParams(window.location.search);
+    params.delete("locale");
+    const query = params.toString();
+
+    setPrintUrl(
+      `/api/quotation/print?locale=${locale}${query ? `&${query}` : ""}`,
+    );
+  }, [locale]);
+
   return (
     <div className="min-h-screen bg-[linear-gradient(135deg,#fff7ed_0%,#ffe7d3_45%,#fffaf5_100%)] px-4 py-10 text-gray-900 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-6xl flex-col gap-6">
@@ -140,18 +158,29 @@ export default function QuotationPage2({
                 {pageTitle ?? t("quoteTitle")}
               </h1>
               <p className="mt-1 text-sm text-gray-dark/70">
-                {tx(school.name ?? { en: "School", ar: "مدرسة" }, locale)}
+                {tx(school.schoolName ?? { en: "School", ar: "مدرسة" }, locale)}
               </p>
             </div>
           </div>
           <div className="flex items-center gap-3 print:hidden">
-            <button
-              type="button"
-              onClick={() => window.print()}
-              className="rounded-full bg-dark-orange px-5 py-3 text-sm font-semibold text-white transition hover:bg-red"
-            >
-              {t("printQuote")}
-            </button>
+            {showPrintButton ? (
+              <a
+                href={printUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full bg-dark-orange px-5 py-3 text-sm font-semibold text-white transition hover:bg-red"
+              >
+                {t("printQuote")}
+              </a>
+            ) : (
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className="rounded-full bg-dark-orange px-5 py-3 text-sm font-semibold text-white transition hover:bg-red"
+              >
+                {t("printQuote")}
+              </button>
+            )}
           </div>
         </div>
 
@@ -186,8 +215,8 @@ export default function QuotationPage2({
                     {t("destination")}
                   </p>
                   <p className="mt-1 text-sm text-gray-dark/70">
-                    {city ? tx(city.name, locale) : ""},{" "}
-                    {country ? tx(country.name, locale) : ""}
+                    {city ? tx(city.cityName, locale) : ""},{" "}
+                    {country ? tx(country.countryName, locale) : ""}
                   </p>
                 </div>
                 <div className="rounded-2xl border border-orange-100 bg-orange-50/70 p-4">
@@ -195,7 +224,7 @@ export default function QuotationPage2({
                     {t("programDetails")}
                   </p>
                   <p className="mt-1 text-sm text-gray-dark/70">
-                    {course ? tx(course.name, locale) : t("course")}
+                    {course ? tx(course.courseName, locale) : t("course")}
                   </p>
                 </div>
               </div>
